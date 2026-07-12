@@ -2,76 +2,77 @@
 
 ## Objective
 
-Show a small cross-platform native client performing Todo CRUD operations through a REST API.
+Show a small cross-platform native client performing Todo CRUD through the Minimal REST API.
 
 ## Maturity level
 
-**Level 1 — Focused Pattern Example.** The lesson is MAUI hosting, XAML navigation, and HTTP consumption rather than a complete mobile architecture.
+**Level 1 — Focused Pattern Example.** This classification describes the example's teaching scope, not production readiness. See the [catalog](../../../../docs/catalog.md).
 
 ## What it demonstrates
 
-- Native controls rendered per platform from shared XAML.
-- Shell navigation between a collection and Todo management page.
-- Typed `HttpClient` access through `IRestDataService`.
-- Embedded configuration for the backend URL.
+- Shared XAML rendered with native controls.
+- Shell navigation and page-local state.
+- Typed `HttpClient` REST access.
 
 ## What it intentionally omits
 
-Authentication, offline synchronization, durable local state, view-model separation, retry policy, telemetry, accessibility verification, and automated UI tests.
+Production identity and authorization design, complete resilience policy, distributed observability, deployment automation, performance testing, high-availability data design, and exhaustive automated tests unless explicitly shown. These omissions keep the demonstrated concern visible.
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  Page[XAML page + code-behind] --> Service[IRestDataService]
-  Service --> Http[Typed HttpClient]
-  Http --> API[Todo Minimal REST API]
-```
+MAUI page → REST data service → Todo Minimal REST API.
 
-State is page-local and data reloads when the page appears. This is not presented as a required MVVM structure.
+The structure is intentionally proportional to the lesson; it is not presented as a universal application architecture.
 
 ## Request or message flow
 
-The page calls the data service, which sends JSON over HTTP to the configured Todo API and maps the response to local models. Navigation passes the selected Todo as a Shell route parameter.
+MAUI page → REST data service → Todo Minimal REST API. Validate both the successful path and the authentication, validation, connectivity, or not-found failure relevant to this example.
 
 ## Project structure
 
-- `Pages` — Todo edit/manage UI.
-- `DataServices` — REST abstraction and implementation.
-- `Models` — client Todo shape.
-- `Platforms` — Android, iOS, Mac Catalyst, Windows, and Tizen platform assets.
-- `Resources` — XAML styles, images, fonts, icons, and splash assets.
+- `Program.cs` and configuration files compose the host.
+- Feature folders contain the protocol, endpoint, service, component, or infrastructure code under study.
+- `Properties/launchSettings.json` contains development launch profiles when applicable.
+- Generated `bin`, `obj`, databases, credentials, and user-specific files are not source assets.
 
 ## Configuration
 
-`appsettings.json` defaults to `http://localhost:5101`. Android emulators commonly reach the host as `10.0.2.2`; physical devices require a reachable development-host address and appropriate TLS/network configuration. No authentication is assumed.
+`RestApiUrl` defaults to `http://localhost:5101`. Android emulators normally use `10.0.2.2` for the host; physical devices need a reachable address. Install the appropriate .NET 10 MAUI workload.
+
+Use environment variables or .NET user secrets for sensitive development values. Never place live credentials in committed JSON, launch profiles, or NuGet configuration.
 
 ## How to run
 
-Start `Exp.Todo.RestApi.Minimal`, adjust `RestApiUrl` for the device, install the required MAUI workload, and select a platform target in Visual Studio or with `dotnet build -f <target-framework>`.
+From the repository root:
 
-The preserved .NET 8 MAUI targets are currently rejected as out of support by SDK 10.0.301. Upgrading them requires a dedicated framework migration rather than a documentation change.
+```powershell
+dotnet build src/UserInterface/Maui/Exp.Todo.Maui.RestApiClient -f net10.0-android
+```
+
+Read the console output for the bound endpoint, then use the protocol-appropriate client. External services are not started automatically.
 
 ## Test scenarios
 
-- Load the Todo collection from a reachable API.
-- Add, edit, and delete a Todo and verify server state.
-- Verify a clear failure when the API is unavailable.
-- Verify device/emulator routing instead of assuming device `localhost` is the development machine.
+- Exercise the primary successful operation.
+- Verify one invalid, missing, or not-found input.
+- Stop or misconfigure an external dependency and confirm the failure is understandable.
+- Run `dotnet build src/UserInterface/Maui/Exp.Todo.Maui.RestApiClient` before manual testing.
 
-No automated source tests currently exist.
+No example should be treated as fully verified solely because it compiles; consult the [build manifest](../../../../build/example-build-manifest.json) for automated validation status.
 
 ## Production considerations
 
-Add secure authentication/token storage, certificate validation, resilient networking, cancellation, offline behavior, conflict resolution, structured state management, lifecycle handling, accessibility, telemetry, privacy review, signing, and store deployment controls.
+Add threat modeling, secure secret storage and rotation, least-privilege authorization, input limits, rate limiting where appropriate, retries/timeouts only at safe boundaries, health checks, structured telemetry, data lifecycle controls, load testing, and deployment-specific hardening. Review protocol and dependency compatibility before adopting the pattern.
 
 ## Related examples
 
-- [Todo REST styles](../../../ApiStyles/Rest/README.md)
 - [UI framework comparison](../../../../docs/comparison-matrices/ui-frameworks.md)
+- [Example catalog](../../../../docs/catalog.md)
 - [Learning path](../../../../docs/learning-path.md)
 
 ## Related standards
 
-- [.NET MAUI documentation](https://learn.microsoft.com/dotnet/maui/)
-- [Repository README template](../../../../docs/templates/example-readme-template.md)
+- [Reference-example monorepo ADR](../../../../docs/architecture/adr/ADR-001-reference-example-monorepo.md)
+- [Example README template](../../../../docs/templates/example-readme-template.md)
+- [Repository license](../../../../LICENSE)
+

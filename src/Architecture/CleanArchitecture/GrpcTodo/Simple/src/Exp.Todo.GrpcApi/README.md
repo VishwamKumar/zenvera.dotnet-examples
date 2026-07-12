@@ -1,18 +1,18 @@
-# Todo gRPC JSON transcoding API
+# gRPC Todo Clean Architecture — Simple service layer
 
 ## Objective
 
-Compare one gRPC contract exposed to native gRPC and JSON/HTTP clients.
+Show Clean Architecture dependency direction using a straightforward application service.
 
 ## Maturity level
 
-**Level 2 — Layered Example.** This classification describes the example's teaching scope, not production readiness. See the [catalog](../../../../docs/catalog.md).
+**Level 3 — Architecture Reference.** This classification describes the example's teaching scope, not production readiness. See the [catalog](../../../../../../../docs/catalog.md).
 
 ## What it demonstrates
 
-- Protocol Buffer contracts with HTTP annotations.
-- ASP.NET Core gRPC JSON transcoding.
-- Shared EF Core SQLite persistence.
+- Independent Domain, Application, Infrastructure, host, and test projects.
+- Application abstractions implemented by Infrastructure.
+- gRPC delivery without CQRS.
 
 ## What it intentionally omits
 
@@ -20,13 +20,13 @@ Production identity and authorization design, complete resilience policy, distri
 
 ## Architecture
 
-gRPC or JSON client → transcoding/gRPC pipeline → service implementation → shared Todo repository → SQLite.
+gRPC host → Application service abstraction → Domain rules; Infrastructure implements persistence abstractions inward.
 
 The structure is intentionally proportional to the lesson; it is not presented as a universal application architecture.
 
 ## Request or message flow
 
-gRPC or JSON client → transcoding/gRPC pipeline → service implementation → shared Todo repository → SQLite. Validate both the successful path and the authentication, validation, connectivity, or not-found failure relevant to this example.
+gRPC host → Application service abstraction → Domain rules; Infrastructure implements persistence abstractions inward. Validate both the successful path and the authentication, validation, connectivity, or not-found failure relevant to this example.
 
 ## Project structure
 
@@ -37,7 +37,7 @@ gRPC or JSON client → transcoding/gRPC pipeline → service implementation →
 
 ## Configuration
 
-HTTP 5202; HTTPS 7202. Native clients require HTTP/2; JSON routes follow the proto annotations.
+HTTP 6401; HTTPS 8401. SQLite is configured through `ConnectionStrings`; logs and generated databases remain local.
 
 Use environment variables or .NET user secrets for sensitive development values. Never place live credentials in committed JSON, launch profiles, or NuGet configuration.
 
@@ -46,7 +46,7 @@ Use environment variables or .NET user secrets for sensitive development values.
 From the repository root:
 
 ```powershell
-dotnet run --project src/ApiStyles/Grpc/Exp.Todo.GrpcApi.Transcoding --launch-profile https
+dotnet run --project src/Architecture/CleanArchitecture/GrpcTodo/Simple/src/Exp.Todo.GrpcApi --launch-profile https
 ```
 
 Read the console output for the bound endpoint, then use the protocol-appropriate client. External services are not started automatically.
@@ -56,9 +56,9 @@ Read the console output for the bound endpoint, then use the protocol-appropriat
 - Exercise the primary successful operation.
 - Verify one invalid, missing, or not-found input.
 - Stop or misconfigure an external dependency and confirm the failure is understandable.
-- Run `dotnet build src/ApiStyles/Grpc/Exp.Todo.GrpcApi.Transcoding` before manual testing.
+- Run `dotnet build src/Architecture/CleanArchitecture/GrpcTodo/Simple/src/Exp.Todo.GrpcApi` before manual testing.
 
-No example should be treated as fully verified solely because it compiles; consult the [build manifest](../../../../build/example-build-manifest.json) for automated validation status.
+No example should be treated as fully verified solely because it compiles; consult the [build manifest](../../../../../../../build/example-build-manifest.json) for automated validation status.
 
 ## Production considerations
 
@@ -66,13 +66,13 @@ Add threat modeling, secure secret storage and rotation, least-privilege authori
 
 ## Related examples
 
-- [gRPC styles](../README.md)
-- [Example catalog](../../../../docs/catalog.md)
-- [Learning path](../../../../docs/learning-path.md)
+- [Clean Architecture comparison](../../../README.md)
+- [Example catalog](../../../../../../../docs/catalog.md)
+- [Learning path](../../../../../../../docs/learning-path.md)
 
 ## Related standards
 
-- [Reference-example monorepo ADR](../../../../docs/architecture/adr/ADR-001-reference-example-monorepo.md)
-- [Example README template](../../../../docs/templates/example-readme-template.md)
-- [Repository license](../../../../LICENSE)
+- [Reference-example monorepo ADR](../../../../../../../docs/architecture/adr/ADR-001-reference-example-monorepo.md)
+- [Example README template](../../../../../../../docs/templates/example-readme-template.md)
+- [Repository license](../../../../../../../LICENSE)
 
