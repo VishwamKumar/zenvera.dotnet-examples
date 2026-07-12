@@ -19,7 +19,7 @@ builder.Services.AddSingleton(jwtSettings!);
 builder.Services
     .AddGraphQLServer()
     .AddAuthorization() // Enable authorization
-    .AddQueryType<WeatherForecastQuery>();    
+    .AddQueryType<WeatherForecastQuery>();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -46,7 +46,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorizationBuilder()
     .AddPolicy("AuthenticatedUser", policy =>
         policy.RequireAuthenticatedUser());
-  
+
 
 var app = builder.Build();
 

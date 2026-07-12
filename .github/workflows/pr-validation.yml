@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: read
+  packages: read
 
 concurrency:
   group: pr-validation-${{ github.event.pull_request.number }}
@@ -25,6 +26,17 @@ jobs:
           cache-dependency-path: |
             **/*.csproj
             NuGet.config
+
+      - name: Configure GitHub Packages credentials
+        shell: bash
+        env:
+          GH_PACKAGES_READ_TOKEN: ${{ secrets.GH_PACKAGES_READ_TOKEN }}
+          GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+          GH_PACKAGES_USER: ${{ secrets.GH_PACKAGES_USER }}
+        run: |
+          token="${GH_PACKAGES_READ_TOKEN:-${GH_PACKAGES_TOKEN:-${GITHUB_TOKEN}}}"
+          user="${GH_PACKAGES_USER:-${GITHUB_ACTOR}}"
+          echo "NuGetPackageSourceCredentials_github-packages=Username=${user};Password=${token};ValidAuthenticationTypes=Basic" >> "$GITHUB_ENV"
 
       - name: Validate tracked example manifest
         shell: pwsh
@@ -53,6 +65,17 @@ jobs:
           cache-dependency-path: |
             **/*.csproj
             NuGet.config
+
+      - name: Configure GitHub Packages credentials
+        shell: bash
+        env:
+          GH_PACKAGES_READ_TOKEN: ${{ secrets.GH_PACKAGES_READ_TOKEN }}
+          GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+          GH_PACKAGES_USER: ${{ secrets.GH_PACKAGES_USER }}
+        run: |
+          token="${GH_PACKAGES_READ_TOKEN:-${GH_PACKAGES_TOKEN:-${GITHUB_TOKEN}}}"
+          user="${GH_PACKAGES_USER:-${GITHUB_ACTOR}}"
+          echo "NuGetPackageSourceCredentials_github-packages=Username=${user};Password=${token};ValidAuthenticationTypes=Basic" >> "$GITHUB_ENV"
 
       - name: Restore enabled examples
         shell: pwsh

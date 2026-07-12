@@ -4,7 +4,7 @@ namespace Exp.Auth.RestApi.JwtBearer.Controllers;
 [ApiController]
 public class AuthController(IOptions<List<UserCredential>> userCredentials, JwtSettings jwtSettings) : ControllerBase
 {
-  
+
     [HttpPost("login")]
     public IActionResult Login([FromBody] UserLoginDto request)
     {
@@ -17,13 +17,13 @@ public class AuthController(IOptions<List<UserCredential>> userCredentials, JwtS
         var tokenHandler = new JwtSecurityTokenHandler();
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-       
+
         //Add Claims here
         var claims = new[]
         {
                 new Claim(ClaimTypes.Name, request.Username)
         };
-    
+
         var newtoken = new JwtSecurityToken(
           issuer: jwtSettings.Issuer,
           audience: jwtSettings.Audience,
@@ -36,6 +36,6 @@ public class AuthController(IOptions<List<UserCredential>> userCredentials, JwtS
         return Ok(new { Token = tokenString });
     }
 
-   
+
 }
 

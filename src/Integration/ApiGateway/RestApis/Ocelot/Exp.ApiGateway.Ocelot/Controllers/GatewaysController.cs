@@ -6,8 +6,8 @@ public class GatewaysController : ControllerBase
 {
     private readonly ILogger<GatewaysController> _logger;
     public GatewaysController(ILogger<GatewaysController> logger)
-	{
-        _logger = logger; 
+    {
+        _logger = logger;
     }
 
     [HttpGet]

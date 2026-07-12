@@ -19,9 +19,9 @@ public class GlobalExceptionMiddleware
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An unhandled exception occurred. Path: {Path}, Method: {Method}", 
+            _logger.LogError(ex, "An unhandled exception occurred. Path: {Path}, Method: {Method}",
                 context.Request.Path, context.Request.Method);
-            
+
             // For gRPC requests, we let the gRPC interceptor handle it
             // For HTTP requests, we can handle here
             if (!context.Request.Path.StartsWithSegments("/grpc"))

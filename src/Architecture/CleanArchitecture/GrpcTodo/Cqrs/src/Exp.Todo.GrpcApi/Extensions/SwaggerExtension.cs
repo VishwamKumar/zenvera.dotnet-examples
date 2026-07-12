@@ -26,11 +26,11 @@ public static class SwaggerExtension
             c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoEntity API v1");
         });
     }
-    
+
     public static void ConfigureSwaggerEndpoints(this WebApplication app)
     {
         bool useSwagger = app.Configuration.GetValue("UseSwagger", false);
-        
+
         // Root endpoint - redirect to Swagger if enabled, otherwise show message
         app.MapGet("/", context =>
         {

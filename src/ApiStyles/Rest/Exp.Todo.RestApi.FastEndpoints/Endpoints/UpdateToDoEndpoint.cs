@@ -1,13 +1,13 @@
 
 namespace Exp.Todo.RestApi.FastEndpoints.Endpoints;
 
-public class UpdateToDoEndpoint(ITodoService todoService, ILogger<UpdateToDoEndpoint> logger) :  Endpoint<ToDoRequest>  
+public class UpdateToDoEndpoint(ITodoService todoService, ILogger<UpdateToDoEndpoint> logger) : Endpoint<ToDoRequest>
 {
 
     public override void Configure()
     {
         Put("/api/todos/{id}");
-        AllowAnonymous();      
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(ToDoRequest req, CancellationToken ct)
@@ -19,7 +19,8 @@ public class UpdateToDoEndpoint(ITodoService todoService, ILogger<UpdateToDoEndp
 
             if (toDo == null)
             {
-                await SendNotFoundAsync(ct);
+                await HttpContext.Response.SendNotFoundAsync(ct);
+                return;
             }
 
             toDo!.ToDoName = req.ToDoName;
@@ -31,7 +32,7 @@ public class UpdateToDoEndpoint(ITodoService todoService, ILogger<UpdateToDoEndp
             throw;
         }
 
-        await SendNoContentAsync(ct);       
+        await HttpContext.Response.SendNoContentAsync(ct);
     }
 }
 

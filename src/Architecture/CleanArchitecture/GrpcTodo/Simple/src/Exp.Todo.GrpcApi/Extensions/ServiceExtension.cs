@@ -23,7 +23,7 @@ public static class ServiceExtension
         {
             options.Interceptors.Add<Interceptors.ExceptionInterceptor>();
         }).AddJsonTranscoding();
-        
+
         builder.Services.AddGrpcReflection();
         builder.Services.AddHealthChecks();
         builder.Services.AddMemoryCache();

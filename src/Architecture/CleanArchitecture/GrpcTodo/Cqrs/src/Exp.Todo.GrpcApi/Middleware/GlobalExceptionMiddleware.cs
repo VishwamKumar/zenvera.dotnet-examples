@@ -24,9 +24,9 @@ public class GlobalExceptionMiddleware
         catch (Exception ex)
         {
             var correlationId = context.Items["CorrelationId"]?.ToString() ?? "Unknown";
-            _logger.LogError(ex, 
-                "An unhandled exception occurred. CorrelationId: {CorrelationId}, Path: {Path}", 
-                correlationId, 
+            _logger.LogError(ex,
+                "An unhandled exception occurred. CorrelationId: {CorrelationId}, Path: {Path}",
+                correlationId,
                 context.Request.Path);
 
             await HandleExceptionAsync(context, ex);

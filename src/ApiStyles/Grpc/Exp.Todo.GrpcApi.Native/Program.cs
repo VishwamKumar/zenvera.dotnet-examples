@@ -2,7 +2,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddGrpc();              
+builder.Services.AddGrpc();
 builder.Services.AddGrpcReflection(); //Helps Postman to find services
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")));
 

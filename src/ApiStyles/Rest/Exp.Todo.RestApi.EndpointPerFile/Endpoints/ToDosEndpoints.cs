@@ -1,9 +1,9 @@
 namespace Exp.Todo.RestApi.EndpointPerFile.Endpoints;
 
 public static class ToDosEndpoints
-{  
+{
     public static void MapToDosEndpoints(this WebApplication app)
-    {   
+    {
         string apiPref = "api/todos"; // Base API prefix
 
         // GET: api/todos

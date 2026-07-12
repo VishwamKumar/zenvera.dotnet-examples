@@ -5,7 +5,7 @@
 ```mermaid
 flowchart LR
   Learner[Developer / learner]
-  Solution[Root .slnx and category filters]
+  Solution[Root and category .slnx solutions]
   Api[API-style hosts]
   Auth[Authentication hosts]
   Arch[Clean Architecture variants]
@@ -31,4 +31,4 @@ flowchart LR
   Auth --> External
 ```
 
-The root solution is an inventory/build surface. Category filters are the preferred focused build surfaces. Shared code is deliberately narrow; authentication and infrastructure implementations remain local to their demonstrations.
+The root solution is the authoritative inventory/build surface. Category solutions are the preferred focused exploration surfaces. Shared code is deliberately narrow; authentication and infrastructure implementations remain local to their demonstrations.

@@ -13,7 +13,7 @@ This is a teaching and comparison repository—not one enterprise application, p
 - Preserve Domain, Application, Infrastructure, host, and tests for architecture references.
 - Share only materially identical Todo, Weather, contracts, or test utilities.
 - Keep protocol contracts and example-specific behavior local.
-- Prefer one root solution, category filters, central build defaults, and explicit compatibility exceptions.
+- Keep one authoritative root solution plus independently openable category solutions, central build defaults, and explicit compatibility exceptions.
 
 ## Example maturity levels
 
@@ -53,8 +53,8 @@ The recommended progression starts with REST endpoint organization, adds protoco
 ## Prerequisites
 
 - .NET SDK 10.0.301 or a compatible feature band selected by `global.json`.
-- .NET 8 and .NET 9 targeting packs used by preserved examples.
-- Platform-specific .NET MAUI workloads for the MAUI client. Its current .NET 8 targets are reported out of support by SDK 10 and are retained pending a dedicated upgrade.
+- .NET 10 targeting packs and platform-specific .NET MAUI workloads for the MAUI client.
+- Read access to the private `Zenvera.Shared.*` GitHub Packages feed when building infrastructure examples.
 - Docker Desktop or another Compose-compatible engine for local Redis, RabbitMQ, MongoDB, and SQL Server.
 - A trusted development HTTPS certificate for HTTPS/gRPC examples.
 - Example-specific external credentials only where documented, such as Firebase or Azure Key Vault.
@@ -68,12 +68,12 @@ dotnet restore zenvera.dotnet-examples.slnx --configfile NuGet.config -p:NuGetAu
 dotnet build zenvera.dotnet-examples.slnx --no-restore -p:NuGetAudit=false
 ```
 
-The complete solution currently reports documented blockers from unavailable `Zenvera.Shared.*` packages and preserved .NET 8 MAUI workloads. Use a validated category filter for an isolated learning area:
+The root solution targets .NET 10 throughout. Before restoring infrastructure examples, configure the private-feed credential described in the [CI validation runbook](docs/runbooks/ci-validation.md). Use a category solution for an isolated learning area:
 
 ```powershell
-dotnet build solutions/api-styles.slnf -p:NuGetAudit=false
-dotnet build solutions/authentication.slnf -p:NuGetAudit=false
-dotnet build solutions/architecture.slnf -p:NuGetAudit=false
+dotnet build solutions/zenvera.api-styles.slnx -p:NuGetAudit=false
+dotnet build solutions/zenvera.authentication.slnx -p:NuGetAudit=false
+dotnet build solutions/zenvera.architecture.slnx -p:NuGetAudit=false
 ```
 
 Current results and exceptions are recorded in the [repository consistency report](docs/repository-consistency-report.md).
@@ -99,17 +99,18 @@ docker compose --env-file deploy/local/.env -f deploy/local/compose.yml up -d
 
 Azure Key Vault, Firebase, gateway downstream APIs, certificates, and some identity databases remain external by design. See the [local infrastructure runbook](docs/runbooks/local-infrastructure.md).
 
-## Solution filters
+## Category solutions
 
-| Filter | Scope |
+| Solution | Scope |
 |---|---|
-| `solutions/api-styles.slnf` | REST, gRPC, GraphQL, SOAP, shared Todo persistence |
-| `solutions/authentication.slnf` | REST, gRPC, and GraphQL authentication |
-| `solutions/architecture.slnf` | Three Clean Architecture variants and tests |
-| `solutions/infrastructure.slnf` | Infrastructure pattern hosts |
-| `solutions/ui.slnf` | .NET MAUI client |
+| `solutions/zenvera.api-styles.slnx` | REST, gRPC, GraphQL, SOAP, shared Todo persistence |
+| `solutions/zenvera.authentication.slnx` | REST, gRPC, and GraphQL authentication |
+| `solutions/zenvera.architecture.slnx` | Three Clean Architecture variants and tests |
+| `solutions/zenvera.integration.slnx` | Ocelot and YARP gateways |
+| `solutions/zenvera.infrastructure.slnx` | Infrastructure pattern hosts |
+| `solutions/zenvera.user-interface.slnx` | .NET MAUI client |
 
-All maintained projects also belong to the root `.slnx`.
+Each category solution opens independently in Visual Studio, Rider, or the CLI. The root `.slnx` remains authoritative, and all maintained projects belong to it.
 
 ## Testing
 

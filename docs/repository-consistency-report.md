@@ -1,5 +1,7 @@
 # Repository consistency report
 
+> Historical note: this report records the pre-upgrade consistency pass. Framework, package, and build-status statements below are superseded by the [.NET 10 and package upgrade report](migration/dotnet-10-package-upgrade-report.md).
+
 ## Scope and outcome
 
 This pass reviewed all 44 maintained projects in `zenvera.dotnet-examples` without redesigning working examples or upgrading target frameworks. Every project is present in the root `zenvera.dotnet-examples.slnx`; no project is excluded. No nested `.sln` or `.slnx` files remain.
@@ -9,7 +11,7 @@ This pass reviewed all 44 maintained projects in `zenvera.dotnet-examples` witho
 - Removed generated `bin`, `obj`, `.vs`, and `.idea` directories (55 directories at the start of the pass).
 - Removed a copied `CqrsMediatR/Directory.Build.props` that duplicated four project-level package references; affected projects already declare their framework and compiler settings.
 - Confirmed there is one root solution and all 44 discovered project files belong to it.
-- Added validated filters: `solutions/api-styles.slnf`, `authentication.slnf`, `architecture.slnf`, `infrastructure.slnf`, and `ui.slnf`.
+- Added independently openable category solutions for API styles, authentication, architecture, integration, infrastructure, and UI. These supersede the earlier `.slnf` navigation files.
 - Repaired copied README license links to point to the root license and fixed the Clean Architecture comparison link.
 - Renamed three stale HTTP request files that still used source-repository project names and updated their variables/ports.
 - Corrected stale authentication test-document ports to their migrated launch-profile assignments.
@@ -112,9 +114,6 @@ No project is excluded from the root solution. Remaining inconsistencies are del
 - `dotnet restore zenvera.dotnet-examples.slnx --configfile NuGet.config -p:NuGetAudit=false` ran and failed only at the documented MAUI support checks and unavailable `Zenvera.Shared.Queuing`, `Zenvera.Shared.Secrets`, and `Zenvera.Shared.ErrorHandling` packages. It also reported the documented `NU1603` version fallbacks.
 - The restore initially identified duplicate package references injected by the nested CqrsMediatR build file. That file was removed; the subsequent build no longer reported `NU1504`.
 - `dotnet build zenvera.dotnet-examples.slnx --no-restore -p:NuGetAudit=false` ran: 201 warnings and 26 errors. Errors were confined to the three unavailable infrastructure packages and the unsupported/missing .NET 8 MAUI workloads (`NETSDK1202`, `NETSDK1135`, and resulting Android reference errors).
-- `solutions/api-styles.slnf` built all 9 projects with zero warnings and errors.
-- `solutions/authentication.slnf` built all 11 projects with zero warnings and errors.
-- `solutions/architecture.slnf` built all 15 projects with three `NU1510` unnecessary-package warnings and zero errors.
-- All five `.slnf` files were parsed and listed successfully by the installed SDK.
+- The earlier solution-filter validation results have been superseded by category `.slnx` validation; see the CI runbook for the current commands.
 - Markdown relative-link scan completed with no broken links.
 - Build outputs were removed again after validation so the repository finishes without generated `bin` or `obj` trees.

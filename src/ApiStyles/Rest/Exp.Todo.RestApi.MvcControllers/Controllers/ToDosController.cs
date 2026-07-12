@@ -8,7 +8,7 @@ public class ToDosController(ILogger<ToDosController> logger, IMapper mapper, IT
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ToDoResponse>>> GetToDos()
-    {  
+    {
         var recs = await todoService.GetToDosAsync();
         var items = mapper.Map<List<ToDoResponse>>(recs);
         return Ok(items);
@@ -27,10 +27,10 @@ public class ToDosController(ILogger<ToDosController> logger, IMapper mapper, IT
         return Ok(mapper.Map<ToDoResponse>(toDo));
     }
 
-    
+
     [HttpPost]
     public async Task<ActionResult<ToDoResponse>> PostToDo([FromBody] ToDoRequest req)
-    {   
+    {
         try
         {
             ToDo toDo = new() { ToDoName = req.ToDoName };
@@ -55,7 +55,7 @@ public class ToDosController(ILogger<ToDosController> logger, IMapper mapper, IT
     [HttpPut("{id}")]
     public async Task<IActionResult> PutToDo([FromRoute] int id, [FromBody] ToDoRequest req)
     {
-       try
+        try
         {
             ToDo? toDo = await todoService.GetToDoByIdAsync(id);
 
@@ -64,18 +64,18 @@ public class ToDosController(ILogger<ToDosController> logger, IMapper mapper, IT
                 return NotFound();
             }
             toDo.ToDoName = req.ToDoName;
-            var rec =  await todoService.UpdateToDoAsync(toDo);
+            var rec = await todoService.UpdateToDoAsync(toDo);
         }
         catch (Exception ex)
         {
             logger.LogError(ex, ex.Message);
-            throw;        
+            throw;
         }
 
         return NoContent();
     }
 
-   
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteToDo([FromRoute] int id)
     {
@@ -86,7 +86,7 @@ public class ToDosController(ILogger<ToDosController> logger, IMapper mapper, IT
             if (toDo == null)
             {
                 return NotFound();
-            }            
+            }
             _ = await todoService.DeleteToDoByIdAsync(id);
         }
         catch (Exception ex)
@@ -95,6 +95,6 @@ public class ToDosController(ILogger<ToDosController> logger, IMapper mapper, IT
             throw;
         }
         return NoContent();
-    }  
+    }
 }
 

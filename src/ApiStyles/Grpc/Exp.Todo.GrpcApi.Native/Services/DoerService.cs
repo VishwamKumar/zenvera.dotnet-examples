@@ -3,7 +3,7 @@ namespace Exp.Todo.GrpcApi.Native.Services;
 
 public class DoerService(ILogger<DoerService> logger, ITodoService todoService, IMapper mapper) : Doer.DoerBase
 {
-    
+
     public override async Task<ToDoReply> GetToDo(ToDoIdRequest request, ServerCallContext context)
     {
         logger.LogInformation("Received request for ToDo item with Id: {Id}", request.Id);
@@ -41,8 +41,8 @@ public class DoerService(ILogger<DoerService> logger, ITodoService todoService, 
             throw; // Re-throw RpcException to propagate it as-is
         }
         catch (Exception ex)
-        {  
-            logger.LogError(ex, $"Error occurred while adding ToDo item with ToDoName: {request.Todoname}");            
+        {
+            logger.LogError(ex, $"Error occurred while adding ToDo item with ToDoName: {request.Todoname}");
             throw new RpcException(new Status(StatusCode.Internal, "An error occurred while processing the request."));
         }
     }
@@ -63,7 +63,7 @@ public class DoerService(ILogger<DoerService> logger, ITodoService todoService, 
 
             return response;
         }
-        
+
         catch (RpcException)
         {
             throw; // Re-throw RpcException to propagate it as-is

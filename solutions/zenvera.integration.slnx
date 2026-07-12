@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/API Gateway/">
+    <Project Path="../src/Integration/ApiGateway/RestApis/Ocelot/Exp.ApiGateway.Ocelot/Exp.ApiGateway.Ocelot.csproj" />
+    <Project Path="../src/Integration/ApiGateway/RestApis/Yarp/Exp.ApiGateway.Yarp/Exp.ApiGateway.Yarp.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/.NET MAUI/">
+    <Project Path="../src/UserInterface/Maui/Exp.Todo.Maui.RestApiClient/Exp.Todo.Maui.RestApiClient.csproj" />
+  </Folder>
+</Solution>

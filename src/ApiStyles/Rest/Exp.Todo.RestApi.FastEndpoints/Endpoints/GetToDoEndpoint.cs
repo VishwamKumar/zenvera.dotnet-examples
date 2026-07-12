@@ -1,11 +1,11 @@
 namespace Exp.Todo.RestApi.FastEndpoints.Endpoints;
 
-public class GetToDoEndpoint(ITodoService todoService, AutoMapper.IMapper mapper) :  EndpointWithoutRequest<ToDoResponse>
+public class GetToDoEndpoint(ITodoService todoService, AutoMapper.IMapper mapper) : EndpointWithoutRequest<ToDoResponse>
 {
-       public override void Configure()
+    public override void Configure()
     {
         Get("/api/todos/{id}");
-        AllowAnonymous();      
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(CancellationToken ct)
@@ -15,11 +15,12 @@ public class GetToDoEndpoint(ITodoService todoService, AutoMapper.IMapper mapper
 
         if (toDo == null)
         {
-            await SendNotFoundAsync(ct);
+            await HttpContext.Response.SendNotFoundAsync(ct);
+            return;
         }
 
         var toDoDto = mapper.Map<ToDoResponse>(toDo);
-        await SendOkAsync(toDoDto, ct);
+        await HttpContext.Response.SendOkAsync(toDoDto, cancellation: ct);
     }
 }
 

@@ -10,7 +10,7 @@
     <RootNamespace>Exp.Weather.RestApi.RedisCaching</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
-    <PackageReference Include="Zenvera.Shared.Caching" Version="0.0.25" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+    <PackageReference Include="Zenvera.Shared.Caching" Version="1.0.19" />
   </ItemGroup>
 </Project>

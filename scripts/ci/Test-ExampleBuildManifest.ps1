@@ -5,6 +5,14 @@ param(
 
 $ErrorActionPreference = "Stop"
 $allowedCategories = @("api-styles", "authentication", "architecture", "integration", "infrastructure", "user-interface")
+$categorySolutions = @{
+    "api-styles" = "solutions/zenvera.api-styles.slnx"
+    "authentication" = "solutions/zenvera.authentication.slnx"
+    "architecture" = "solutions/zenvera.architecture.slnx"
+    "integration" = "solutions/zenvera.integration.slnx"
+    "infrastructure" = "solutions/zenvera.infrastructure.slnx"
+    "user-interface" = "solutions/zenvera.user-interface.slnx"
+}
 $manifest = Get-Content -Raw -LiteralPath $ManifestPath | ConvertFrom-Json
 
 if ($manifest.schemaVersion -ne 1) { throw "Unsupported manifest schemaVersion '$($manifest.schemaVersion)'." }
@@ -37,6 +45,18 @@ foreach ($example in $manifest.examples) {
 
 foreach ($category in $allowedCategories) {
     if (-not ($manifest.examples.category -contains $category)) { throw "Manifest category '$category' has no examples." }
+    $solutionPath = $categorySolutions[$category]
+    if (-not (Test-Path -LiteralPath $solutionPath -PathType Leaf)) { throw "Category solution is missing: $solutionPath" }
+    [xml]$solution = Get-Content -Raw -LiteralPath $solutionPath
+    $solutionDirectory = Split-Path -Parent (Resolve-Path $solutionPath)
+    $solutionProjects = @($solution.Solution.Folder.Project.Path) | ForEach-Object {
+        [System.IO.Path]::GetRelativePath((Resolve-Path ".").Path, [System.IO.Path]::GetFullPath((Join-Path $solutionDirectory $_))).Replace('\','/')
+    }
+    foreach ($example in $manifest.examples | Where-Object category -eq $category) {
+        if ($example.path.Replace('\','/') -notin $solutionProjects) {
+            throw "Example '$($example.id)' is missing from category solution '$solutionPath'."
+        }
+    }
 }
 
 Write-Host "Validated $($manifest.examples.Count) examples across $($allowedCategories.Count) categories."

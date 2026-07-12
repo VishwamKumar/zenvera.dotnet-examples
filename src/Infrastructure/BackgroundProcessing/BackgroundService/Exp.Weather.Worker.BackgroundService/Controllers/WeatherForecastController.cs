@@ -17,7 +17,7 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
             logger.LogError("Error occured: {ErrorMessage} ", ex.Message);
             throw;
         }
-    }   
+    }
 }
 
 

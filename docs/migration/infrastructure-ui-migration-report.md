@@ -1,5 +1,7 @@
 # Infrastructure and UI migration report
 
+> Historical note: framework and validation status in this migration record is superseded by the [.NET 10 and package upgrade report](dotnet-10-package-upgrade-report.md).
+
 ## Scope and mapping
 
 The original repositories remain untouched.

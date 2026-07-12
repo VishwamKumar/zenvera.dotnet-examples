@@ -1,6 +1,6 @@
 namespace Exp.Todo.GrpcApi.Native.Profiles;
 
-public class ProjectProfile:Profile
+public class ProjectProfile : Profile
 {
     public ProjectProfile()
     {

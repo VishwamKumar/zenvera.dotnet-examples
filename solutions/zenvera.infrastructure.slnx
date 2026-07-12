@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Caching/">
+    <Project Path="../src/Infrastructure/Caching/Redis/Exp.Weather.RestApi.RedisCaching/Exp.Weather.RestApi.RedisCaching.csproj" />
+  </Folder>
+  <Folder Name="/Messaging/">
+    <Project Path="../src/Infrastructure/Messaging/RabbitMq/Exp.Weather.RestApi.RabbitMq/Exp.Weather.RestApi.RabbitMq.csproj" />
+  </Folder>
+  <Folder Name="/Secrets/">
+    <Project Path="../src/Infrastructure/Secrets/AzureKeyVault/Exp.Weather.BlazorServer.KeyVault/Exp.Weather.BlazorServer.KeyVault.csproj" />
+  </Folder>
+  <Folder Name="/Logging/">
+    <Project Path="../src/Infrastructure/Logging/Serilog/Exp.Weather.RestApi.Serilog/Exp.Weather.RestApi.Serilog.csproj" />
+    <Project Path="../src/Infrastructure/Logging/Serilog/Exp.Weather.BlazorServer.Serilog/Exp.Weather.BlazorServer.Serilog.csproj" />
+  </Folder>
+  <Folder Name="/Background Processing/">
+    <Project Path="../src/Infrastructure/BackgroundProcessing/BackgroundService/Exp.Weather.Worker.BackgroundService/Exp.Weather.Worker.BackgroundService.csproj" />
+  </Folder>
+</Solution>

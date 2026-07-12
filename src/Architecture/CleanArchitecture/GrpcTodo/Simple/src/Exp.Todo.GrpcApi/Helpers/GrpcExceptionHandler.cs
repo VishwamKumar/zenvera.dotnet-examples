@@ -6,18 +6,18 @@ public static class GrpcExceptionHandler
     {
         return ex switch
         {
-            AppValidationException validationEx => 
+            AppValidationException validationEx =>
                 HandleValidationException(validationEx, logger, methodName),
-            DomainException domainEx => 
+            DomainException domainEx =>
                 HandleDomainException(domainEx, logger, methodName),
-            _ => 
+            _ =>
                 HandleGenericException(ex, logger, methodName)
         };
     }
 
     private static StatusData HandleValidationException(
-        AppValidationException ex, 
-        Microsoft.Extensions.Logging.ILogger logger, 
+        AppValidationException ex,
+        Microsoft.Extensions.Logging.ILogger logger,
         string methodName)
     {
         logger.LogWarning(ex, "Validation error in {Method}", methodName);
@@ -25,8 +25,8 @@ public static class GrpcExceptionHandler
     }
 
     private static StatusData HandleDomainException(
-        DomainException ex, 
-        Microsoft.Extensions.Logging.ILogger logger, 
+        DomainException ex,
+        Microsoft.Extensions.Logging.ILogger logger,
         string methodName)
     {
         logger.LogWarning(ex, "Domain error in {Method}", methodName);
@@ -34,8 +34,8 @@ public static class GrpcExceptionHandler
     }
 
     private static StatusData HandleGenericException(
-        Exception ex, 
-        Microsoft.Extensions.Logging.ILogger logger, 
+        Exception ex,
+        Microsoft.Extensions.Logging.ILogger logger,
         string methodName)
     {
         logger.LogError(ex, "Unhandled exception in {Method}", methodName);

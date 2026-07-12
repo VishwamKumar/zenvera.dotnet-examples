@@ -12,7 +12,7 @@ public class JwtAuthMiddleware(RequestDelegate next, JwtService jwtService)
         }
 
         var token = (context.Request.Headers.Authorization.FirstOrDefault()?.Split(" ").Last()) ?? throw new RpcException(new Status(StatusCode.Unauthenticated, "Authorization token is missing."));
-        
+
         try
         {
             var principal = jwtService.ValidateToken(token) ?? throw new RpcException(new Status(StatusCode.Unauthenticated, "Invalid token."));
@@ -24,7 +24,7 @@ public class JwtAuthMiddleware(RequestDelegate next, JwtService jwtService)
         {
             throw;
         }
-    }  
+    }
 }
 
 

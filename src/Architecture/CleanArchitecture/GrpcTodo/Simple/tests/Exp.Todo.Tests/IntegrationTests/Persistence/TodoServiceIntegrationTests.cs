@@ -14,7 +14,7 @@ public class TodoServiceIntegrationTests
 
         _context = new AppDbContext(options);
         _repository = new TodoRepository(_context);
-        
+
         // Set up AutoMapper - use mock for integration tests
         // The mapper is tested separately, here we focus on service/repository integration
         var mockMapper = new Mock<IMapper>();
@@ -23,11 +23,11 @@ public class TodoServiceIntegrationTests
         mockMapper.Setup(m => m.Map<List<TodoDto>>(It.IsAny<IEnumerable<TodoEntity>>()))
             .Returns((IEnumerable<TodoEntity> todos) => todos.Select(t => new TodoDto { Id = t.Id }).ToList());
         var mapper = mockMapper.Object;
-        
+
         // Set up validators
         var createValidator = new Exp.Todo.Application.Validators.CreateTodoDtoValidator();
         var updateValidator = new Exp.Todo.Application.Validators.UpdateTodoDtoValidator();
-        
+
         _service = new TodoService(_repository, mapper, createValidator, updateValidator);
     }
 
@@ -92,7 +92,7 @@ public class TodoServiceIntegrationTests
         var todo = TodoEntity.Create("Original Task");
         await _context.Todos.AddAsync(todo);
         await _context.SaveChangesAsync();
-        
+
         // Detach the entity to simulate it being fetched fresh from the repository
         _context.Entry(todo).State = EntityState.Detached;
 
@@ -156,7 +156,7 @@ public class TodoServiceIntegrationTests
 
         // Act & Assert
         await Assert.ThrowsAsync<AppValidationException>(() => _service.CreateAsync(invalidDto));
-        
+
         var count = await _context.Todos.CountAsync();
         count.Should().Be(0);
     }

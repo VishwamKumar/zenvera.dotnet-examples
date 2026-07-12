@@ -6,7 +6,7 @@ public class DeleteToDoEndpoint(ITodoService todoService, ILogger<UpdateToDoEndp
     public override void Configure()
     {
         Delete("/api/todos/{id}");
-        AllowAnonymous();      
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(CancellationToken ct)
@@ -18,7 +18,8 @@ public class DeleteToDoEndpoint(ITodoService todoService, ILogger<UpdateToDoEndp
 
             if (toDo == null)
             {
-                await SendNotFoundAsync(ct);
+                await HttpContext.Response.SendNotFoundAsync(ct);
+                return;
             }
             _ = await todoService.DeleteToDoByIdAsync(id);
         }
@@ -27,7 +28,7 @@ public class DeleteToDoEndpoint(ITodoService todoService, ILogger<UpdateToDoEndp
             logger.LogError(ex, ex.Message);
             throw;
         }
-        await SendNoContentAsync(ct);        
+        await HttpContext.Response.SendNoContentAsync(ct);
     }
 }
 

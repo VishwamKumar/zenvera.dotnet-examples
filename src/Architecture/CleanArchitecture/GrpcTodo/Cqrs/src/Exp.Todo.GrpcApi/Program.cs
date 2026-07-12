@@ -2,7 +2,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 try
-{    
+{
     builder.ConfigureServices();
     builder.ConfigureSwaggerServices();
 
@@ -15,6 +15,6 @@ try
 }
 catch (Exception ex)
 {
-  
+
     Console.WriteLine($"Error setting configs: {ex.Message}");
 }

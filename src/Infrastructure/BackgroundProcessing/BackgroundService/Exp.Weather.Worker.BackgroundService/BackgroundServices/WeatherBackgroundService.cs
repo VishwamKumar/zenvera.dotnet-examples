@@ -5,12 +5,12 @@ public class WeatherBackgroundService(ILogger<WeatherBackgroundService> logger,
     IConfiguration configuration) : Microsoft.Extensions.Hosting.BackgroundService
 {
     private IEnumerable<WeatherForecastDto>? latestWeather;
-        
+
     public IEnumerable<WeatherForecastDto>? GetLatestWeather() => latestWeather;
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        int freqInMin = int.Parse(configuration.GetSection("BackgroudServiceSettings:PollingInMinutes").Value??"1");
+        int freqInMin = int.Parse(configuration.GetSection("BackgroudServiceSettings:PollingInMinutes").Value ?? "1");
         while (!stoppingToken.IsCancellationRequested)
         {
             latestWeather = await FetchWeatherDataAsync();

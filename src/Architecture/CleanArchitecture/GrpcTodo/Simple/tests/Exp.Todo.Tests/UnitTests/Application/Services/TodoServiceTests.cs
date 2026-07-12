@@ -12,7 +12,7 @@ public class TodoServiceTests
         _mockMapper = new Mock<IMapper>();
         var createValidator = new Exp.Todo.Application.Validators.CreateTodoDtoValidator();
         var updateValidator = new Exp.Todo.Application.Validators.UpdateTodoDtoValidator();
-        
+
         _service = new TodoService(_mockRepository.Object, _mockMapper.Object, createValidator, updateValidator);
     }
 

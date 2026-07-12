@@ -1,1 +1,1 @@
-﻿global using Yarp.ReverseProxy;
+global using Yarp.ReverseProxy;

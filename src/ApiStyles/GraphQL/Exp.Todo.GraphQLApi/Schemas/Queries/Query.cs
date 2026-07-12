@@ -3,7 +3,7 @@ namespace Exp.Todo.GraphQLApi.Schemas.Queries;
 
 public class Query(ITodoService todoService, IMapper mapper)
 {
-   
+
     public async Task<IEnumerable<ToDoResponse>> GetToDos()
     {
         var recs = await todoService.GetToDosAsync();

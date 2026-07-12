@@ -8,7 +8,7 @@ public class CreateTodoCommandHandlerTests
         // Arrange
         var mockRepo = new Mock<ITodoRepository>();
         mockRepo.Setup(r => r.AddAsync(It.IsAny<TodoEntity>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync((TodoEntity todo, CancellationToken ct) => 
+                .ReturnsAsync((TodoEntity todo, CancellationToken ct) =>
                 {
                     // Simulate DB-generated ID = 1
                     return 1;
@@ -17,7 +17,7 @@ public class CreateTodoCommandHandlerTests
         var mockMapper = new Mock<IMapper>();
         var createValidator = new Exp.Todo.Application.Validators.CreateTodoDtoValidator();
         var updateValidator = new Exp.Todo.Application.Validators.UpdateTodoDtoValidator();
-        
+
         var service = new TodoService(mockRepo.Object, mockMapper.Object, createValidator, updateValidator);
 
         var dto = new CreateTodoDto { TodoName = "Test Task" };
@@ -41,7 +41,7 @@ public class CreateTodoCommandHandlerTests
         var mockMapper = new Mock<IMapper>();
         var createValidator = new Exp.Todo.Application.Validators.CreateTodoDtoValidator();
         var updateValidator = new Exp.Todo.Application.Validators.UpdateTodoDtoValidator();
-        
+
         var service = new TodoService(mockRepo.Object, mockMapper.Object, createValidator, updateValidator);
         var dto = new CreateTodoDto { TodoName = todoName! };
 

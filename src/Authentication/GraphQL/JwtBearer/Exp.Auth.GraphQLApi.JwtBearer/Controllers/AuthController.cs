@@ -2,15 +2,15 @@ namespace Exp.Auth.GraphQLApi.JwtBearer.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AuthController(IOptions<List<UserCredential>> userCredentials, 
+public class AuthController(IOptions<List<UserCredential>> userCredentials,
                     JwtSettings jwtSettings) : ControllerBase
-{  
+{
     [HttpPost("login")]
     public IActionResult Login([FromBody] LoginRequest login)
     {
-       var user = userCredentials.Value.FirstOrDefault(u => u.UserName == login.Username && u.Password == login.Password);
-                
-        if (user!=null)
+        var user = userCredentials.Value.FirstOrDefault(u => u.UserName == login.Username && u.Password == login.Password);
+
+        if (user != null)
         {
             var token = GenerateJwtToken(login.Username);
             return Ok(new { Token = token });

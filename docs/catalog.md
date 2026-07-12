@@ -37,19 +37,19 @@ Maturity levels are defined in the [root README](../README.md#example-maturity-l
 
 | Category | Example | Level | Project path | Protocol/framework | Domain | External dependencies | Build | Tests | Production readiness | Sequence |
 |---|---|---|---|---|---|---|---|---|---|---:|
-| Infrastructure | Redis caching | Level 1 | `src/Infrastructure/Caching/Redis/Exp.Weather.RestApi.RedisCaching` | REST, Redis | Weather | Redis; `Zenvera.Shared.Caching` fallback | Pass with `NU1603` | Manual | Learning only | 20 |
-| Infrastructure | RabbitMQ publishing | Level 1 | `src/Infrastructure/Messaging/RabbitMq/Exp.Weather.RestApi.RabbitMq` | REST, AMQP | Weather | RabbitMQ; unavailable package | Blocked: package unavailable | Manual | Learning only | 21 |
-| Infrastructure | Azure Key Vault | Level 1 | `src/Infrastructure/Secrets/AzureKeyVault/Exp.Weather.BlazorServer.KeyVault` | Blazor Server, Key Vault | Weather/secrets | Azure vault; unavailable package | Blocked: package unavailable | Manual | Learning only | 22 |
-| Infrastructure | REST Serilog | Level 1 | `src/Infrastructure/Logging/Serilog/Exp.Weather.RestApi.Serilog` | REST, structured logging | Weather | SQL Server; package fallback | Pass with `NU1603` | Manual | Learning only | 23 |
-| Infrastructure | Blazor Serilog | Level 1 | `src/Infrastructure/Logging/Serilog/Exp.Weather.BlazorServer.Serilog` | Blazor Server, MongoDB logging | Weather | MongoDB; unavailable package | Blocked: package unavailable | Manual | Learning only | 24 |
+| Infrastructure | Redis caching | Level 1 | `src/Infrastructure/Caching/Redis/Exp.Weather.RestApi.RedisCaching` | REST, Redis | Weather | Redis; private GitHub package feed | Requires authenticated restore | Manual | Learning only | 20 |
+| Infrastructure | RabbitMQ publishing | Level 1 | `src/Infrastructure/Messaging/RabbitMq/Exp.Weather.RestApi.RabbitMq` | REST, AMQP | Weather | RabbitMQ; private GitHub package feed | Requires authenticated restore | Manual | Learning only | 21 |
+| Infrastructure | Azure Key Vault | Level 1 | `src/Infrastructure/Secrets/AzureKeyVault/Exp.Weather.BlazorServer.KeyVault` | Blazor Server, Key Vault | Weather/secrets | Azure vault; private GitHub package feed | Requires authenticated restore | Manual | Learning only | 22 |
+| Infrastructure | REST Serilog | Level 1 | `src/Infrastructure/Logging/Serilog/Exp.Weather.RestApi.Serilog` | REST, structured logging | Weather | SQL Server; private GitHub package feed | Requires authenticated restore | Manual | Learning only | 23 |
+| Infrastructure | Blazor Serilog | Level 1 | `src/Infrastructure/Logging/Serilog/Exp.Weather.BlazorServer.Serilog` | Blazor Server, MongoDB logging | Weather | MongoDB; private GitHub package feed | Requires authenticated restore | Manual | Learning only | 24 |
 | Infrastructure | Background service | Level 1 | `src/Infrastructure/BackgroundProcessing/BackgroundService/Exp.Weather.Worker.BackgroundService` | ASP.NET hosted service | Weather | None | Pass | Manual | Learning only | 25 |
 | Integration | Ocelot gateway | Level 1 | `src/Integration/ApiGateway/RestApis/Ocelot/Exp.ApiGateway.Ocelot` | REST reverse proxy, Ocelot | Gateway | External downstream APIs | Pass build; external runtime | Manual | Learning only | 26 |
 | Integration | YARP gateway | Level 1 | `src/Integration/ApiGateway/RestApis/Yarp/Exp.ApiGateway.Yarp` | REST reverse proxy, YARP | Gateway | Hour Tracker API | Pass build; external runtime | Manual | Learning only | 27 |
 | Clean Architecture | Simple service layer | Level 3 | `src/Architecture/CleanArchitecture/GrpcTodo/Simple` | gRPC, EF Core, service layer | Todo | SQLite file | Pass | 27 automated | Reference, still needs hardening | 28 |
 | Clean Architecture | Custom CQRS | Level 3 | `src/Architecture/CleanArchitecture/GrpcTodo/Cqrs` | gRPC, custom dispatcher | Todo | SQLite file | Pass | 5 automated | Reference, still needs hardening | 29 |
 | Clean Architecture | CQRS with MediatR | Level 3 | `src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR` | gRPC, MediatR pipelines | Todo | SQLite file | Pass with `NU1510` | 5 automated | Reference, still needs hardening | 30 |
-| User interface | .NET MAUI REST client | Level 1 | `src/UserInterface/Maui/Exp.Todo.Maui.RestApiClient` | .NET MAUI native UI, REST | Todo | Todo REST API; platform workloads | Blocked on preserved net8 workloads | Manual | Learning only | 31 |
+| User interface | .NET MAUI REST client | Level 1 | `src/UserInterface/Maui/Exp.Todo.Maui.RestApiClient` | .NET MAUI 10 native UI, REST | Todo | Todo REST API; platform workloads and compatible hosts | Restored; Android assembly compiled locally; multi-target CI excluded | Manual | Learning only | 31 |
 
 ## Status interpretation
 
-Build status reflects the repository consistency validation with SDK 10.0.301. A passing build does not prove runtime dependencies or security configuration are present. A blocked example remains cataloged because the source implementation exists and its blocker is explicitly documented rather than hidden.
+Build status reflects the .NET 10 migration validation with SDK 10.0.301. A passing build does not prove runtime dependencies or security configuration are present. Host- or credential-dependent validation remains explicit rather than hidden.

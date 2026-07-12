@@ -5,7 +5,7 @@ builder.Services.AddGrpc(options =>
     {
         options.EnableDetailedErrors = true;
     });
-      
+
 builder.Services.AddGrpcReflection(); //Helps Postman to find services
 builder.Services.AddLogging();
 
@@ -13,8 +13,8 @@ builder.Services.AddLogging();
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
     var httpsEndpoint = builder.Configuration.GetSection("Kestrel:Endpoints:Https");
-    var certName = httpsEndpoint["Certificate:Path"]??"NA";
-    var certPass = httpsEndpoint["Certificate:Password"]??"NA";
+    var certName = httpsEndpoint["Certificate:Path"] ?? "NA";
+    var certPass = httpsEndpoint["Certificate:Password"] ?? "NA";
     Uri httpsUri = new(httpsEndpoint["Url"] ?? "localhost:5001");
     int svcPort = httpsUri.Port;
 

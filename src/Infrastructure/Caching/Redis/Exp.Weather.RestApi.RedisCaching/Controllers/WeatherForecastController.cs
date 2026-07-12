@@ -6,7 +6,7 @@ namespace Exp.Weather.RestApi.RedisCaching.Controllers;
 public class WeatherForecastController(ICacheService cacheService,
     ILogger<WeatherForecastController> logger) : ControllerBase
 {
-    private readonly string  cacheKey = "weather-Today";
+    private readonly string cacheKey = "weather-Today";
     [HttpGet("{city}")]
     public async Task<GetWeatherForecastResponse> Get(string city)
     {
@@ -29,7 +29,7 @@ public class WeatherForecastController(ICacheService cacheService,
             };
 
             // Cache the weather data
-            await cacheService.SetAsync(cacheKey, weatherForecastRespData, slidingExpiration: TimeSpan.FromMinutes(10));           
+            await cacheService.SetAsync(cacheKey, weatherForecastRespData, slidingExpiration: TimeSpan.FromMinutes(10));
             return weatherForecastRespData;
         }
         catch (Exception ex)

@@ -7,17 +7,16 @@
     <ManagePackageVersionsCentrally Condition="'$(ManagePackageVersionsCentrally)' == ''">false</ManagePackageVersionsCentrally>
     <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
-
   <ItemGroup Condition="'$(ManagePackageVersionsCentrally)' == 'true'">
-    <!-- Versions already shared by multiple compatible .NET 9 examples. -->
-    <PackageVersion Include="AutoMapper" Version="15.0.0" />
-    <PackageVersion Include="Grpc.AspNetCore" Version="2.71.0" />
-    <PackageVersion Include="Grpc.AspNetCore.Server.Reflection" Version="2.71.0" />
-    <PackageVersion Include="HotChocolate.AspNetCore" Version="15.1.7" />
-    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.7" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.7" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+    <!-- Versions already shared by multiple compatible .NET 10 examples. -->
+    <PackageVersion Include="AutoMapper" Version="16.2.0" />
+    <PackageVersion Include="Grpc.AspNetCore" Version="2.80.0" />
+    <PackageVersion Include="Grpc.AspNetCore.Server.Reflection" Version="2.80.0" />
+    <PackageVersion Include="HotChocolate.AspNetCore" Version="16.4.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.9" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.9" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.3" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,0 @@
-{
-  "solution": {
-    "path": "../zenvera.dotnet-examples.slnx",
-    "projects": [
-      "src\\UserInterface\\Maui\\Exp.Todo.Maui.RestApiClient\\Exp.Todo.Maui.RestApiClient.csproj"
-    ]
-  }
-}

@@ -44,5 +44,5 @@ public class TokenService()
             Console.WriteLine(e);
             throw;
         }
-    }  
+    }
 }

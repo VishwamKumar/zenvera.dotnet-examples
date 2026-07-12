@@ -8,25 +8,25 @@ public class TodoGrpcService(ITodoService todoService, IMapper mapper, ILogger<T
         logger.LogInformation("Attempting to Get TodoById: {Id}", request.Id);
 
         var todo = await todoService.GetByIdAsync(request.Id, context.CancellationToken);
-       
+
         var responseBody = new TodoResponse();
         if (todo == null)
         {
-            responseBody.Status = new StatusData 
-            { 
-                Success = false, 
-                Code = 404, 
-                Message = "No record found" 
+            responseBody.Status = new StatusData
+            {
+                Success = false,
+                Code = 404,
+                Message = "No record found"
             };
             return responseBody;
         }
 
         responseBody.Data = mapper.Map<TodoData>(todo);
-        responseBody.Status = new StatusData 
-        { 
-            Success = true, 
-            Code = 200, 
-            Message = "Record found." 
+        responseBody.Status = new StatusData
+        {
+            Success = true,
+            Code = 200,
+            Message = "Record found."
         };
         return responseBody;
     }
@@ -40,22 +40,22 @@ public class TodoGrpcService(ITodoService todoService, IMapper mapper, ILogger<T
 
         var responseBody = new TodoListResponse();
         if (todos == null || todos.Count == 0)
-        { 
-            responseBody.Status = new StatusData 
-            { 
-                Success = true, 
-                Code = 200, 
-                Message = "No records found." 
+        {
+            responseBody.Status = new StatusData
+            {
+                Success = true,
+                Code = 200,
+                Message = "No records found."
             };
             return responseBody;
         }
 
         responseBody.Data.AddRange(mapper.Map<IEnumerable<TodoData>>(todos));
-        responseBody.Status = new StatusData 
-        { 
-            Success = true, 
-            Code = 200, 
-            Message = "Record(s) found." 
+        responseBody.Status = new StatusData
+        {
+            Success = true,
+            Code = 200,
+            Message = "Record(s) found."
         };
         return responseBody;
     }
@@ -72,20 +72,20 @@ public class TodoGrpcService(ITodoService todoService, IMapper mapper, ILogger<T
             var responseBody = new CreateTodoResponse();
             if (created == 0)
             {
-                responseBody.Status = new StatusData 
-                { 
-                    Success = false, 
-                    Code = 422, 
-                    Message = "Unable to create." 
+                responseBody.Status = new StatusData
+                {
+                    Success = false,
+                    Code = 422,
+                    Message = "Unable to create."
                 };
                 return responseBody;
             }
 
-            responseBody.Status = new StatusData 
-            { 
-                Success = true, 
-                Code = 201, 
-                Message = "Record created successfully." 
+            responseBody.Status = new StatusData
+            {
+                Success = true,
+                Code = 201,
+                Message = "Record created successfully."
             };
             return responseBody;
         }
@@ -110,20 +110,20 @@ public class TodoGrpcService(ITodoService todoService, IMapper mapper, ILogger<T
             var responseBody = new UpdateTodoResponse();
             if (!updated)
             {
-                responseBody.Status = new StatusData 
-                { 
-                    Success = false, 
-                    Code = 422, 
-                    Message = "Unable to update." 
+                responseBody.Status = new StatusData
+                {
+                    Success = false,
+                    Code = 422,
+                    Message = "Unable to update."
                 };
                 return responseBody;
             }
 
-            responseBody.Status = new StatusData 
-            { 
-                Success = true, 
-                Code = 200, 
-                Message = "Record updated successfully." 
+            responseBody.Status = new StatusData
+            {
+                Success = true,
+                Code = 200,
+                Message = "Record updated successfully."
             };
             return responseBody;
         }
@@ -147,20 +147,20 @@ public class TodoGrpcService(ITodoService todoService, IMapper mapper, ILogger<T
             var responseBody = new DeleteTodoResponse();
             if (!success)
             {
-                responseBody.Status = new StatusData 
-                { 
-                    Success = false, 
-                    Code = 422, 
-                    Message = "Unable to delete." 
+                responseBody.Status = new StatusData
+                {
+                    Success = false,
+                    Code = 422,
+                    Message = "Unable to delete."
                 };
                 return responseBody;
             }
 
-            responseBody.Status = new StatusData 
-            { 
-                Success = true, 
-                Code = 200, 
-                Message = "Record deleted successfully." 
+            responseBody.Status = new StatusData
+            {
+                Success = true,
+                Code = 200,
+                Message = "Record deleted successfully."
             };
             return responseBody;
         }
@@ -172,6 +172,6 @@ public class TodoGrpcService(ITodoService todoService, IMapper mapper, ILogger<T
             return responseBody;
         }
     }
-    
+
 }
 

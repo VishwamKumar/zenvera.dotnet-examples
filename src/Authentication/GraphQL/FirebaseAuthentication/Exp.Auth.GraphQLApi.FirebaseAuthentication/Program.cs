@@ -8,7 +8,7 @@ builder.Services
     .AddGraphQLServer()
     .AddAuthorization() // Enable authorization
     .AddQueryType<WeatherForecastQuery>();
-    //.AddMutationType<FirebaseMutation>();
+//.AddMutationType<FirebaseMutation>();
 
 builder.Services.AddSingleton(FirebaseApp.Create()); //Adds the firebase credentials
 builder.Services.AddFirebaseAuthentication(); //Performs the Auth

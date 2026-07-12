@@ -5,7 +5,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddLogging();
 
-builder.Services.AddDbContext<AppDbContext>(opt=>opt.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")));
+builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -78,7 +78,7 @@ app.MapPut($"{apiPref}/{{id}}", async (ITodoService todoService, IMapper mapper,
     {
         logger.LogError(ex, ex.Message);
         throw;
-    }    
+    }
     return Results.NoContent();
 });
 

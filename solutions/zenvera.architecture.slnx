@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/Simple/">
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/Simple/src/Exp.Todo.Domain/Exp.Todo.Domain.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/Simple/src/Exp.Todo.Application/Exp.Todo.Application.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/Simple/src/Exp.Todo.Infrastructure/Exp.Todo.Infrastructure.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/Simple/src/Exp.Todo.GrpcApi/Exp.Todo.GrpcApi.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/Simple/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj" />
+  </Folder>
+  <Folder Name="/CQRS/">
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/src/Exp.Todo.Domain/Exp.Todo.Domain.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/src/Exp.Todo.Application/Exp.Todo.Application.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/src/Exp.Todo.Infrastructure/Exp.Todo.Infrastructure.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/src/Exp.Todo.GrpcApi/Exp.Todo.GrpcApi.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj" />
+  </Folder>
+  <Folder Name="/CQRS with MediatR/">
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/src/Exp.Todo.Domain/Exp.Todo.Domain.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/src/Exp.Todo.Application/Exp.Todo.Application.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/src/Exp.Todo.Infrastructure/Exp.Todo.Infrastructure.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/src/Exp.Todo.GrpcApi/Exp.Todo.GrpcApi.csproj" />
+    <Project Path="../src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj" />
+  </Folder>
+</Solution>

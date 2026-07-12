@@ -4,7 +4,7 @@ builder.Services.AddGrpc(options =>
     {
         options.EnableDetailedErrors = true;
     });
-      
+
 builder.Services.AddGrpcReflection(); //Helps Postman to find services
 builder.Services.AddLogging();
 builder.Services.Configure<List<ApiKeyCredential>>(builder.Configuration.GetSection("ApiKeys"));

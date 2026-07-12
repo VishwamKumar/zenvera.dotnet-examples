@@ -1,5 +1,6 @@
 
 namespace Exp.Auth.RestApi.OAuth2Duende.Providers;
+
 public static class ClientUserProvider
 {
     public static List<TestUser> GetTestUsers()
@@ -10,7 +11,7 @@ public static class ClientUserProvider
                 SubjectId = "3",
                 Username = "TestUser3",
                 Password = "development-only-password",
-                Claims = 
+                Claims =
                 [
                     new Claim(JwtClaimTypes.Name, "TestUser3"),
                     new Claim(JwtClaimTypes.GivenName, "TestUser3"),
@@ -23,7 +24,7 @@ public static class ClientUserProvider
                 SubjectId = "4",
                 Username = "TestUser4",
                 Password = "development-only-password",
-                Claims = 
+                Claims =
                 [
                     new Claim(JwtClaimTypes.Name, "TestUser4"),
                     new Claim(JwtClaimTypes.GivenName, "TestUser4"),
@@ -36,7 +37,7 @@ public static class ClientUserProvider
 
     public static IEnumerable<Client> GetClients()
     {
-        return [    
+        return [
             new Client
             {
                 ClientId = "client",

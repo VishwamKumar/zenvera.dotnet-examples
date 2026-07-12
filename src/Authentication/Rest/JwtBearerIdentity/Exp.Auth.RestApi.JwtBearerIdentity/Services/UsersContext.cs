@@ -1,6 +1,6 @@
 namespace Exp.Auth.RestApi.JwtBearerIdentity.Services;
 
-public class UsersContext(DbContextOptions<UsersContext> options) : 
+public class UsersContext(DbContextOptions<UsersContext> options) :
                     IdentityUserContext<ApplicationUser>(options)
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)

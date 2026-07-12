@@ -28,7 +28,7 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
         }
         catch (Exception ex)
         {
-            logger.LogError("Error occured: {ErrorMessage} ",  ex.Message);
+            logger.LogError("Error occured: {ErrorMessage} ", ex.Message);
             throw;
         }
     }

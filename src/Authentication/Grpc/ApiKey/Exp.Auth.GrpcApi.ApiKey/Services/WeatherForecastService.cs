@@ -2,7 +2,7 @@ namespace Exp.Auth.GrpcApi.ApiKey.Services;
 
 public class WeatherForecastService(ILogger<WeatherForecastService> logger) : WeatherForecaster.WeatherForecasterBase
 {
-    
+
     public override Task<WeatherReply> GetWeatherForecast(WeatherRequest request, ServerCallContext context)
     {
         var rng = new Random();
@@ -20,9 +20,9 @@ public class WeatherForecastService(ILogger<WeatherForecastService> logger) : We
         return Task.FromResult(reply);
     }
 
-    private static readonly string[] Summaries = 
+    private static readonly string[] Summaries =
     [
-    
+
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     ];
 }

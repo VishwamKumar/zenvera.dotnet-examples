@@ -23,7 +23,7 @@ builder.Services.AddSingleton(identityServerSettings!);
 RSAParameters rsaParameters = RSAKeyProvider.GetRSAParameters();
 var rsaSecurityKey = new RsaSecurityKey(rsaParameters)
 {
-    KeyId = jwtSettings!.SecretKey 
+    KeyId = jwtSettings!.SecretKey
 };
 var signingCredentials = new SigningCredentials(rsaSecurityKey, SecurityAlgorithms.RsaSha256);
 
@@ -89,7 +89,7 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuer = true,
         ValidateAudience = true,
         ValidateIssuerSigningKey = true,
-        RequireExpirationTime =false, // Setting it to false, as it throws an Error, even though value is there. Error: Authentication failed: IDX10225: Lifetime validation failed.The token is missing an Expiration Time.Tokentype: 'System.IdentityModel.Tokens.Jwt.JwtSecurityToken'.
+        RequireExpirationTime = false, // Setting it to false, as it throws an Error, even though value is there. Error: Authentication failed: IDX10225: Lifetime validation failed.The token is missing an Expiration Time.Tokentype: 'System.IdentityModel.Tokens.Jwt.JwtSecurityToken'.
         ValidateLifetime = true,
         ClockSkew = TimeSpan.Zero, // Or TimeSpan.FromMinutes(5)
         IssuerSigningKey = rsaSecurityKey,
@@ -107,7 +107,7 @@ builder.Services.AddAuthentication(options =>
         OnTokenValidated = context =>
         {
             var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
-            logger.LogInformation("Token validated for user {user}", context?.Principal?.Identity?.Name??"NA");
+            logger.LogInformation("Token validated for user {user}", context?.Principal?.Identity?.Name ?? "NA");
             return Task.CompletedTask;
         }
     };

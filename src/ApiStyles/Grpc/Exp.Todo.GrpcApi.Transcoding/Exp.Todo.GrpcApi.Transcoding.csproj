@@ -1,31 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <AssemblyName>Exp.Todo.GrpcApi.Transcoding</AssemblyName>
     <RootNamespace>Exp.Todo.GrpcApi.Transcoding</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-  <Authors>Vishwa Kumar</Authors>
-  <Company>Vishwam</Company>
-  <Product>Zenvera .NET Examples</Product>
+    <Authors>Vishwa Kumar</Authors>
+    <Company>Vishwam</Company>
+    <Product>Zenvera .NET Examples</Product>
   </PropertyGroup>
-  
-
   <ItemGroup>
-  <Protobuf Include="Protos\todo.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\todo.proto" GrpcServices="Server" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="15.0.0" />
-    <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
-    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.71.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Grpc.JsonTranscoding" Version="9.0.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Grpc.Swagger" Version="0.9.7" />
+    <PackageReference Include="AutoMapper" Version="16.2.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.80.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.80.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Grpc.JsonTranscoding" Version="10.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Grpc.Swagger" Version="0.10.9" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\shared\Todo\Exp.Todo.Infrastructure.Sqlite\Exp.Todo.Infrastructure.Sqlite.csproj" />
   </ItemGroup>
-
 </Project>

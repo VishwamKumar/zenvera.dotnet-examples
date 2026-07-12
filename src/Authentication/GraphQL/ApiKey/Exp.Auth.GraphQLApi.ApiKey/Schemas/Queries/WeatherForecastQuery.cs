@@ -2,8 +2,9 @@ namespace Exp.Auth.GraphQLApi.ApiKey.Schemas.Queries;
 
 
 [Authorize]
-public class WeatherForecastQuery{    
-    
+public class WeatherForecastQuery
+{
+
     public IEnumerable<WeatherForecast> GetWeatherForecast()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -15,7 +16,7 @@ public class WeatherForecastQuery{
         .ToArray();
     }
 
-    private static readonly string[] Summaries = 
+    private static readonly string[] Summaries =
     [
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     ];

@@ -1,4 +1,4 @@
-﻿
+
 var builder = WebApplication.CreateBuilder();
 
 builder.Services.AddAutoMapper(cfg =>

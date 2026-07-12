@@ -2,7 +2,7 @@ namespace Exp.Auth.GrpcApi.MutualTls.Services;
 
 public class WeatherForecastService(ILogger<WeatherForecastService> logger) : WeatherForecaster.WeatherForecasterBase
 {
-    
+
     public override Task<WeatherReply> GetWeatherForecast(WeatherRequest request, ServerCallContext context)
     {
         var rng = new Random();

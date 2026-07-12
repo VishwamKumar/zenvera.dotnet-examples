@@ -14,15 +14,15 @@ public class CreateTodoCommandHandlerTests
 
         _context = new AppDbContext(options);
         _repository = new TodoRepository(_context);
-        
+
         // Set up AutoMapper - for integration tests, we'll use a simple mock since mapper isn't used in CreateAsync
         var mockMapper = new Mock<IMapper>();
         var mapper = mockMapper.Object;
-        
+
         // Set up validators
         var createValidator = new Exp.Todo.Application.Validators.CreateTodoDtoValidator();
         var updateValidator = new Exp.Todo.Application.Validators.UpdateTodoDtoValidator();
-        
+
         _service = new TodoService(_repository, mapper, createValidator, updateValidator);
     }
 

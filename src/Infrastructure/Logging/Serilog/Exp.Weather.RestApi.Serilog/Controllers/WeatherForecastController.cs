@@ -15,7 +15,7 @@ public class WeatherForecastController(ILogTypeLogger<WeatherForecastController>
     {
         try
         {
-            string testEmail= "vishwa.kumar@slchq.com";
+            string testEmail = "vishwa.kumar@slchq.com";
             string testSSN = "234-02-6987";
             string testCard = "1234-5678-9012-3456";
             logger.Info(LogType.Application, "Method: {Method}, Email: {Email}, SSN: {SSN}, Card: {Card} - Get Weather Info", Request.Method, testEmail, testSSN, testCard);

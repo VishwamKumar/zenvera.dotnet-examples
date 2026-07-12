@@ -18,7 +18,7 @@ Use the examples comparatively: run the earlier implementation, identify its bou
 For each example:
 
 1. Read its objective and intentional omissions.
-2. Build the smallest relevant solution filter.
+2. Build the smallest relevant category solution.
 3. Follow one request or message end to end.
 4. Run the documented happy-path and failure scenarios.
 5. Compare its production considerations with the next example.

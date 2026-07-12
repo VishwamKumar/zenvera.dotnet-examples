@@ -18,7 +18,7 @@ The repository optimizes for comparison, independent execution, honest validatio
 
 ## Build and configuration strategy
 
-One root `.slnx` inventories all maintained projects. Solution filters provide smaller learning/build surfaces. Root build properties set safe deterministic/analyzer defaults without globally changing nullable, implicit usings, language versions, or warnings-as-errors. Package versions remain project-local unless compatibility is proven.
+One authoritative root `.slnx` inventories all maintained projects. Independently openable category `.slnx` files provide smaller learning/build surfaces without adding project-level solution files. Root build properties set safe deterministic/analyzer defaults without globally changing nullable, implicit usings, language versions, or warnings-as-errors. Package versions remain project-local unless compatibility is proven.
 
 ## Runtime model
 

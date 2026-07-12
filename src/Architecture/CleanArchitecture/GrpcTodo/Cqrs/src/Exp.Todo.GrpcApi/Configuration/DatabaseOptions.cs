@@ -7,7 +7,7 @@ namespace Exp.Todo.GrpcApi.Configuration;
 public class DatabaseOptions
 {
     public const string SectionName = "ConnectionStrings";
-    
+
     /// <summary>
     /// SQLite connection string. Required for application startup.
     /// </summary>

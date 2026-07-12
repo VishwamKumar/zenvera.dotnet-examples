@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 try
-{    
+{
     builder.ConfigureServices();
     builder.ConfigureSwaggerServices();
 

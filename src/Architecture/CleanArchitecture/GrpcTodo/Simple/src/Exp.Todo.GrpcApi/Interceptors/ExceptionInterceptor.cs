@@ -26,19 +26,19 @@ public class ExceptionInterceptor : Interceptor
         catch (AppValidationException ex)
         {
             _logger.LogWarning(ex, "Validation error in {Method}", context.Method);
-            throw new RpcException(new Status(StatusCode.InvalidArgument, 
+            throw new RpcException(new Status(StatusCode.InvalidArgument,
                 $"Validation failed: {string.Join(", ", ex.Errors)}"));
         }
         catch (DomainException ex)
         {
             _logger.LogWarning(ex, "Domain error in {Method}", context.Method);
-            throw new RpcException(new Status(StatusCode.InvalidArgument, 
+            throw new RpcException(new Status(StatusCode.InvalidArgument,
                 $"Domain validation failed: {string.Join(", ", ex.Errors)}"));
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unhandled exception in {Method}", context.Method);
-            throw new RpcException(new Status(StatusCode.Internal, 
+            throw new RpcException(new Status(StatusCode.Internal,
                 "An unexpected error occurred. Please try again later."));
         }
     }

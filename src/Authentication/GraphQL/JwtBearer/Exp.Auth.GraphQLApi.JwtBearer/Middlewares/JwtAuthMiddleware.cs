@@ -1,7 +1,8 @@
 namespace Exp.Auth.GraphQLApi.JwtBearer.Middlewares;
+
 public class JwtAuthMiddleware(FieldDelegate next)
 {
-   
+
     public async Task InvokeAsync(IMiddlewareContext context)
     {
         // Retrieve user information from the context

@@ -6,10 +6,10 @@ public static class MiddlewareExtension
     {
         // Correlation ID must be first to track all requests
         app.UseMiddleware<CorrelationIdMiddleware>();
-        
+
         // Global exception handling
         app.UseMiddleware<GlobalExceptionMiddleware>();
-        
+
         // Swagger middleware
         app.UseSwaggerMiddleware();
     }

@@ -1,7 +1,7 @@
 namespace Exp.Auth.GrpcApi.MutualTls.Middlewares;
 
 public class ExceptionMiddleware(RequestDelegate next)
-{ 
+{
     public async Task Invoke(HttpContext context)
     {
         try
@@ -42,6 +42,6 @@ public class ExceptionMiddleware(RequestDelegate next)
         };
 
         var response = System.Text.Json.JsonSerializer.Serialize(errorDetails);
-        return context.Response.WriteAsync(response);        
+        return context.Response.WriteAsync(response);
     }
 }

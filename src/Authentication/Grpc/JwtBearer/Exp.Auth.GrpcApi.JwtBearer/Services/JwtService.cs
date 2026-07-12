@@ -1,12 +1,13 @@
 namespace Exp.Auth.GrpcApi.JwtBearer.Services;
+
 public class JwtService(JwtSettings jwtSettings)
 {
     public string GenerateToken(string userId)
     {
         SymmetricSecurityKey signingKey = new(Encoding.ASCII.GetBytes(jwtSettings.SecretKey));
 
-    var claims = new[]
-        {
+        var claims = new[]
+            {
             new Claim(JwtRegisteredClaimNames.Sub, userId),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };

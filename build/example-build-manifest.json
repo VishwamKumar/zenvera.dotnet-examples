@@ -1,41 +1,348 @@
 {
   "schemaVersion": 1,
   "examples": [
-    {"id":"todo-rest-minimal","category":"api-styles","path":"src/ApiStyles/Rest/Exp.Todo.RestApi.Minimal/Exp.Todo.RestApi.Minimal.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"todo-rest-mvc","category":"api-styles","path":"src/ApiStyles/Rest/Exp.Todo.RestApi.MvcControllers/Exp.Todo.RestApi.MvcControllers.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"todo-rest-endpoint-per-file","category":"api-styles","path":"src/ApiStyles/Rest/Exp.Todo.RestApi.EndpointPerFile/Exp.Todo.RestApi.EndpointPerFile.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"todo-rest-fast-endpoints","category":"api-styles","path":"src/ApiStyles/Rest/Exp.Todo.RestApi.FastEndpoints/Exp.Todo.RestApi.FastEndpoints.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"todo-grpc-native","category":"api-styles","path":"src/ApiStyles/Grpc/Exp.Todo.GrpcApi.Native/Exp.Todo.GrpcApi.Native.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"todo-grpc-transcoding","category":"api-styles","path":"src/ApiStyles/Grpc/Exp.Todo.GrpcApi.Transcoding/Exp.Todo.GrpcApi.Transcoding.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"todo-graphql","category":"api-styles","path":"src/ApiStyles/GraphQL/Exp.Todo.GraphQLApi/Exp.Todo.GraphQLApi.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"todo-soap","category":"api-styles","path":"src/ApiStyles/Soap/Exp.Todo.SoapApi/Exp.Todo.SoapApi.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-
-    {"id":"auth-rest-api-key","category":"authentication","path":"src/Authentication/Rest/ApiKey/Exp.Auth.RestApi.ApiKey/Exp.Auth.RestApi.ApiKey.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"auth-rest-basic","category":"authentication","path":"src/Authentication/Rest/BasicAuthentication/Exp.Auth.RestApi.BasicAuthentication/Exp.Auth.RestApi.BasicAuthentication.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"auth-rest-jwt","category":"authentication","path":"src/Authentication/Rest/JwtBearer/Exp.Auth.RestApi.JwtBearer/Exp.Auth.RestApi.JwtBearer.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"auth-rest-identity-jwt","category":"authentication","path":"src/Authentication/Rest/JwtBearerIdentity/Exp.Auth.RestApi.JwtBearerIdentity/Exp.Auth.RestApi.JwtBearerIdentity.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":["SQL Server at runtime"],"exclusionReason":null},
-    {"id":"auth-rest-oauth2-duende","category":"authentication","path":"src/Authentication/Rest/OAuth2Duende/Exp.Auth.RestApi.OAuth2Duende/Exp.Auth.RestApi.OAuth2Duende.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":["development HTTPS certificate"],"exclusionReason":null},
-    {"id":"auth-grpc-api-key","category":"authentication","path":"src/Authentication/Grpc/ApiKey/Exp.Auth.GrpcApi.ApiKey/Exp.Auth.GrpcApi.ApiKey.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"auth-grpc-jwt","category":"authentication","path":"src/Authentication/Grpc/JwtBearer/Exp.Auth.GrpcApi.JwtBearer/Exp.Auth.GrpcApi.JwtBearer.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"auth-grpc-mtls","category":"authentication","path":"src/Authentication/Grpc/MutualTls/Exp.Auth.GrpcApi.MutualTls/Exp.Auth.GrpcApi.MutualTls.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":["local server/client certificates at runtime"],"exclusionReason":null},
-    {"id":"auth-graphql-api-key","category":"authentication","path":"src/Authentication/GraphQL/ApiKey/Exp.Auth.GraphQLApi.ApiKey/Exp.Auth.GraphQLApi.ApiKey.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"auth-graphql-jwt","category":"authentication","path":"src/Authentication/GraphQL/JwtBearer/Exp.Auth.GraphQLApi.JwtBearer/Exp.Auth.GraphQLApi.JwtBearer.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-    {"id":"auth-graphql-firebase","category":"authentication","path":"src/Authentication/GraphQL/FirebaseAuthentication/Exp.Auth.GraphQLApi.FirebaseAuthentication/Exp.Auth.GraphQLApi.FirebaseAuthentication.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":["Firebase credentials at runtime"],"exclusionReason":null},
-
-    {"id":"clean-architecture-simple","category":"architecture","path":"src/Architecture/CleanArchitecture/GrpcTodo/Simple/src/Exp.Todo.GrpcApi/Exp.Todo.GrpcApi.csproj","framework":"net10.0 (Domain net9.0)","buildEnabled":true,"testEnabled":true,"testPath":"src/Architecture/CleanArchitecture/GrpcTodo/Simple/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj","externalDependencies":[],"exclusionReason":null},
-    {"id":"clean-architecture-cqrs","category":"architecture","path":"src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/src/Exp.Todo.GrpcApi/Exp.Todo.GrpcApi.csproj","framework":"net10.0","buildEnabled":true,"testEnabled":true,"testPath":"src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj","externalDependencies":[],"exclusionReason":null},
-    {"id":"clean-architecture-mediatr","category":"architecture","path":"src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/src/Exp.Todo.GrpcApi/Exp.Todo.GrpcApi.csproj","framework":"net10.0","buildEnabled":true,"testEnabled":true,"testPath":"src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj","externalDependencies":[],"exclusionReason":null},
-
-    {"id":"gateway-ocelot","category":"integration","path":"src/Integration/ApiGateway/RestApis/Ocelot/Exp.ApiGateway.Ocelot/Exp.ApiGateway.Ocelot.csproj","framework":"net8.0","buildEnabled":true,"testEnabled":false,"externalDependencies":["external downstream APIs at runtime"],"exclusionReason":null},
-    {"id":"gateway-yarp","category":"integration","path":"src/Integration/ApiGateway/RestApis/Yarp/Exp.ApiGateway.Yarp/Exp.ApiGateway.Yarp.csproj","framework":"net9.0","buildEnabled":true,"testEnabled":false,"externalDependencies":["Hour Tracker API at runtime"],"exclusionReason":null},
-
-    {"id":"infra-redis-cache","category":"infrastructure","path":"src/Infrastructure/Caching/Redis/Exp.Weather.RestApi.RedisCaching/Exp.Weather.RestApi.RedisCaching.csproj","framework":"net10.0","buildEnabled":true,"testEnabled":false,"externalDependencies":["Redis at runtime","Zenvera.Shared.Caching 0.0.25 resolves to 1.0.17"],"exclusionReason":null},
-    {"id":"infra-rabbitmq","category":"infrastructure","path":"src/Infrastructure/Messaging/RabbitMq/Exp.Weather.RestApi.RabbitMq/Exp.Weather.RestApi.RabbitMq.csproj","framework":"net10.0","buildEnabled":false,"testEnabled":false,"externalDependencies":["RabbitMQ at runtime","Zenvera.Shared.Queuing 0.0.10"],"exclusionReason":"Zenvera.Shared.Queuing 0.0.10 is unavailable from configured feeds. Replacing it with a different RabbitMQ implementation would materially rewrite the demonstration."},
-    {"id":"infra-azure-key-vault","category":"infrastructure","path":"src/Infrastructure/Secrets/AzureKeyVault/Exp.Weather.BlazorServer.KeyVault/Exp.Weather.BlazorServer.KeyVault.csproj","framework":"net10.0","buildEnabled":false,"testEnabled":false,"externalDependencies":["Azure Key Vault at runtime","Zenvera.Shared.Secrets 1.0.21"],"exclusionReason":"Zenvera.Shared.Secrets 1.0.21 is unavailable from configured feeds. Replacing its abstraction with the Azure SDK would materially rewrite the example."},
-    {"id":"infra-rest-serilog","category":"infrastructure","path":"src/Infrastructure/Logging/Serilog/Exp.Weather.RestApi.Serilog/Exp.Weather.RestApi.Serilog.csproj","framework":"net10.0","buildEnabled":true,"testEnabled":false,"externalDependencies":["SQL Server at runtime","Zenvera.Shared.Logging version fallback"],"exclusionReason":null},
-    {"id":"infra-blazor-serilog","category":"infrastructure","path":"src/Infrastructure/Logging/Serilog/Exp.Weather.BlazorServer.Serilog/Exp.Weather.BlazorServer.Serilog.csproj","framework":"net10.0","buildEnabled":false,"testEnabled":false,"externalDependencies":["MongoDB at runtime","Zenvera.Shared.ErrorHandling 1.0.6"],"exclusionReason":"Zenvera.Shared.ErrorHandling 1.0.6 is unavailable from configured feeds. Removing or replacing its middleware would materially change the demonstration."},
-    {"id":"infra-background-service","category":"infrastructure","path":"src/Infrastructure/BackgroundProcessing/BackgroundService/Exp.Weather.Worker.BackgroundService/Exp.Weather.Worker.BackgroundService.csproj","framework":"net10.0","buildEnabled":true,"testEnabled":false,"externalDependencies":[],"exclusionReason":null},
-
-    {"id":"ui-maui-rest-client","category":"user-interface","path":"src/UserInterface/Maui/Exp.Todo.Maui.RestApiClient/Exp.Todo.Maui.RestApiClient.csproj","framework":"net8.0-android;net8.0-ios;net8.0-maccatalyst;net8.0-windows","buildEnabled":false,"testEnabled":false,"externalDependencies":["Todo REST API at runtime","platform-specific MAUI workloads"],"exclusionReason":"SDK 10.0.301 rejects the preserved .NET 8 MAUI targets as out of support (NETSDK1202). Upgrading is a dedicated framework migration."}
+    {
+      "id": "todo-rest-minimal",
+      "category": "api-styles",
+      "path": "src/ApiStyles/Rest/Exp.Todo.RestApi.Minimal/Exp.Todo.RestApi.Minimal.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "todo-rest-mvc",
+      "category": "api-styles",
+      "path": "src/ApiStyles/Rest/Exp.Todo.RestApi.MvcControllers/Exp.Todo.RestApi.MvcControllers.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "todo-rest-endpoint-per-file",
+      "category": "api-styles",
+      "path": "src/ApiStyles/Rest/Exp.Todo.RestApi.EndpointPerFile/Exp.Todo.RestApi.EndpointPerFile.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "todo-rest-fast-endpoints",
+      "category": "api-styles",
+      "path": "src/ApiStyles/Rest/Exp.Todo.RestApi.FastEndpoints/Exp.Todo.RestApi.FastEndpoints.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "todo-grpc-native",
+      "category": "api-styles",
+      "path": "src/ApiStyles/Grpc/Exp.Todo.GrpcApi.Native/Exp.Todo.GrpcApi.Native.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "todo-grpc-transcoding",
+      "category": "api-styles",
+      "path": "src/ApiStyles/Grpc/Exp.Todo.GrpcApi.Transcoding/Exp.Todo.GrpcApi.Transcoding.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "todo-graphql",
+      "category": "api-styles",
+      "path": "src/ApiStyles/GraphQL/Exp.Todo.GraphQLApi/Exp.Todo.GraphQLApi.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "todo-soap",
+      "category": "api-styles",
+      "path": "src/ApiStyles/Soap/Exp.Todo.SoapApi/Exp.Todo.SoapApi.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "auth-rest-api-key",
+      "category": "authentication",
+      "path": "src/Authentication/Rest/ApiKey/Exp.Auth.RestApi.ApiKey/Exp.Auth.RestApi.ApiKey.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "auth-rest-basic",
+      "category": "authentication",
+      "path": "src/Authentication/Rest/BasicAuthentication/Exp.Auth.RestApi.BasicAuthentication/Exp.Auth.RestApi.BasicAuthentication.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "auth-rest-jwt",
+      "category": "authentication",
+      "path": "src/Authentication/Rest/JwtBearer/Exp.Auth.RestApi.JwtBearer/Exp.Auth.RestApi.JwtBearer.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "auth-rest-identity-jwt",
+      "category": "authentication",
+      "path": "src/Authentication/Rest/JwtBearerIdentity/Exp.Auth.RestApi.JwtBearerIdentity/Exp.Auth.RestApi.JwtBearerIdentity.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [
+        "SQL Server at runtime"
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "auth-rest-oauth2-duende",
+      "category": "authentication",
+      "path": "src/Authentication/Rest/OAuth2Duende/Exp.Auth.RestApi.OAuth2Duende/Exp.Auth.RestApi.OAuth2Duende.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [
+        "development HTTPS certificate"
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "auth-grpc-api-key",
+      "category": "authentication",
+      "path": "src/Authentication/Grpc/ApiKey/Exp.Auth.GrpcApi.ApiKey/Exp.Auth.GrpcApi.ApiKey.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "auth-grpc-jwt",
+      "category": "authentication",
+      "path": "src/Authentication/Grpc/JwtBearer/Exp.Auth.GrpcApi.JwtBearer/Exp.Auth.GrpcApi.JwtBearer.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "auth-grpc-mtls",
+      "category": "authentication",
+      "path": "src/Authentication/Grpc/MutualTls/Exp.Auth.GrpcApi.MutualTls/Exp.Auth.GrpcApi.MutualTls.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [
+        "local server/client certificates at runtime"
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "auth-graphql-api-key",
+      "category": "authentication",
+      "path": "src/Authentication/GraphQL/ApiKey/Exp.Auth.GraphQLApi.ApiKey/Exp.Auth.GraphQLApi.ApiKey.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "auth-graphql-jwt",
+      "category": "authentication",
+      "path": "src/Authentication/GraphQL/JwtBearer/Exp.Auth.GraphQLApi.JwtBearer/Exp.Auth.GraphQLApi.JwtBearer.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "auth-graphql-firebase",
+      "category": "authentication",
+      "path": "src/Authentication/GraphQL/FirebaseAuthentication/Exp.Auth.GraphQLApi.FirebaseAuthentication/Exp.Auth.GraphQLApi.FirebaseAuthentication.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [
+        "Firebase credentials at runtime"
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "clean-architecture-simple",
+      "category": "architecture",
+      "path": "src/Architecture/CleanArchitecture/GrpcTodo/Simple/src/Exp.Todo.GrpcApi/Exp.Todo.GrpcApi.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": true,
+      "testPath": "src/Architecture/CleanArchitecture/GrpcTodo/Simple/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj",
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "clean-architecture-cqrs",
+      "category": "architecture",
+      "path": "src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/src/Exp.Todo.GrpcApi/Exp.Todo.GrpcApi.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": true,
+      "testPath": "src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj",
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "clean-architecture-mediatr",
+      "category": "architecture",
+      "path": "src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/src/Exp.Todo.GrpcApi/Exp.Todo.GrpcApi.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": true,
+      "testPath": "src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj",
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "gateway-ocelot",
+      "category": "integration",
+      "path": "src/Integration/ApiGateway/RestApis/Ocelot/Exp.ApiGateway.Ocelot/Exp.ApiGateway.Ocelot.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [
+        "external downstream APIs at runtime"
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "gateway-yarp",
+      "category": "integration",
+      "path": "src/Integration/ApiGateway/RestApis/Yarp/Exp.ApiGateway.Yarp/Exp.ApiGateway.Yarp.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [
+        "Hour Tracker API at runtime"
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "infra-redis-cache",
+      "category": "infrastructure",
+      "path": "src/Infrastructure/Caching/Redis/Exp.Weather.RestApi.RedisCaching/Exp.Weather.RestApi.RedisCaching.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [
+        "Redis at runtime",
+        "Zenvera.Shared.Caching 0.0.25 resolves to 1.0.17"
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "infra-rabbitmq",
+      "category": "infrastructure",
+      "path": "src/Infrastructure/Messaging/RabbitMq/Exp.Weather.RestApi.RabbitMq/Exp.Weather.RestApi.RabbitMq.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [
+        "RabbitMQ at runtime",
+        "Zenvera.Shared.Queuing 0.0.10"
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "infra-azure-key-vault",
+      "category": "infrastructure",
+      "path": "src/Infrastructure/Secrets/AzureKeyVault/Exp.Weather.BlazorServer.KeyVault/Exp.Weather.BlazorServer.KeyVault.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [
+        "Azure Key Vault at runtime",
+        "Zenvera.Shared.Secrets 1.0.21"
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "infra-rest-serilog",
+      "category": "infrastructure",
+      "path": "src/Infrastructure/Logging/Serilog/Exp.Weather.RestApi.Serilog/Exp.Weather.RestApi.Serilog.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [
+        "SQL Server at runtime",
+        "Zenvera.Shared.Logging from private GitHub package feed"
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "infra-blazor-serilog",
+      "category": "infrastructure",
+      "path": "src/Infrastructure/Logging/Serilog/Exp.Weather.BlazorServer.Serilog/Exp.Weather.BlazorServer.Serilog.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [
+        "MongoDB at runtime",
+        "Zenvera.Shared.ErrorHandling 1.0.6"
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "infra-background-service",
+      "category": "infrastructure",
+      "path": "src/Infrastructure/BackgroundProcessing/BackgroundService/Exp.Weather.Worker.BackgroundService/Exp.Weather.Worker.BackgroundService.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": false,
+      "externalDependencies": [],
+      "exclusionReason": null
+    },
+    {
+      "id": "ui-maui-rest-client",
+      "category": "user-interface",
+      "path": "src/UserInterface/Maui/Exp.Todo.Maui.RestApiClient/Exp.Todo.Maui.RestApiClient.csproj",
+      "framework": "net10.0-android;net10.0-ios;net10.0-maccatalyst;net10.0-windows10.0.19041.0",
+      "buildEnabled": false,
+      "testEnabled": false,
+      "externalDependencies": [
+        "Todo REST API at runtime",
+        "platform-specific MAUI workloads"
+      ],
+      "exclusionReason": "Multi-target MAUI validation requires platform workloads and compatible macOS/Windows hosts; the Linux category runner cannot build every target."
+    }
   ]
 }

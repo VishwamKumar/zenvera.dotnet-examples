@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/Shared/">
+    <Project Path="../shared/Todo/Exp.Todo.Infrastructure.Sqlite/Exp.Todo.Infrastructure.Sqlite.csproj" />
+  </Folder>
+  <Folder Name="/REST/">
+    <Project Path="../src/ApiStyles/Rest/Exp.Todo.RestApi.Minimal/Exp.Todo.RestApi.Minimal.csproj" />
+    <Project Path="../src/ApiStyles/Rest/Exp.Todo.RestApi.MvcControllers/Exp.Todo.RestApi.MvcControllers.csproj" />
+    <Project Path="../src/ApiStyles/Rest/Exp.Todo.RestApi.EndpointPerFile/Exp.Todo.RestApi.EndpointPerFile.csproj" />
+    <Project Path="../src/ApiStyles/Rest/Exp.Todo.RestApi.FastEndpoints/Exp.Todo.RestApi.FastEndpoints.csproj" />
+  </Folder>
+  <Folder Name="/gRPC/">
+    <Project Path="../src/ApiStyles/Grpc/Exp.Todo.GrpcApi.Native/Exp.Todo.GrpcApi.Native.csproj" />
+    <Project Path="../src/ApiStyles/Grpc/Exp.Todo.GrpcApi.Transcoding/Exp.Todo.GrpcApi.Transcoding.csproj" />
+  </Folder>
+  <Folder Name="/GraphQL/">
+    <Project Path="../src/ApiStyles/GraphQL/Exp.Todo.GraphQLApi/Exp.Todo.GraphQLApi.csproj" />
+  </Folder>
+  <Folder Name="/SOAP/">
+    <Project Path="../src/ApiStyles/Soap/Exp.Todo.SoapApi/Exp.Todo.SoapApi.csproj" />
+  </Folder>
+</Solution>

@@ -1,23 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <AssemblyName>Exp.Auth.GrpcApi.ApiKey</AssemblyName>
     <RootNamespace>Exp.Auth.GrpcApi.ApiKey</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-  <Authors>Vishwa Kumar</Authors>
-  <Company>Vishwam</Company>
-  <Product>Zenvera .NET Examples</Product>
+    <Authors>Vishwa Kumar</Authors>
+    <Company>Vishwam</Company>
+    <Product>Zenvera .NET Examples</Product>
   </PropertyGroup>
-
   <ItemGroup>
     <Protobuf Include="Protos\weather.proto" GrpcServices="Server" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
-    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.71.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.80.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.80.0" />
   </ItemGroup>
-
 </Project>

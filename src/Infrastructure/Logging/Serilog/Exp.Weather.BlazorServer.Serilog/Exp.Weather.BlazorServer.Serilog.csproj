@@ -10,7 +10,7 @@
     <Folder Include="logs\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Zenvera.Shared.ErrorHandling" Version="1.0.6" />
-    <PackageReference Include="Zenvera.Shared.Logging" Version="1.0.6" />
+    <PackageReference Include="Zenvera.Shared.ErrorHandling" Version="1.0.19" />
+    <PackageReference Include="Zenvera.Shared.Logging" Version="1.0.19" />
   </ItemGroup>
 </Project>

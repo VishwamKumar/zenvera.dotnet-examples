@@ -13,7 +13,7 @@ public class CreateTodoCommandHandlerTests
         // Arrange
         var mockWriteRepo = new Mock<ITodoWriteRepository>();
         mockWriteRepo.Setup(r => r.AddAsync(It.IsAny<TodoEntity>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync((TodoEntity todo, CancellationToken ct) => 
+                .ReturnsAsync((TodoEntity todo, CancellationToken ct) =>
                 {
                     // Simulate DB-generated ID = 1
                     return 1;
@@ -41,19 +41,19 @@ public class CreateTodoCommandHandlerTests
         services.AddValidatorsFromAssembly(typeof(CreateTodoCommand).Assembly);
         services.AddScoped<IDispatcher, Dispatcher>();
         services.AddScoped<ICommandHandler<CreateTodoCommand, int>, CreateTodoCommandHandler>();
-        
+
         var mockWriteRepo = new Mock<ITodoWriteRepository>();
         services.AddSingleton(mockWriteRepo.Object);
-        
+
         var serviceProvider = services.BuildServiceProvider();
         var dispatcher = serviceProvider.GetRequiredService<IDispatcher>();
-        
+
         var command = new CreateTodoCommand(new CreateTodoDto { TodoName = todoName! });
 
         // Act & Assert - Validation should throw AppValidationException before handler is called
         // If validators aren't found, domain validation will throw DomainException
         var exception = await Assert.ThrowsAnyAsync<Exception>(() => dispatcher.Send(command, CancellationToken.None));
-        Assert.True(exception is AppValidationException || exception is DomainException, 
+        Assert.True(exception is AppValidationException || exception is DomainException,
             $"Expected AppValidationException or DomainException, but got {exception.GetType().Name}");
         mockWriteRepo.Verify(r => r.AddAsync(It.IsAny<TodoEntity>(), It.IsAny<CancellationToken>()), Times.Never);
     }

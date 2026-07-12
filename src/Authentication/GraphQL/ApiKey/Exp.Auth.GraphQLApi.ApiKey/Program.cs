@@ -14,12 +14,12 @@ builder.Services.AddScoped<WeatherForecastQuery>();
 builder.Services
     .AddGraphQLServer()
     .AddAuthorization() // Enable authorization
-    .AddQueryType<WeatherForecastQuery>();    
+    .AddQueryType<WeatherForecastQuery>();
 
 builder.Services.AddAuthorizationBuilder()
     .AddPolicy("AuthenticatedUser", policy =>
         policy.RequireAuthenticatedUser());
-  
+
 var app = builder.Build();
 app.UseMiddleware<ApiKeyAuthMiddleware>();
 

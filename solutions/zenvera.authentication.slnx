@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/REST/">
+    <Project Path="../src/Authentication/Rest/ApiKey/Exp.Auth.RestApi.ApiKey/Exp.Auth.RestApi.ApiKey.csproj" />
+    <Project Path="../src/Authentication/Rest/BasicAuthentication/Exp.Auth.RestApi.BasicAuthentication/Exp.Auth.RestApi.BasicAuthentication.csproj" />
+    <Project Path="../src/Authentication/Rest/JwtBearer/Exp.Auth.RestApi.JwtBearer/Exp.Auth.RestApi.JwtBearer.csproj" />
+    <Project Path="../src/Authentication/Rest/JwtBearerIdentity/Exp.Auth.RestApi.JwtBearerIdentity/Exp.Auth.RestApi.JwtBearerIdentity.csproj" />
+    <Project Path="../src/Authentication/Rest/OAuth2Duende/Exp.Auth.RestApi.OAuth2Duende/Exp.Auth.RestApi.OAuth2Duende.csproj" />
+  </Folder>
+  <Folder Name="/gRPC/">
+    <Project Path="../src/Authentication/Grpc/ApiKey/Exp.Auth.GrpcApi.ApiKey/Exp.Auth.GrpcApi.ApiKey.csproj" />
+    <Project Path="../src/Authentication/Grpc/JwtBearer/Exp.Auth.GrpcApi.JwtBearer/Exp.Auth.GrpcApi.JwtBearer.csproj" />
+    <Project Path="../src/Authentication/Grpc/MutualTls/Exp.Auth.GrpcApi.MutualTls/Exp.Auth.GrpcApi.MutualTls.csproj" />
+  </Folder>
+  <Folder Name="/GraphQL/">
+    <Project Path="../src/Authentication/GraphQL/ApiKey/Exp.Auth.GraphQLApi.ApiKey/Exp.Auth.GraphQLApi.ApiKey.csproj" />
+    <Project Path="../src/Authentication/GraphQL/JwtBearer/Exp.Auth.GraphQLApi.JwtBearer/Exp.Auth.GraphQLApi.JwtBearer.csproj" />
+    <Project Path="../src/Authentication/GraphQL/FirebaseAuthentication/Exp.Auth.GraphQLApi.FirebaseAuthentication/Exp.Auth.GraphQLApi.FirebaseAuthentication.csproj" />
+  </Folder>
+</Solution>

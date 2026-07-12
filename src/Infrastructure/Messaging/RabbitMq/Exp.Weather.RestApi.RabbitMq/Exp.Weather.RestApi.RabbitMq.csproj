@@ -10,7 +10,7 @@
     <RootNamespace>Exp.Weather.RestApi.RabbitMq</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
-    <PackageReference Include="Zenvera.Shared.Queuing" Version="0.0.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+    <PackageReference Include="Zenvera.Shared.Queuing" Version="1.0.19" />
   </ItemGroup>
 </Project>

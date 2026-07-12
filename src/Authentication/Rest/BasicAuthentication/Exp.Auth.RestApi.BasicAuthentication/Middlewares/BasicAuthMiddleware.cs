@@ -3,8 +3,8 @@ namespace Exp.Auth.RestApi.BasicAuthentication.Middlewares;
 
 public class BasicAuthMiddleware(RequestDelegate next, IConfiguration configuration)
 {
-   
-    private readonly List<UserCredential> _userCredentials = configuration.GetSection("UserCredentials").Get<List<UserCredential>>()??[]; //This can be changed to database call or something else for credential validation 
+
+    private readonly List<UserCredential> _userCredentials = configuration.GetSection("UserCredentials").Get<List<UserCredential>>() ?? []; //This can be changed to database call or something else for credential validation
 
 
     public async Task InvokeAsync(HttpContext context)

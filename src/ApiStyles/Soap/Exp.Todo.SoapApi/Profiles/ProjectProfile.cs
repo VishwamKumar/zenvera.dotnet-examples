@@ -1,6 +1,6 @@
 namespace Exp.Todo.SoapApi;
 
-public class ProjectProfile:Profile
+public class ProjectProfile : Profile
 {
     public ProjectProfile()
     {

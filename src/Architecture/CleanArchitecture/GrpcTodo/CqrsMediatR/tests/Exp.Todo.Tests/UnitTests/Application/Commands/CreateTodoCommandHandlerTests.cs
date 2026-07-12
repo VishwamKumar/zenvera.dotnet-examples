@@ -2,7 +2,7 @@ namespace Exp.Todo.Tests.UnitTests.Application.Commands;
 
 public class CreateTodoCommandHandlerTests
 {
-    
+
     [Fact]
     public async Task Handle_ValidCommand_ReturnsTodoId()
     {

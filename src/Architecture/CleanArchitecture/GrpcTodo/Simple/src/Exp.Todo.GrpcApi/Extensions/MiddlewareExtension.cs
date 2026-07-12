@@ -6,7 +6,7 @@ public static class MiddlewareExtension
     {
         // Add global exception handling middleware
         app.UseMiddleware<Middleware.GlobalExceptionMiddleware>();
-        
+
         app.UseSwaggerMiddleware();
     }
 }

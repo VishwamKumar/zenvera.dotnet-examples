@@ -6,14 +6,14 @@ public class TodoGrpcService(ISender mediator, IMapper mapper, ILogger<TodoGrpcS
     public override async Task<TodoResponse> GetById(GetTodoByIdRequest request, ServerCallContext context)
     {
         TodoResponse responseBody = new();
-        StatusData statusData = new() { Success = true, Code=200, Message="Record found." };
+        StatusData statusData = new() { Success = true, Code = 200, Message = "Record found." };
         logger.LogInformation("Attempting to Get TodoById: {Id}", request.Id);
 
         try
         {
 
             var todo = await mediator.Send(new GetByIdQuery(request.Id));
-           
+
             if (todo == null)
             {
                 statusData.Code = 404;
@@ -23,13 +23,13 @@ public class TodoGrpcService(ISender mediator, IMapper mapper, ILogger<TodoGrpcS
             }
             else
             {
-                TodoData todoData = mapper.Map<TodoData>(todo);              
+                TodoData todoData = mapper.Map<TodoData>(todo);
                 responseBody.Data = todoData;
                 responseBody.Status = statusData;
                 return responseBody;
             }
         }
-     
+
         catch (Exception ex)
         {
             //var metadata = new Metadata { { "x-request-id", requestId }, { "x-correlation-id", correlationId } };
@@ -50,7 +50,7 @@ public class TodoGrpcService(ISender mediator, IMapper mapper, ILogger<TodoGrpcS
             var todos = await mediator.Send(new GetAllQuery());
 
             if (todos == null)
-            { 
+            {
                 statusData.Message = "No records found.";
                 responseBody.Status = statusData;
                 return responseBody;
@@ -135,7 +135,7 @@ public class TodoGrpcService(ISender mediator, IMapper mapper, ILogger<TodoGrpcS
                 return responseBody;
             }
             else
-            {  
+            {
                 responseBody.Status = statusData;
                 return responseBody;
             }
@@ -175,7 +175,7 @@ public class TodoGrpcService(ISender mediator, IMapper mapper, ILogger<TodoGrpcS
                 return responseBody;
             }
             else
-            {  
+            {
                 responseBody.Status = statusData;
                 return responseBody;
             }
@@ -198,6 +198,6 @@ public class TodoGrpcService(ISender mediator, IMapper mapper, ILogger<TodoGrpcS
             throw new RpcException(new Status(StatusCode.Internal, "An unexpected error occurred."), ex.Message);
         }
     }
-    
+
 }
 

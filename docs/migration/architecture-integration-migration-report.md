@@ -1,5 +1,7 @@
 # Architecture and integration migration report
 
+> Historical note: framework and package versions in this migration record are superseded by the [.NET 10 and package upgrade report](dotnet-10-package-upgrade-report.md).
+
 Date: 2026-07-12
 
 ## Source resolution

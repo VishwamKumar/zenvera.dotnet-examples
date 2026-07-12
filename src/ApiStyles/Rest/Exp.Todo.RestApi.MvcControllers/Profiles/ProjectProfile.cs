@@ -1,10 +1,10 @@
 
 namespace Exp.Todo.RestApi.MvcControllers.Profiles;
 
-public class ProjectProfile:Profile
+public class ProjectProfile : Profile
 {
     public ProjectProfile()
     {
-        CreateMap<ToDo,ToDoResponse>();
+        CreateMap<ToDo, ToDoResponse>();
     }
 }

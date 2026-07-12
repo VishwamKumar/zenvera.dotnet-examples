@@ -2,7 +2,7 @@ namespace Exp.Todo.SoapApi.Services;
 
 public class ToDoCoreWcfService(ITodoService todoService, ILogger<ToDoService> logger, IMapper mapper) : IToDoCoreWcfService
 {
-   
+
     public async Task<IEnumerable<ToDoResponse>> GetToDosAsync()
     {
         var recs = await todoService.GetToDosAsync();
