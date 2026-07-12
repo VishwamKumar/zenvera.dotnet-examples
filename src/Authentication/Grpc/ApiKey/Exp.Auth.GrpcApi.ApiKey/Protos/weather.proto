@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "Exp.Auth.GrpcApi.ApiKey";
+
+package weather;
+
+// The weather service definition.
+service WeatherForecaster {
+  // Sends a weather forecast
+  rpc GetWeatherForecast (WeatherRequest) returns (WeatherReply);  
+}
+
+// The request message containing the number of days for the forecast.
+message WeatherRequest {
+  int32 days = 1;
+}
+
+// The response message containing the weather forecast.
+message WeatherReply {
+  repeated WeatherForecast forecasts = 1;
+}
+
+// Weather forecast details.
+message WeatherForecast {
+  string date = 1;
+  string summary = 2;
+  int32 temperatureC = 3;
+  int32 temperatureF = 4;
+}

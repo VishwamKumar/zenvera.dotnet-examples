@@ -1,0 +1,6 @@
+@Exp_Auth_GraphQLApi_JwtBearer_HostAddress = http://localhost:6302
+
+GET {{Exp_Auth_GraphQLApi_JwtBearer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

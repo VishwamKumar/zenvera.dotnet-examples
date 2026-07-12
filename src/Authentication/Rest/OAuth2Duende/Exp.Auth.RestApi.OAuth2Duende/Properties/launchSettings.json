@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:6105",
+      "sslPort": 8105
+    }
+  },
+  "profiles": {
+    "Exp.Auth.RestApi.OAuth2Duende": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:8105;http://localhost:6105",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "JwtSettings__SecretKey": "development-only-key-id-change-me",
+        "IdentityServerSettings__ClientSecret": "development-only-client-secret"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "JwtSettings__SecretKey": "development-only-key-id-change-me",
+        "IdentityServerSettings__ClientSecret": "development-only-client-secret"
+      }
+    }
+  }
+}

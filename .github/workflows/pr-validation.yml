@@ -1,0 +1,71 @@
+name: PR validation
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-validation-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  repository-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up .NET SDK from global.json
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+          cache: true
+          cache-dependency-path: |
+            **/*.csproj
+            NuGet.config
+
+      - name: Validate tracked example manifest
+        shell: pwsh
+        run: ./scripts/ci/Test-ExampleBuildManifest.ps1
+
+      - name: Check secrets, generated files, Markdown links, and Compose
+        shell: pwsh
+        run: ./scripts/ci/Test-RepositoryHygiene.ps1
+
+  compile-and-test:
+    needs: repository-checks
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        category: [api-styles, authentication, architecture, integration, infrastructure, user-interface]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up .NET SDK from global.json
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+          cache: true
+          cache-dependency-path: |
+            **/*.csproj
+            NuGet.config
+
+      - name: Restore enabled examples
+        shell: pwsh
+        run: ./scripts/ci/Invoke-ExampleValidation.ps1 -Category '${{ matrix.category }}' -Action restore
+
+      - name: Build enabled examples
+        shell: pwsh
+        run: ./scripts/ci/Invoke-ExampleValidation.ps1 -Category '${{ matrix.category }}' -Action build
+
+      - name: Run enabled tests
+        shell: pwsh
+        run: ./scripts/ci/Invoke-ExampleValidation.ps1 -Category '${{ matrix.category }}' -Action test
+
+      - name: Validate formatting without rewriting
+        shell: pwsh
+        run: ./scripts/ci/Invoke-ExampleValidation.ps1 -Category '${{ matrix.category }}' -Action format

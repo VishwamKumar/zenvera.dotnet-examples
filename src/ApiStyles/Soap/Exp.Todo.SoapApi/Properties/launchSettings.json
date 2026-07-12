@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Exp.Todo.SoapApi": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:7401;http://localhost:5401"
+    }
+  }
+}

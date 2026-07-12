@@ -1,0 +1,6 @@
+@Exp_Auth_GraphQLApi_ApiKey_HostAddress = http://localhost:6301
+
+GET {{Exp_Auth_GraphQLApi_ApiKey_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

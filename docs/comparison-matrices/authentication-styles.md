@@ -1,0 +1,20 @@
+# Authentication styles comparison
+
+This matrix describes the migrated demonstrations, not blanket production approval. “Production-capable” always assumes the hardening listed below.
+
+| Mechanism | REST | gRPC | GraphQL | Credential transport | Security strength | Rotation support | Revocation | Complexity | Recommended use | Production hardening required |
+|---|:---:|:---:|:---:|---|---|---|---|---|---|---|
+| API key | Yes | Yes | Yes | `X-Api-Key` HTTP header/gRPC metadata | Low–moderate; static bearer secret | Manual in samples; dual-key rollover can be added | Immediate by removing server-side key | Low | Controlled internal service access or developer APIs, not end-user identity | TLS, generated high-entropy keys, hashed storage, scope, expiry, overlap rotation, audit, throttling, constant-time validation |
+| HTTP Basic | Yes | No | No | `Authorization: Basic base64(user:password)` | Low; reusable password on every request | Password change | Account disable/password change | Low | Legacy interoperability only | TLS mandatory, real identity store, hashing, lockout, throttling, monitoring; prefer modern token or mTLS design |
+| Symmetric JWT bearer | Yes | Yes | Yes | `Authorization: Bearer` header/metadata | Moderate–high if issuer and keys are trustworthy | Requires coordinated signing-key rollover | Difficult before expiry without denylist/session layer | Medium | Short-lived service/API access through a trusted issuer | External issuer, managed high-entropy keys, algorithm pinning, issuer/audience/lifetime validation, rollover, short TTL, revocation strategy, secure claims/authorization |
+| JWT + ASP.NET Identity | Yes | No | No | Login/register credentials then bearer token | Moderate–high with hardened Identity and token issuance | Identity and signing-key operations | Account controls plus token strategy | High | Application accounts when ASP.NET Identity is appropriate | SQL protection, migrations, password policy, lockout, MFA/recovery, email confirmation, managed signing keys, refresh/revocation, audit |
+| OAuth2/OIDC via Duende (client credentials) | Yes | No | No | Client ID/secret at token endpoint; bearer access token | High for service-to-service when correctly deployed | Standard client-secret/key rollover patterns | Grant/client disable; token revocation/introspection design | High | Standards-based machine-to-machine authorization | License review, separate hardened authorization server, durable stores, managed signing keys, HTTPS metadata, narrow scopes, secret rotation, monitoring |
+| Mutual TLS | No | Yes | No | TLS client certificate | High service/workload identity | PKI renewal/overlap | CA/leaf revocation or short-lived certificates | High | High-assurance service-to-service gRPC | Managed CA, automated issuance/renewal, SAN/EKU checks, chain/revocation validation, private-key protection, proxy trust design, telemetry |
+| Firebase ID token validation | No | No | Yes | Firebase-issued bearer ID token | High when validated against the correct project and followed by authorization | Google-managed token-signing rollover; service-account key lifecycle remains local | User/session revocation with Firebase checks and short token life | Medium | Apps already using Firebase Authentication | Workload identity/secure Admin credentials, project/audience checks, revoked-token strategy, resolver authorization, tenant/data isolation, audit |
+
+## Classification summary
+
+- **Demonstration-only as implemented:** all static-user stores, all launch-profile placeholders, locally issued symmetric JWT examples, and in-process provider combinations.
+- **Acceptable for constrained internal use after hardening:** API keys.
+- **Acceptable for production with hardening:** JWT with trusted external issuance, ASP.NET Identity plus managed token lifecycle, Duende OAuth2/OIDC, mutual TLS, and Firebase validation.
+- **Not recommended for new production systems:** the custom Basic authentication example and resource-owner-password code retained only in commented/provider demonstration material.

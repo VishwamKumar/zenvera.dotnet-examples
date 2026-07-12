@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:6202",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "UserCredentials__0__UserName": "demo-user",
+        "UserCredentials__0__Password": "development-only-password",
+        "JwtSettings__SecretKey": "development-only-signing-key-change-me-32chars"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "https://localhost:8202;http://localhost:6202",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "UserCredentials__0__UserName": "demo-user",
+        "UserCredentials__0__Password": "development-only-password",
+        "JwtSettings__SecretKey": "development-only-signing-key-change-me-32chars"
+      }
+    }
+  }
+}

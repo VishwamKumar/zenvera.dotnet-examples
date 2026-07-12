@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:6102",
+      "sslPort": 8102
+    }
+  },
+  "profiles": {
+    "Exp.Auth.RestApi.BasicAuthentication": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:8102;http://localhost:6102",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "UserCredentials__0__Password": "development-only-password",
+        "UserCredentials__0__UserName": "demo-user"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "UserCredentials__0__Password": "development-only-password",
+        "UserCredentials__0__UserName": "demo-user"
+      }
+    }
+  }
+}

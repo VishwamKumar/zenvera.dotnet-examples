@@ -1,0 +1,9 @@
+global using System.Text;
+global using System.Reflection;
+global using System.Text.Json;
+global using System.ComponentModel;
+global using Microsoft.Extensions.Logging;
+global using Exp.Todo.Maui.RestApiClient.Pages;
+global using Exp.Todo.Maui.RestApiClient.Models;
+global using Exp.Todo.Maui.RestApiClient.DataServices;
+global using Microsoft.Extensions.Configuration;

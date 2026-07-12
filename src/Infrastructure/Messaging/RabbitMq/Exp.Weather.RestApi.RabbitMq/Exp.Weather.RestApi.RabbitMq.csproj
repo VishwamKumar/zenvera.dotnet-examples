@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Authors>Vishwa Kumar</Authors>
+    <Company>Vishwam</Company>
+    <Product>WeatherApp</Product>
+    <AssemblyName>Exp.Weather.RestApi.RabbitMq</AssemblyName>
+    <RootNamespace>Exp.Weather.RestApi.RabbitMq</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+    <PackageReference Include="Zenvera.Shared.Queuing" Version="0.0.10" />
+  </ItemGroup>
+</Project>

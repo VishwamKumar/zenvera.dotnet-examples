@@ -1,0 +1,88 @@
+{
+  "Routes": [
+    {
+      "SwaggerKey": "apiaudit",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auditrest.azurewebsites.net",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/apiaudit/api/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      //"RateLimitOptions": {
+      //  "ClientWhitelist": [],
+      //  "EnableRateLimiting": true,
+      //  "Period": "5s",
+      //  "PeriodTimespan": 1,
+      //  "Limit": 0
+      //},
+      "FileCacheOptions": {
+        "TtlSeconds": 0
+        //"Region": "GA"
+      },
+      "RouteIsCaseSensitive": false
+    },  
+    {
+      "SwaggerKey": "hourtracker",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hourtrackerrest.azurewebsites.net",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/hourtracker/api/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      //"RateLimitOptions": {
+      //  "ClientWhitelist": [],
+      //  "EnableRateLimiting": true,
+      //  "Period": "5s",
+      //  "PeriodTimespan": 1,
+      //  "Limit": 0
+      //},
+      "FileCacheOptions": {
+        "TtlSeconds": 1,
+        "Region": "GA"
+      },
+      "RouteIsCaseSensitive": false
+    }
+  ],
+
+  "SwaggerEndPoints": [
+    {
+      "Key": "apiaudit",
+      "Config": [
+        {
+          "Name": "REST - API Audit Microservice ",
+          "Version": "v1",
+          "Url": "https://auditrest.azurewebsites.net/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "hourtracker",
+      "Config": [
+        {
+          "Name": "REST - Hour Tracker MicroService",
+          "Version": "v1",
+          "Url": "https://hourtrackerrest.azurewebsites.net/swagger/v1/swagger.json"
+        }
+      ]
+    }
+
+  ],
+
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:8501"
+    //"BaseUrl": "https://rest-gatewayservice.azurewebsites.net"
+    //"ServiceDiscoveryProvider": {
+    //  "Host": "rest-gatewayservice.azurewebsites.net",
+    //  "Port": 443,
+    //  "ConfigurationKey": ""
+    //}
+  }
+}

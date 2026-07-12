@@ -1,0 +1,13 @@
+global using System;
+global using System.Text.Json;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Exp.Todo.Domain.Entities;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Design;
+global using Microsoft.Extensions.Configuration;
+global using Exp.Todo.Infrastructure.Persistence;
+global using Microsoft.Extensions.DependencyInjection;
+global using Exp.Todo.Application.Interfaces.Persistence;
+global using Microsoft.Extensions.Caching.Memory;
+global using Microsoft.AspNetCore.Builder;
+global using TodoEntity = Exp.Todo.Domain.Entities.Todo;

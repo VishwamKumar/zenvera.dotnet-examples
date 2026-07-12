@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>Exp.Auth.RestApi.OAuth2Duende</AssemblyName>
+    <RootNamespace>Exp.Auth.RestApi.OAuth2Duende</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  <Authors>Vishwa Kumar</Authors>
+  <Company>Vishwam</Company>
+  <Product>Zenvera .NET Examples</Product>
+  </PropertyGroup>
+ 
+  <ItemGroup>
+    <PackageReference Include="Duende.IdentityServer" Version="7.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.7" />
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.12.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+  </ItemGroup>
+
+</Project>

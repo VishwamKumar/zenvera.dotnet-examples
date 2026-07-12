@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+option csharp_namespace = "Exp.Todo.GrpcApi.Transcoding";
+import "google/api/annotations.proto"; // Added files from google github
+import "google/protobuf/timestamp.proto";
+
+package todo;
+
+// The Doer service definition.
+service Doer { 
+
+  rpc GetToDos(Empty) returns (ToDosReply) {
+    option (google.api.http) = {
+      post: "/api/todos/GetAll"
+      body: "*"
+    };
+  }
+
+   rpc GetToDo(ToDoIdRequest) returns (ToDoReply) {
+    option (google.api.http) = {
+      post: "/api/todos/GetById"
+      body: "*"
+    };   
+  }
+
+   rpc AddToDo(ToDoNameRequest) returns (ToDoReply) {
+    option (google.api.http) = {
+      post: "/api/todos/Add"
+      body: "*"
+    };
+  }
+
+  rpc UpdateToDo(ToDoRequest) returns (StatusToDoReply) {
+    option (google.api.http) = {
+      post: "/api/todos/Update"
+      body: "*"
+    };
+  }
+
+   rpc DeleteToDoById(ToDoIdRequest) returns (StatusToDoReply) {
+    option (google.api.http) = {
+      post: "/api/todos/DeleteById"
+      body: "*"
+    };
+  }
+}
+
+// The request message containing the Id.
+message ToDoIdRequest {
+  int32 id = 1; 
+}
+
+// The request message containing the todoname.
+message ToDoNameRequest {
+  string todoname = 1; 
+}
+
+
+// The response message containing Id and ToDoName.
+message ToDoReply {
+  int32 id = 1; 
+  string todoname = 2;
+}
+
+// The response message containing a list of ToDo items.
+message ToDosReply {
+  repeated ToDoReply todos = 1;
+}
+
+message ToDoRequest {
+    int32 id = 1; 
+    string todoname = 2;
+}
+
+message StatusToDoReply {
+  bool success = 1;
+}
+
+// An empty message.
+message Empty {}

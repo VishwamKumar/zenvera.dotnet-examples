@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option csharp_namespace = "Exp.Todo.GrpcApi.Native";
+
+package todo;
+
+// The Doer service definition.
+service Doer { 
+
+rpc GetToDos(Empty) returns (ToDosReply);
+
+rpc GetToDo(ToDoIdRequest) returns (ToDoReply);
+
+rpc AddToDo(ToDoNameRequest) returns (ToDoReply) ;
+
+rpc UpdateToDo(ToDoRequest) returns (StatusToDoReply) ;
+  
+
+rpc DeleteToDoById(ToDoIdRequest) returns (StatusToDoReply) ;
+}
+
+// The request message containing the Id.
+message ToDoIdRequest {
+  int32 id = 1; 
+}
+
+// The request message containing the todoname.
+message ToDoNameRequest {
+  string todoname = 1; 
+}
+
+
+// The response message containing Id and ToDoName.
+message ToDoReply {
+  int32 id = 1; 
+  string todoname = 2;
+}
+
+// The response message containing a list of ToDo items.
+message ToDosReply {
+  repeated ToDoReply todos = 1;
+}
+
+message ToDoRequest {
+    int32 id = 1; 
+    string todoname = 2;
+}
+
+message StatusToDoReply {
+  bool success = 1;
+}
+
+// An empty message.
+message Empty {}

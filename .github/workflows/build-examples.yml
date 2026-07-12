@@ -1,0 +1,56 @@
+name: Build examples
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 5 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  examples:
+    name: ${{ matrix.category }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        category: [api-styles, authentication, architecture, integration, infrastructure, user-interface]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up .NET SDK from global.json
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+          cache: true
+          cache-dependency-path: |
+            **/*.csproj
+            NuGet.config
+
+      - name: Validate manifest and show tracked exclusions
+        shell: pwsh
+        run: ./scripts/ci/Test-ExampleBuildManifest.ps1
+
+      - name: Restore
+        shell: pwsh
+        run: ./scripts/ci/Invoke-ExampleValidation.ps1 -Category '${{ matrix.category }}' -Action restore
+
+      - name: Build
+        shell: pwsh
+        run: ./scripts/ci/Invoke-ExampleValidation.ps1 -Category '${{ matrix.category }}' -Action build
+
+      - name: Test
+        shell: pwsh
+        run: ./scripts/ci/Invoke-ExampleValidation.ps1 -Category '${{ matrix.category }}' -Action test
+
+  infrastructure-integration-tests:
+    name: Infrastructure-dependent tests
+    runs-on: ubuntu-latest
+    if: ${{ false }} # Enable when a manifest entry gains an integration test requiring Compose services.
+    steps:
+      - name: No infrastructure integration tests are currently declared
+        run: echo "Compile validation is independent from Redis, RabbitMQ, SQL Server, and MongoDB."

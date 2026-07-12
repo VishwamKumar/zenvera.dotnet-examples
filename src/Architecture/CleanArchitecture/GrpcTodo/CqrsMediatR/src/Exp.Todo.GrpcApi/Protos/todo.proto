@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+option csharp_namespace = "Exp.Todo.GrpcApi";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+
+package todoapp.v1;
+
+// ========== Data DTO ==========
+
+message TodoData {
+  int32 id = 1;
+  string todo_Name = 2;  
+}
+
+message StatusData {
+  int32 code = 1; 
+  bool success = 2;
+  string message  = 3; 
+  repeated string errors = 4;
+}
+
+
+// Note: Although some methods could technically share a common request or response type,
+// each method here uses its own dedicated message to promote clarity, maintain separation 
+// of concerns, and reflect distinct intent�even if the structure overlaps.
+
+// ========== Request DTO ==========
+message GetTodoByIdRequest {
+  int32 id = 1;
+}
+
+message CreateTodoRequest { 
+  string todo_name = 2;  
+}
+
+message UpdateTodoRequest {
+  int32 id = 1;
+  string todo_name = 2;  
+}
+
+message DeleteTodoRequest {
+  int32 id = 1;
+}
+
+
+// ========== Response DTO ==========
+
+message TodoResponse {  
+  StatusData status = 1;
+  TodoData data = 2;
+}
+
+message TodoListResponse {  
+    StatusData status = 1;
+  repeated TodoData data = 2;
+}
+
+message CreateTodoResponse {  
+  StatusData status = 1;  
+}
+
+message UpdateTodoResponse {  
+  StatusData status = 1;  
+}
+
+message DeleteTodoResponse {  
+  StatusData status = 1;  
+}
+
+// The greeting service definition.
+service TodoService {
+ 
+    rpc GetById (GetTodoByIdRequest) returns (TodoResponse) {
+    option (google.api.http) = {
+        get: "/v1/todos/{id}"
+    };
+    }
+
+    rpc GetAll (google.protobuf.Empty) returns (TodoListResponse) {
+    option (google.api.http) = {
+        get: "/v1/todos"
+    };
+    }
+
+    rpc Create (CreateTodoRequest) returns (CreateTodoResponse) {
+      option (google.api.http) = {
+        post: "/v1/todos"
+        body: "*"
+      };
+    }
+
+    rpc Update (UpdateTodoRequest) returns (UpdateTodoResponse) {
+      option (google.api.http) = {
+        put: "/v1/todos/{id}"
+        body: "*"
+      };
+    }
+
+    rpc Delete (DeleteTodoRequest) returns (DeleteTodoResponse) {
+      option (google.api.http) = {
+        delete: "/v1/todos/{id}"
+      };
+    }
+}

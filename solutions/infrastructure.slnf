@@ -1,0 +1,13 @@
+{
+  "solution": {
+    "path": "../zenvera.dotnet-examples.slnx",
+    "projects": [
+      "src\\Infrastructure\\BackgroundProcessing\\BackgroundService\\Exp.Weather.Worker.BackgroundService\\Exp.Weather.Worker.BackgroundService.csproj",
+      "src\\Infrastructure\\Caching\\Redis\\Exp.Weather.RestApi.RedisCaching\\Exp.Weather.RestApi.RedisCaching.csproj",
+      "src\\Infrastructure\\Logging\\Serilog\\Exp.Weather.BlazorServer.Serilog\\Exp.Weather.BlazorServer.Serilog.csproj",
+      "src\\Infrastructure\\Logging\\Serilog\\Exp.Weather.RestApi.Serilog\\Exp.Weather.RestApi.Serilog.csproj",
+      "src\\Infrastructure\\Messaging\\RabbitMq\\Exp.Weather.RestApi.RabbitMq\\Exp.Weather.RestApi.RabbitMq.csproj",
+      "src\\Infrastructure\\Secrets\\AzureKeyVault\\Exp.Weather.BlazorServer.KeyVault\\Exp.Weather.BlazorServer.KeyVault.csproj"
+    ]
+  }
+}

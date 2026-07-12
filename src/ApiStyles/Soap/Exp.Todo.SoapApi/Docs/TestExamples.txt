@@ -1,0 +1,65 @@
+Example Using PostMan for test
+
+1. Each request will be POST
+2. Add following params in headers
+a. Content-Type = text/xml; charset=utf-8
+b. SOAPAction = http://tempuri.org/IToDoCoreWcfService/GetToDos
+You will have to replace GetToDos to GetToDoById, AddToDo, UpdateToDo, or DeleteToDo based on your request 
+
+3. GetToDos: Soap Request Body
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <GetToDos xmlns="http://tempuri.org/"/>
+  </s:Body>
+</s:Envelope>
+
+
+4. GetToDoById: Soap Request Body
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+     <GetToDoById xmlns="http://tempuri.org/">
+      <id>27</id> <!-- Replace with the actual ID -->
+    </GetToDoById>
+  </s:Body>
+</s:Envelope>
+
+5. AddToDo : Soap Request Body
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:AddToDo>
+          <tem:request xmlns:td="http://schemas.datacontract.org/2004/07/Exp.Todo.SoapApi.DataContracts">           
+            <td:ToDoName>Update Task2</td:ToDoName>
+         </tem:request>
+      </tem:AddToDo>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+6. UpdateToDo : Soap Request Body
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:UpdateToDo>
+         <tem:id>26</tem:id> <!-- Replace with the actual ID -->
+         <tem:request xmlns:td="http://schemas.datacontract.org/2004/07/Exp.Todo.SoapApi.DataContracts">           
+            <td:ToDoName>Updated Task Name Here</td:ToDoName>
+         </tem:request>
+      </tem:UpdateToDo>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+7. DeleteToDo : Soap Request Body
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:DeleteToDo>        
+          <tem:id>25</tem:id> <!-- Replace with the actual ID -->     
+      </tem:DeleteToDo>
+   </soapenv:Body>
+</soapenv:Envelope>

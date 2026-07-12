@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+
+    <!--
+      Nullable and ImplicitUsings are intentionally not set centrally yet.
+      Existing examples span .NET 8, 9, and 10 and must first be imported and
+      validated with their project-level behavior unchanged.
+    -->
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,59 @@
+﻿1. GetAll
+
+query{
+  toDos {
+     id
+     toDoName
+  }
+}
+
+
+2. GetById
+query{
+  toDoById (id:13){
+     id,
+     toDoName
+  }
+}
+
+3. Add Item
+
+mutation ($RequestItem: ToDoRequestInput!){ 
+   addToDo(req: $RequestItem)   
+   {
+     id,
+     toDoName
+   }
+}
+
+Variables
+{
+ "RequestItem": {
+            "toDoName": "SingalR"
+        }
+}
+
+4. Update Item
+
+mutation ($Id: Int!,$RequestItem: ToDoRequestInput!){ 
+   updateToDo(id: $Id, req: $RequestItem)      
+}
+
+Variables
+{
+ "Id": 22,
+ "RequestItem": {
+    "toDoName": "updated Item"
+  }
+}
+
+5. Delete Item
+
+mutation ($Id: Int!) 
+{ 
+    deleteToDo(id: $Id) 
+}
+
+{
+ "Id": 22 
+}

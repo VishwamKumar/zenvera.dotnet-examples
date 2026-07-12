@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>Exp.Todo.SoapApi</AssemblyName>
+    <RootNamespace>Exp.Todo.SoapApi</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+  <Authors>Vishwa Kumar</Authors>
+  <Company>Vishwam</Company>
+  <Product>Zenvera .NET Examples</Product>
+  </PropertyGroup>
+  <ItemGroup>
+    <Using Include="CoreWCF" />
+    <Using Include="CoreWCF.Configuration" />
+    <Using Include="CoreWCF.Channels" />
+    <Using Include="CoreWCF.Description" />
+    <Using Include="System.Runtime.Serialization " />
+    <Using Include="Exp.Todo.SoapApi" />
+    <Using Include="Microsoft.Extensions.DependencyInjection.Extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="15.0.0" />
+    <PackageReference Include="CoreWCF.Http" Version="1.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\shared\Todo\Exp.Todo.Infrastructure.Sqlite\Exp.Todo.Infrastructure.Sqlite.csproj" />
+  </ItemGroup>
+</Project>

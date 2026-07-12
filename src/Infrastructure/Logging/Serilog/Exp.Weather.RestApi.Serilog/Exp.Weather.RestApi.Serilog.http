@@ -1,0 +1,6 @@
+@Exp_Weather_RestApi_Serilog_HostAddress = http://localhost:5114
+
+GET {{Exp_Weather_RestApi_Serilog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

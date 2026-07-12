@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:6104",
+      "sslPort": 8104
+    }
+  },
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:6104",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "JwtSettings__SecretKey": "development-only-signing-key-change-me-32chars",
+        "ConnectionStrings__DefaultConnection": "Server=localhost;Database=ExpAuthIdentity;Integrated Security=true;TrustServerCertificate=true"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:8104;http://localhost:6104",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "JwtSettings__SecretKey": "development-only-signing-key-change-me-32chars",
+        "ConnectionStrings__DefaultConnection": "Server=localhost;Database=ExpAuthIdentity;Integrated Security=true;TrustServerCertificate=true"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "JwtSettings__SecretKey": "development-only-signing-key-change-me-32chars",
+        "ConnectionStrings__DefaultConnection": "Server=localhost;Database=ExpAuthIdentity;Integrated Security=true;TrustServerCertificate=true"
+      }
+    }
+  }
+}

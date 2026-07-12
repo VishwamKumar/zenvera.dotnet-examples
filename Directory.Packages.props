@@ -1,0 +1,23 @@
+<Project>
+  <PropertyGroup>
+    <!--
+      Central package management is opt-in until migrated projects have been
+      validated. Existing PackageReference Version attributes remain authoritative.
+    -->
+    <ManagePackageVersionsCentrally Condition="'$(ManagePackageVersionsCentrally)' == ''">false</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(ManagePackageVersionsCentrally)' == 'true'">
+    <!-- Versions already shared by multiple compatible .NET 9 examples. -->
+    <PackageVersion Include="AutoMapper" Version="15.0.0" />
+    <PackageVersion Include="Grpc.AspNetCore" Version="2.71.0" />
+    <PackageVersion Include="Grpc.AspNetCore.Server.Reflection" Version="2.71.0" />
+    <PackageVersion Include="HotChocolate.AspNetCore" Version="15.1.7" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.7" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.7" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+  </ItemGroup>
+</Project>

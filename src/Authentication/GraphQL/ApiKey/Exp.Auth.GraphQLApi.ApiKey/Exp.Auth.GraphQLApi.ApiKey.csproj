@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>Exp.Auth.GraphQLApi.ApiKey</AssemblyName>
+    <RootNamespace>Exp.Auth.GraphQLApi.ApiKey</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  <Authors>Vishwa Kumar</Authors>
+  <Company>Vishwam</Company>
+  <Product>Zenvera .NET Examples</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\**" />
+    <Content Remove="Controllers\**" />
+    <EmbeddedResource Remove="Controllers\**" />
+    <None Remove="Controllers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.7" />
+    <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="15.1.7" />
+  </ItemGroup>
+
+</Project>
