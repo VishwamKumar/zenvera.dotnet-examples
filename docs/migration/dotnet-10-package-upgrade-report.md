@@ -22,12 +22,11 @@ The exact latest private versions could not be enumerated in this environment be
 
 | Scope | Result |
 |---|---|
-| API styles | Restore and build passed; NuGet reports the transitive SQLite advisory noted below |
+| API styles | Restore and build passed; the former transitive SQLite advisory has been remediated |
 | Authentication | Restore and build passed after the OpenAPI compatibility repair |
 | Architecture | Restore and build passed; 37/37 tests passed |
 | Integration | Restore and build passed with two non-blocking analyzer/package-pruning warnings |
 | Infrastructure | Authenticated restore not run because no GitHub Packages credential was available |
 | User interface | Restore passed and the Android assembly compiled; the full multi-target build hit a local MSBuild task-host failure and requires workload-host/CI confirmation |
 
-The current EF Core SQLite 10.0.9 graph still resolves `SQLitePCLRaw.lib.e_sqlite3` 2.1.11, for which NuGet reports `NU1903`. This transitive advisory was not hidden or suppressed. Package-specific mitigation should be validated independently of this framework migration.
-
+After the framework migration, the EF Core SQLite 10.0.9 graph was explicitly upgraded to `SQLitePCLRaw.bundle_e_sqlite3` 3.0.3 at the shared Todo and three Clean Architecture infrastructure projects. The resolved graph now uses `SourceGear.sqlite3` 3.50.4.5 plus SQLitePCLRaw configuration/provider 3.0.3 and no longer resolves vulnerable `SQLitePCLRaw.lib.e_sqlite3` 2.1.11. API-style builds and all 37 Clean Architecture tests passed with this override.

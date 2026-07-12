@@ -6,7 +6,7 @@ This assessment covers all 11 directories whose names begin with `exp.` under `D
 
 The collection is a good fit for a reference-example monorepo. Ten repositories are deliberately small, focused or layered demonstrations and should remain that way. `exp.apis.clean-arch` is the sole full Clean Architecture reference and should retain Domain, Application, Infrastructure, gRPC host, and test separation. The strongest consolidation opportunity is the byte-identical `ToDoApp.Data.Sqlite` project copied across the REST, gRPC, GraphQL, and SOAP repositories. It can become one narrowly scoped shared Todo persistence project. Weather authentication samples should remain independent because their point is comparative security configuration, although contracts and test helpers may later be shared where doing so does not hide the demonstrated mechanism.
 
-The inventory contains 38 project files and 34 legacy `.sln` files, but no `.slnx`, solution filters, central package management, shared build configuration, or GitHub Actions workflows. Frameworks span .NET 8, 9, and 10; one Clean Architecture Domain project is anomalously `net9.0` while its referencing projects are `net10.0`. MAUI remains on .NET 8. Package versions also span framework generations. A single root `.slnx`, optional category `.slnf` files, root `Directory.Build.props`, and carefully staged `Directory.Packages.props` are recommended, while preserving multi-targeting where it is educationally relevant.
+The inventory originally contained 38 project files and 34 legacy `.sln` files, but no `.slnx`, solution filters, central package management, shared build configuration, or GitHub Actions workflows. The consolidated repository has since normalized all maintained projects to `net10.0`, including the former Clean Architecture Domain mismatch and MAUI targets. A single root `.slnx`, category `.slnx` files, root `Directory.Build.props`, and carefully staged `Directory.Packages.props` were adopted while preserving multi-targeting where it is educationally relevant.
 
 Security/configuration cleanup is required during migration. Committed values include sample JWT keys, user passwords, a Duende client secret, an mTLS certificate password, Redis/RabbitMQ credentials, Firebase credential files, SQL Server/MongoDB connection strings, and many fixed localhost ports. These appear to be demonstration values, but must still be replaced with explicit placeholders, user-secrets/environment-variable instructions, and safe sample files. Several SQLite paths are working-directory-sensitive, the GraphQL production connection string is malformed (`Data Source..`), gateway instructions depend on an unrelated Hour Tracker service, and Clean Architecture documentation contains stale repository names and ports.
 
@@ -18,7 +18,7 @@ Recommended approach: create monorepo foundations first; import each repository 
 
 - **Purpose/classification:** Ocelot and YARP reverse-proxy comparisons; focused integration-pattern examples, not a business layer or Clean Architecture implementation.
 - **Solutions:** `src/ApiGateway.Ocelot.RestApi/ApiGateway.Ocelot.RestApi.sln`; `src/ApiGateway.Yarp.RestApi/ApiGateway.Yarp.RestApi.sln`.
-- **Projects/frameworks:** `ApiGateway.Ocelot.RestApi.csproj` (`Microsoft.NET.Sdk.Web`, `net8.0`); `ApiGateway.Yarp.RestApi.csproj` (Web, `net9.0`).
+- **Projects/frameworks:** the migrated Ocelot and YARP Web projects now target `net10.0`.
 - **NuGet:** Ocelot project: `Asp.Versioning.Mvc 8.1.0`, `Microsoft.AspNetCore.OpenApi 8.0.6`, `Microsoft.Extensions.Logging 8.0.0`, `MMLib.SwaggerForOcelot 8.2.0`, `Ocelot 23.3.3`, `Ocelot.Cache.CacheManager 23.3.3`, `Swashbuckle.AspNetCore 6.6.2`. YARP: `Yarp.ReverseProxy 2.3.0`, `Swashbuckle.AspNetCore 9.0.3`.
 - **References/tests:** no internal project references and no test projects.
 - **Deployment/CI:** appsettings and launch profiles only; no Docker/deployment assets and no GitHub Actions.
@@ -31,7 +31,7 @@ Recommended approach: create monorepo foundations first; import each repository 
 
 - **Purpose/classification:** three complete gRPC Todo Clean Architecture variants: simple, CQRS without mediator, and CQRS with MediatR. This is the full Clean Architecture reference.
 - **Solutions:** `grpc-api.clean-arch.simple/grpc-api.clean-arch.simple.sln`, `grpc-api.clean-arch.cqrs-only/grpc-api.clean-arch.cqrs-only.sln`, and `grpc-api.clean-arch.cqrs-mediatr/grpc-api.clean-arch.cqrs-mediatr.sln`.
-- **Projects/frameworks:** each variant has `Exp.TodoApp.Domain`, `Application`, `Infrastructure`, `GrpcApi`, and `tests/Exp.TodoApp.Tests` (15 projects total). All target `net10.0` except `grpc-api.clean-arch.simple/src/Exp.TodoApp.Domain`, which targets `net9.0`.
+- **Projects/frameworks:** each variant has `Exp.TodoApp.Domain`, `Application`, `Infrastructure`, `GrpcApi`, and `tests/Exp.TodoApp.Tests` (15 projects total). All migrated projects target `net10.0`.
 - **NuGet:** common application packages are `AutoMapper 15.1.0`, `FluentValidation 12.1.0`, `FluentValidation.DependencyInjectionExtensions 12.1.0`, configuration/DI abstractions `10.0.0`, plus `MediatR 13.1.0` in the mediator variant. Hosts use `Google.Api.CommonProtos 2.17.0`, `Grpc.AspNetCore 2.71.0`, reflection `2.71.0`, `Grpc.Tools 2.76.0`, JSON transcoding `10.0.0`, gRPC Swagger `0.10.0`, and EF Design `10.0.0`; variants additionally use health checks or Serilog (`Serilog.AspNetCore 8.0.3`, console/file `6.0.0`, environment `3.0.1`, thread `4.0.0`). Infrastructure uses EF Core/SQLite/Tools `10.0.0` and Microsoft.Extensions `10.0.0`. Tests use xUnit `2.9.3`, runner `3.1.5`, `Microsoft.NET.Test.Sdk 18.0.1`, coverlet `6.0.4`, FluentAssertions `8.8.0`, Moq `4.20.72`, and EF InMemory `10.0.0` (with variant-specific application packages).
 - **Internal references:** Application -> Domain; Infrastructure -> Application + Domain; host -> Application + Infrastructure. Tests reference either the host (MediatR variant) or Application + Domain + Infrastructure (other variants).
 - **Tests:** three `Exp.TodoApp.Tests` projects, one per variant.
@@ -44,7 +44,7 @@ Recommended approach: create monorepo foundations first; import each repository 
 ### `exp.graphql-apis.styles`
 
 - **Purpose/classification:** Hot Chocolate GraphQL Todo API over SQLite; a layered example, not full Clean Architecture.
-- **Solutions/projects/frameworks:** `src/ToDoApp.Data.Sqlite/ToDoApp.Data.Sqlite.sln` and `src/ToDoApp.GraphQLApi.HotChocolate/ToDoApp.GraphQLApi.HotChocolate.sln`; matching Data (SDK, `net9.0`) and Web host (`net9.0`) projects.
+- **Solutions/projects/frameworks:** the matching migrated Data and GraphQL Web host projects target `net10.0`.
 - **NuGet/references:** Data uses EF Core, Design, and SQLite `9.0.7`; host uses `AutoMapper 15.0.0`, `HotChocolate.AspNetCore 15.1.7`, and `HotChocolate.Data.EntityFramework 15.1.7`, and references the Data project.
 - **Tests/deployment/CI:** no tests, Docker/deployment assets, or GitHub Actions; appsettings and launch profile only.
 - **Documentation:** root README, both project READMEs, Data `Docs/Help.md`.
@@ -55,7 +55,7 @@ Recommended approach: create monorepo foundations first; import each repository 
 ### `exp.graphsql-apis.auth-styles`
 
 - **Purpose/classification:** GraphQL Weather API authentication via API key, JWT, and Firebase OAuth2; focused authentication examples. Directory name has the `graphsql` typo.
-- **Solutions/projects/frameworks:** three independent solution/project pairs under `WeatherApp.GraphQLApi.{ApiKeyAuth,JwtAuth,OAuth2Firebase}`; all Web SDK and `net9.0`.
+- **Solutions/projects/frameworks:** three independently runnable Web SDK projects under GraphQL authentication; all now target `net10.0`.
 - **NuGet/references:** API-key/JWT examples use Hot Chocolate ASP.NET Core/Authorization `15.1.7` as applicable, JWT bearer `9.0.7`, and Swashbuckle `9.0.3`; Firebase adds `FirebaseAdminAuthentication.DependencyInjection 1.1.0`, `Google.Apis.Auth 1.70.0`, and `Google.Cloud.Firestore 3.10.0`. No internal project references.
 - **Tests/deployment/CI:** no tests, Docker/deployment assets, or GitHub Actions; appsettings/launch profiles only.
 - **Documentation:** root README; README and `Docs/TestMe.Md` for each project (seven files total).
@@ -66,7 +66,7 @@ Recommended approach: create monorepo foundations first; import each repository 
 ### `exp.grpc-apis.auth-styles`
 
 - **Purpose/classification:** API-key, JWT, and mutual-TLS Weather gRPC services; focused authentication examples with simple layering.
-- **Solutions/projects/frameworks:** three solution/project pairs under `WeatherApp.GrpcApi.{ApiKeyAuth,JwtAuth,MtlsAuth}`; all Web SDK and `net9.0`.
+- **Solutions/projects/frameworks:** three independently runnable Web SDK projects under gRPC authentication; all now target `net10.0`.
 - **NuGet/references:** all use `Grpc.AspNetCore 2.71.0` and reflection `2.71.0`; JWT adds `Microsoft.AspNetCore.Authentication.JwtBearer 9.0.7`. No internal project references.
 - **Tests/deployment/CI:** no tests, Docker/deployment assets, or GitHub Actions; appsettings and launch profiles only.
 - **Documentation:** root README plus README and `Docs/TestMe.Md` per example.
@@ -77,7 +77,7 @@ Recommended approach: create monorepo foundations first; import each repository 
 ### `exp.grpc-apis.styles`
 
 - **Purpose/classification:** native gRPC and JSON-transcoded gRPC Todo APIs over SQLite; layered examples.
-- **Solutions/projects/frameworks:** three solution/project pairs: `ToDoApp.Data.Sqlite`, `ToDoApp.GrpcApi.Native`, and `ToDoApp.GrpcApi.Transcoding`; all `net9.0` (Data SDK, hosts Web SDK).
+- **Solutions/projects/frameworks:** shared Todo SQLite, native gRPC, and transcoding projects now target `net10.0`.
 - **NuGet/references:** Data uses EF Core/Design/SQLite `9.0.7`; hosts use `AutoMapper 15.0.0`, `Grpc.AspNetCore 2.71.0`, reflection `2.71.0`; transcoding adds JSON transcoding `9.0.7` and gRPC Swagger `0.9.7`. Both hosts reference Data.
 - **Tests/deployment/CI:** none; appsettings and launch profiles only; no GitHub Actions.
 - **Documentation:** root README, three project READMEs, Data Help, and two text docs.
@@ -99,7 +99,7 @@ Recommended approach: create monorepo foundations first; import each repository 
 ### `exp.rest-apis.auth-styles`
 
 - **Purpose/classification:** REST Weather authentication comparisons: API key, Basic, JWT, JWT with ASP.NET Identity/SQL Server, and Duende OAuth2; focused authentication examples.
-- **Solutions/projects/frameworks:** five independent Web SDK `net9.0` project/solution pairs under `WeatherApp.RestApi.{ApiKeyAuth,BasicAuth,JwtAuth,JwtAuthIdentity,OAuth2Duende}`.
+- **Solutions/projects/frameworks:** five independently runnable Web SDK REST authentication projects now target `net10.0`.
 - **NuGet/references:** basic/API-key use `Swashbuckle.AspNetCore 9.0.3`; JWT adds JWT bearer `9.0.7`; Identity adds OpenAPI/EF Core/SQL Server/Tools/Design/Identity/JWT bearer `9.0.7`, `System.IdentityModel.Tokens.Jwt 8.12.1`, and Swashbuckle `9.0.3`; Duende uses `Duende.IdentityServer 7.2.4`, JWT bearer `9.0.7`, `Microsoft.IdentityModel.JsonWebTokens 8.12.1`, and Swashbuckle `9.0.3`. No internal references.
 - **Tests/deployment/CI:** no tests, Docker/deployment assets, or GitHub Actions; appsettings/launch profiles only.
 - **Documentation:** root README plus README and TestMe for each sample (11 files).
@@ -110,7 +110,7 @@ Recommended approach: create monorepo foundations first; import each repository 
 ### `exp.rest-apis.styles`
 
 - **Purpose/classification:** MVC controllers, Minimal APIs, route-handler endpoints, and FastEndpoints over a common Todo SQLite layer; layered examples.
-- **Solutions/projects/frameworks:** five project/solution pairs: Data plus `ToDoApp.RestApi.{MvcControllers,Minimal,Endpoints,FastEndpoints}`; all `net9.0` (Data SDK; hosts Web SDK).
+- **Solutions/projects/frameworks:** shared Data plus the four migrated REST styles now target `net10.0`.
 - **NuGet/references:** Data uses EF Core/Design/SQLite `9.0.7`; MVC/Minimal/Endpoints use `AutoMapper 15.0.0` and Swashbuckle `9.0.3`, with OpenAPI `9.0.7` where applicable; FastEndpoints uses `FastEndpoints` and `FastEndpoints.Swagger 6.2.0`. Every host references Data.
 - **Tests/deployment/CI:** no tests, Docker/deployment assets, or GitHub Actions; appsettings/launch profiles only.
 - **Documentation:** root README, README per project, and Data Help.
@@ -121,7 +121,7 @@ Recommended approach: create monorepo foundations first; import each repository 
 ### `exp.soap-apis.styles`
 
 - **Purpose/classification:** CoreWCF SOAP Todo service over SQLite; layered focused API-style example.
-- **Solutions/projects/frameworks:** `ToDoApp.Data.Sqlite` and `ToDoApp.SoapApi.CoreWcf`, each with a solution; both `net9.0`, host uses Web SDK.
+- **Solutions/projects/frameworks:** the migrated Todo SQLite and CoreWCF SOAP Web projects now target `net10.0`.
 - **NuGet/references:** Data uses EF Core/Design/SQLite `9.0.7`; host uses `AutoMapper 15.0.0`, `CoreWCF.Http 1.7.0`, and references Data.
 - **Tests/deployment/CI:** no tests, Docker/deployment assets, or GitHub Actions; appsettings/launch profile only.
 - **Documentation:** root README, both project READMEs, Data Help.
@@ -137,7 +137,7 @@ Recommended approach: create monorepo foundations first; import each repository 
 - **Tests/deployment/CI:** no tests, packaging/deployment automation, or GitHub Actions; appsettings and launch profile only.
 - **Documentation:** root README, project README, `Docs/HelpMe.md`.
 - **Duplicates/shared code:** Todo DTO/client models overlap API contracts, but a mobile contract package must remain platform-safe and should not reference EF or ASP.NET. UI assets are unique.
-- **Configuration/staleness:** REST base URL/device-emulator routing and platform prerequisites require verification; .NET 8 MAUI workload differs from .NET 9/10 server SDKs; target list depends on host OS.
+- **Configuration/staleness:** REST base URL/device-emulator routing and platform prerequisites require verification; .NET 10 MAUI workloads remain platform-specific and the target list depends on host OS.
 - **Target:** `src/UserInterface/Maui/TodoRestClient`; portable DTOs may use `shared/Todo/Zenvera.Examples.Todo.Contracts`; UI tests under `tests/UserInterface`.
 
 ## 3. Current-to-target mapping table
@@ -179,8 +179,8 @@ Identical configuration files are common (seven matching development appsettings
 
 | Area | Current state | Compatibility/action |
 |---|---|---|
-| SDK/frameworks | .NET 8 gateway + MAUI, .NET 9 most API/auth examples, .NET 10 Clean Architecture/infrastructure | Install/pin all required SDKs in `global.json` roll-forward strategy or intentionally retarget in a later change. Do not silently upgrade during import. MAUI requires separate workloads. |
-| Clean Architecture | Mostly `net10.0`; Simple Domain is `net9.0` | A `net10.0` project can reference `net9.0`, but the mismatch is likely accidental; decide and normalize after baseline build. |
+| SDK/frameworks | All maintained examples now target .NET 10 | `global.json` pins the supported SDK feature band; MAUI still requires separate platform workloads. |
+| Clean Architecture | All projects target `net10.0` | The former Simple Domain mismatch was normalized after baseline migration validation. |
 | ASP.NET/EF | 8.0.x, 9.0.7, and 10.0.0/10.0.1 packages track different TFMs | Central versions must allow per-framework version families; do not force one incompatible version globally. |
 | gRPC | Server `2.71.0`; Tools `2.76.0`; transcoding/Swagger 9.x and 10.x | Generally separable, but validate generated code and transitive versions per TFM. Centralize compatible families only. |
 | Swagger | Swashbuckle 6.6.2, 9.0.3, 10.0.1 | Keep framework-appropriate versions initially; review breaking API changes before consolidation. |
@@ -314,7 +314,7 @@ The `shared/Weather` and `shared/Testing` projects should be created only when a
 ## 10. Items requiring manual decisions
 
 1. Should all server examples be retargeted to one supported .NET version, or should .NET 8/9/10 remain as an intentional compatibility matrix? MAUI may need a separate decision.
-2. Is the `net9.0` Simple Clean Architecture Domain project intentional?
+2. Resolved: the former Simple Clean Architecture Domain framework mismatch was not intentional and is normalized to `net10.0`.
 3. Should the three Clean Architecture variants remain fully standalone (maximum pedagogical completeness) or share Domain/contracts/test fixtures (less duplication)?
 4. Should Todo SQLite be one shared persistence project for all API styles, and should MAUI consume a separate contracts-only package?
 5. Is a shared Weather contract valuable enough to offset added indirection in tiny authentication/infrastructure samples?

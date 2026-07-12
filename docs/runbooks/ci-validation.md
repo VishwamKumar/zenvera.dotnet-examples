@@ -86,4 +86,4 @@ Validated during the .NET 10 upgrade on Windows with SDK 10.0.301:
 - Formatting: run the manifest-driven format check after authenticating the private feed so every enabled project can restore consistently.
 - Docker Compose: `deploy/local/compose.yml` passed `docker compose config --quiet` without starting services.
 
-Warnings remain visible. NuGet still reports a high-severity advisory in transitive `SQLitePCLRaw.lib.e_sqlite3` 2.1.11 through EF Core SQLite 10.0.9. GitHub-hosted runners remain the authoritative check for workflow-specific behavior.
+The former `SQLitePCLRaw.lib.e_sqlite3` 2.1.11 advisory is remediated by an explicit `SQLitePCLRaw.bundle_e_sqlite3` 3.0.3 dependency at each SQLite infrastructure boundary. The resolved graph uses `SourceGear.sqlite3` 3.50.4.5 and no longer contains the vulnerable legacy native package. GitHub-hosted runners remain the authoritative check for workflow-specific behavior.

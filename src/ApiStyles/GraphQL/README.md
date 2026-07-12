@@ -14,7 +14,7 @@ dotnet run --project src/ApiStyles/GraphQL/Exp.Todo.GraphQLApi
 
 ## Dependencies and architecture level
 
-The `net9.0` host uses Hot Chocolate ASP.NET Core and EF integration, AutoMapper, and `shared/Todo/Exp.Todo.Infrastructure.Sqlite`. SQLite creates a local `todo.db`; no external service is required. This is a focused layered example, not a full Clean Architecture reference.
+The `net10.0` host uses Hot Chocolate ASP.NET Core and EF integration, AutoMapper, and `shared/Todo/Exp.Todo.Infrastructure.Sqlite`. SQLite creates a local `todo.db`; no external service is required. This is a focused layered example, not a full Clean Architecture reference.
 
 ## Intentional simplifications and production considerations
 

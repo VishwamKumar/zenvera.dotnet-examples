@@ -13,7 +13,7 @@ Use a gRPC client or `grpcurl` for the native service. The transcoding profile o
 
 ## Dependencies and architecture level
 
-Both `net9.0` hosts use `Grpc.AspNetCore`, reflection, AutoMapper, and the shared EF Core SQLite Todo project. Transcoding adds ASP.NET Core JSON transcoding and Swagger and retains the Google annotation protos required by its contract. No external service is required.
+Both `net10.0` hosts use `Grpc.AspNetCore`, reflection, AutoMapper, and the shared EF Core SQLite Todo project. Transcoding adds ASP.NET Core JSON transcoding and Swagger and retains the Google annotation protos required by its contract. No external service is required.
 
 These are focused layered transport examples, not Clean Architecture references. Generated surfaces and proto contracts stay local to each host.
 

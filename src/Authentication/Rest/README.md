@@ -2,7 +2,7 @@
 
 ## Purpose
 
-These focused `net9.0` Weather API projects compare authentication mechanisms at the REST transport boundary. They are demonstrations, not a shared authentication platform, and each remains independently runnable.
+These focused `net10.0` Weather API projects compare authentication mechanisms at the REST transport boundary. They are demonstrations, not a shared authentication platform, and each remains independently runnable.
 
 | Mechanism/project | Ports HTTP/HTTPS | Security posture |
 |---|---:|---|

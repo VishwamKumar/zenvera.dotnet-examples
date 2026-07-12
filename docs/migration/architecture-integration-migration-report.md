@@ -41,7 +41,7 @@ The new root namespace `Exp.Todo` conflicts with the source domain type named `T
 
 All variants retain their own layers and tests. No Application code, handlers, dispatcher code, or test fixtures were shared because independent completeness and comparison clarity outweigh the small duplication reduction.
 
-The Simple Domain project remains `net9.0` while its other projects are `net10.0`, matching the source rather than silently upgrading it.
+The Simple Domain project and its related projects now target `net10.0`; this supersedes the mixed target preserved during the initial import.
 
 ### Architecture documentation review
 
@@ -68,7 +68,7 @@ Tests remain under each variant's `tests/Exp.Todo.Tests` directory as explicitly
 - Ocelot -> `src/Integration/ApiGateway/RestApis/Ocelot/Exp.ApiGateway.Ocelot`
 - YARP -> `src/Integration/ApiGateway/RestApis/Yarp/Exp.ApiGateway.Yarp`
 
-Project files, assembly/root namespaces, C# namespaces, launch profiles, and documentation were normalized. Ocelot remains `net8.0`; YARP remains `net9.0`.
+Project files, assembly/root namespaces, C# namespaces, launch profiles, and documentation were normalized. Ocelot and YARP now target `net10.0` after the subsequent framework upgrade.
 
 The gateway source contained no downstream service projects. Boundaries were preserved by retaining route/cluster configuration:
 
@@ -135,7 +135,7 @@ All three test projects passed with `--no-build --no-restore` after the successf
 ## Unresolved issues and runtime dependencies
 
 1. Duplicate/redundant CQRS/MediatR package references should be cleaned in a separate dependency-focused change.
-2. The Simple Domain project targets `net9.0` while the rest of that variant targets `net10.0`.
+2. The former Simple Domain target mismatch has been resolved; the complete variant targets `net10.0`.
 3. Source-era analyzer warnings remain and should be triaged without erasing comparison differences.
 4. SQLite files are process-working-directory-relative; each variant is independent but can create multiple local files when run from different directories.
 5. Dockerfiles were path-reviewed but images were not built.

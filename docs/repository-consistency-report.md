@@ -48,18 +48,18 @@ The API gateway projects (`Exp.ApiGateway.Ocelot` and `Exp.ApiGateway.Yarp`) do 
 | Target | Projects / purpose | Status |
 |---|---|---|
 | .NET 8 | Ocelot gateway; .NET MAUI Android/iOS/Mac Catalyst/Windows | Preserved; SDK 10 reports MAUI net8 workloads as out of support (`NETSDK1202`) |
-| .NET 9 | API styles, authentication, YARP, shared SQLite, and Simple Domain | Preserved; no framework upgrade performed |
+| .NET 10 | API styles, authentication, YARP, shared SQLite, and Simple Domain | Normalized during the subsequent .NET 10 upgrade |
 | .NET 10 | Clean Architecture applications/hosts/tests and infrastructure examples | Current selected SDK line |
 
-The Simple Clean Architecture Domain remains `net9.0` while its outer projects target `net10.0`. This compatible inward dependency is retained to avoid a framework-only edit during a consistency pass.
+The Simple Clean Architecture Domain and its outer projects now target `net10.0`; the former mixed-target exception was removed during the subsequent framework upgrade.
 
 ## Package compatibility and conflicts
 
 - AutoMapper intentionally spans 15.0.0 (API styles) and 15.1.0 (Clean Architecture).
 - EF Core spans 9.0.7 and 10.0.0 according to project target framework.
-- Swashbuckle spans 6.6.2 (Ocelot/.NET 8), 9.0.3 (.NET 9 and RabbitMQ), and 10.0.1 (several infrastructure hosts).
+- Swashbuckle versions recorded during this historical pass were superseded by the repository-wide .NET 10 package upgrade.
 - Hot Chocolate authentication/API projects consistently use 15.1.7.
-- gRPC 2.71.0 is common, while .NET 9/10 transcoding packages follow their framework lines.
+- gRPC and transcoding packages now follow the repository-wide .NET 10 package line.
 - Redis requests unavailable `Zenvera.Shared.Caching` 0.0.25 and restores 1.0.17 with `NU1603`.
 - REST/Blazor logging request unavailable `Zenvera.Shared.Logging` 1.0.8/1.0.6 and restore 1.0.17 with `NU1603` where restore can continue.
 - `Zenvera.Shared.Queuing` 0.0.10, `Zenvera.Shared.Secrets` 1.0.21, and `Zenvera.Shared.ErrorHandling` 1.0.6 are unavailable from the configured sources and block their projects.

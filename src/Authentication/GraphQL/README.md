@@ -2,7 +2,7 @@
 
 ## Purpose
 
-These focused `net9.0` Hot Chocolate Weather APIs demonstrate API-key middleware, symmetric JWT bearer authentication, and Firebase-issued token validation.
+These focused `net10.0` Hot Chocolate Weather APIs demonstrate API-key middleware, symmetric JWT bearer authentication, and Firebase-issued token validation.
 
 | Mechanism/project | Ports HTTP/HTTPS | Security posture |
 |---|---:|---|

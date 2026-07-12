@@ -33,7 +33,7 @@ The examples are useful references, not proof that every class or package choice
 | [CQRS](Cqrs/README.md) | Commands/queries through custom dispatcher | 6402 / 8402 | 5 |
 | [CQRS + MediatR](CqrsMediatR/README.md) | Commands/queries through MediatR | 6403 / 8403 | 5 |
 
-All hosts target .NET 10 except the Simple Domain project, which remains on its source `net9.0` target to avoid an unrequested framework upgrade. Each variant owns its Domain/Application/Infrastructure code even where files look similar so architectural comparison remains complete.
+All hosts and supporting projects target `net10.0`. Each variant owns its Domain/Application/Infrastructure code even where files look similar so architectural comparison remains complete.
 
 ## Build, run, and test
 

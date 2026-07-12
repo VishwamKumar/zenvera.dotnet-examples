@@ -14,7 +14,7 @@ dotnet run --project src/ApiStyles/Soap/Exp.Todo.SoapApi
 
 ## Dependencies and architecture level
 
-The `net9.0` Web host uses CoreWCF HTTP, AutoMapper, and `shared/Todo/Exp.Todo.Infrastructure.Sqlite`. SQLite creates a local `todo.db`; no external service is required. This is a focused layered interoperability example, not a full Clean Architecture reference.
+The `net10.0` Web host uses CoreWCF HTTP, AutoMapper, and `shared/Todo/Exp.Todo.Infrastructure.Sqlite`. SQLite creates a local `todo.db`; no external service is required. This is a focused layered interoperability example, not a full Clean Architecture reference.
 
 ## Intentional simplifications and production considerations
 

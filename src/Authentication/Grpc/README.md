@@ -2,7 +2,7 @@
 
 ## Purpose
 
-These focused `net9.0` Weather gRPC services demonstrate API-key metadata, JWT bearer authentication, and mutual TLS. Each keeps protocol-specific middleware and proto contracts local.
+These focused `net10.0` Weather gRPC services demonstrate API-key metadata, JWT bearer authentication, and mutual TLS. Each keeps protocol-specific middleware and proto contracts local.
 
 | Mechanism/project | Ports HTTP/HTTPS | Security posture |
 |---|---:|---|
