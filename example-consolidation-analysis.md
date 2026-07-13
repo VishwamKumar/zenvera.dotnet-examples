@@ -132,7 +132,7 @@ Recommended approach: create monorepo foundations first; import each repository 
 ### `exp.ui-styles.frameworks`
 
 - **Purpose/classification:** .NET MAUI mobile Todo client consuming a REST API; focused UI/framework example.
-- **Solutions/projects/frameworks:** `src/ToDoApp.MauiMobile.UsingRestApi/ToDoApp.MauiMobile.UsingRestApi.sln` and matching SDK project; `net8.0-android`, `net8.0-ios`, and `net8.0-maccatalyst`, with conditional Windows targeting in the project.
+- **Solutions/projects/frameworks:** the migrated MAUI client now targets .NET 10 for Android, iOS, Mac Catalyst, and Windows.
 - **NuGet/references:** `Microsoft.Maui.Controls 8.0.61`, Compatibility `8.0.61`, Configuration.Json `8.0.0`, Http `8.0.0`, and Logging.Debug `8.0.0`; no internal project reference.
 - **Tests/deployment/CI:** no tests, packaging/deployment automation, or GitHub Actions; appsettings and launch profile only.
 - **Documentation:** root README, project README, `Docs/HelpMe.md`.
@@ -214,7 +214,7 @@ No `Directory.Packages.props`, `Directory.Build.props`, `NuGet.config`, or root 
 2. **Credential exposure:** committed credential-shaped values and Firebase files may be real or derived from real projects. Treat them as exposed until manually confirmed/rotated; Git history preservation means removal from the new tip does not remove historical disclosure.
 3. **Build breakage from path relocation:** SQLite paths, Docker `COPY` paths, project references, MAUI appsettings, certificate paths, gateway routes, and documentation all assume current relative locations.
 4. **Port collisions:** many projects reuse or hardcode localhost ports; all cannot run together without an allocation registry and compose/profile overrides.
-5. **Framework/workload availability:** CI must install .NET 8/9/10 and optionally MAUI workloads. Building the entire `.slnx` on Linux may fail for platform-specific MAUI targets.
+5. **Framework/workload availability:** CI installs .NET 10. Building every MAUI target still requires platform-specific workloads and compatible macOS/Windows hosts.
 6. **Premature abstraction:** sharing authentication, infrastructure wiring, or CRUD handlers could hide the exact technology each example is intended to teach.
 7. **Clean Architecture comparison erosion:** deduplicating whole layers across variants would make the variants harder to compare and no longer complete references.
 8. **Private package/feed dependency:** `Zenvera.Shared.*` restore may fail without feed configuration or published packages.
@@ -307,13 +307,13 @@ The `shared/Weather` and `shared/Testing` projects should be created only when a
 11. Add `deploy/local` compositions for Redis, RabbitMQ, SQL Server/Identity, logging sinks, gateways and downstream demo services. Establish a documented non-colliding port registry.
 12. Fix stale/malformed configuration and docs: GraphQL SQLite string, gateway Hour Tracker assumption, Clean Architecture clone URL/ports/SQL-shaped SQLite example, project lists, doc filename casing, and MAUI emulator URLs.
 13. Introduce CI in stages: server restore/build matrix by SDK, Clean Architecture tests, focused smoke tests, Docker builds, secret scanning, then optional MAUI jobs on suitable runners.
-14. Align package versions only after the version-preserving monorepo builds. Use dependency-family conditions where .NET 8/9/10 require different majors.
+14. Align package versions only after the version-preserving monorepo builds; this was completed with compatible .NET 10 dependency families and explicit exceptions.
 15. Once root `.slnx`, filters, CI, docs, and local deployment are proven, remove redundant imported `.sln`, `.gitignore`, `.gitattributes`, and repeated build/package files in a dedicated cleanup commit.
 16. Publish a migration map from old repository paths/URLs to new example locations; archive rather than delete the original repositories so history and inbound links remain available.
 
 ## 10. Items requiring manual decisions
 
-1. Should all server examples be retargeted to one supported .NET version, or should .NET 8/9/10 remain as an intentional compatibility matrix? MAUI may need a separate decision.
+1. Resolved: all maintained examples target .NET 10; MAUI remains a separate host/workload validation concern.
 2. Resolved: the former Simple Clean Architecture Domain framework mismatch was not intentional and is normalized to `net10.0`.
 3. Should the three Clean Architecture variants remain fully standalone (maximum pedagogical completeness) or share Domain/contracts/test fixtures (less duplication)?
 4. Should Todo SQLite be one shared persistence project for all API styles, and should MAUI consume a separate contracts-only package?

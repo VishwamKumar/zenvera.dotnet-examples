@@ -39,15 +39,15 @@ The API gateway projects (`Exp.ApiGateway.Ocelot` and `Exp.ApiGateway.Yarp`) do 
 | Implicit usings | Project-local for the same reason |
 | C# language version | Framework/SDK default; no global `LangVersion` override |
 | Central package management | Opt-in and disabled by default; project-level versions remain authoritative |
-| Test stack | Three Clean Architecture test projects use xUnit 2.9.3, test SDK 18.0.1, runner 3.1.5, coverlet 6.0.4, FluentAssertions 8.8.0, and Moq 4.20.72 |
+| Test stack | Three Clean Architecture test projects use xUnit 2.9.3, test SDK 18.7.0, runner 3.1.5, coverlet 10.0.1, FluentAssertions 8.10.0, and Moq 4.20.72 |
 
-`Directory.Packages.props` remains cautious. Its optional version set covers packages already common across compatible examples, but enabling it globally would incorrectly collapse intentional .NET 8, 9, and 10 package lines.
+`Directory.Packages.props` remains cautious. Its optional version set covers packages already common across compatible examples, while explicit project versions remain authoritative until central package management is validated repository-wide.
 
 ## Framework versions
 
 | Target | Projects / purpose | Status |
 |---|---|---|
-| .NET 8 | Ocelot gateway; .NET MAUI Android/iOS/Mac Catalyst/Windows | Preserved; SDK 10 reports MAUI net8 workloads as out of support (`NETSDK1202`) |
+| .NET 10 | Ocelot gateway; .NET MAUI Android/iOS/Mac Catalyst/Windows | Upgraded after this historical pass; MAUI still requires platform-specific workloads |
 | .NET 10 | API styles, authentication, YARP, shared SQLite, and Simple Domain | Normalized during the subsequent .NET 10 upgrade |
 | .NET 10 | Clean Architecture applications/hosts/tests and infrastructure examples | Current selected SDK line |
 
@@ -55,15 +55,13 @@ The Simple Clean Architecture Domain and its outer projects now target `net10.0`
 
 ## Package compatibility and conflicts
 
-- AutoMapper intentionally spans 15.0.0 (API styles) and 15.1.0 (Clean Architecture).
-- EF Core spans 9.0.7 and 10.0.0 according to project target framework.
+- AutoMapper is normalized to 16.2.0.
+- EF Core packages are normalized to the compatible 10.0.9 line.
 - Swashbuckle versions recorded during this historical pass were superseded by the repository-wide .NET 10 package upgrade.
-- Hot Chocolate authentication/API projects consistently use 15.1.7.
+- Hot Chocolate authentication/API projects consistently use 16.4.0.
 - gRPC and transcoding packages now follow the repository-wide .NET 10 package line.
-- Redis requests unavailable `Zenvera.Shared.Caching` 0.0.25 and restores 1.0.17 with `NU1603`.
-- REST/Blazor logging request unavailable `Zenvera.Shared.Logging` 1.0.8/1.0.6 and restore 1.0.17 with `NU1603` where restore can continue.
-- `Zenvera.Shared.Queuing` 0.0.10, `Zenvera.Shared.Secrets` 1.0.21, and `Zenvera.Shared.ErrorHandling` 1.0.6 are unavailable from the configured sources and block their projects.
-- Package versions were not forcibly unified because that would be a behavior and compatibility change.
+- Private `Zenvera.Shared.*` dependencies restore from the authenticated GitHub Packages feed; no credential is stored in the repository.
+- Public package versions were normalized only after .NET 10 compatibility validation; private versions remain explicit for authenticated verification.
 
 ## Port assignments
 
@@ -103,17 +101,17 @@ The consolidation analysis and staged migration reports remain historical record
 
 No project is excluded from the root solution. Remaining inconsistencies are deliberate or externally blocked:
 
-- Multi-target .NET 8 MAUI cannot build under the selected SDK because those workload targets are out of support; upgrading it was outside this pass.
-- Three infrastructure package IDs are unavailable from configured feeds.
+- Multi-target .NET 10 MAUI requires compatible platform workloads and macOS/Windows hosts, so Linux CI retains an explicit host-specific exclusion.
+- Infrastructure examples require authenticated access to the configured private GitHub Packages feed.
 - Mechanism-suffixed host project names remain for comparison clarity and rename-risk control.
-- Framework-specific package major versions remain separate.
+- Project-level package versions remain explicit while central package management is opt-in.
 - YARP requires an external downstream Hour Tracker API on port 7198.
 
 ## Validation
 
-- `dotnet restore zenvera.dotnet-examples.slnx --configfile NuGet.config -p:NuGetAudit=false` ran and failed only at the documented MAUI support checks and unavailable `Zenvera.Shared.Queuing`, `Zenvera.Shared.Secrets`, and `Zenvera.Shared.ErrorHandling` packages. It also reported the documented `NU1603` version fallbacks.
+- The historical root restore failures were subsequently addressed through authenticated GitHub Packages access and repository-wide .NET 10 retargeting. Multi-platform MAUI validation remains host-specific.
 - The restore initially identified duplicate package references injected by the nested CqrsMediatR build file. That file was removed; the subsequent build no longer reported `NU1504`.
-- `dotnet build zenvera.dotnet-examples.slnx --no-restore -p:NuGetAudit=false` ran: 201 warnings and 26 errors. Errors were confined to the three unavailable infrastructure packages and the unsupported/missing .NET 8 MAUI workloads (`NETSDK1202`, `NETSDK1135`, and resulting Android reference errors).
+- Current category build and test results supersede the historical root build failures; see the .NET 10 upgrade report and CI runbook.
 - The earlier solution-filter validation results have been superseded by category `.slnx` validation; see the CI runbook for the current commands.
 - Markdown relative-link scan completed with no broken links.
 - Build outputs were removed again after validation so the repository finishes without generated `bin` or `obj` trees.

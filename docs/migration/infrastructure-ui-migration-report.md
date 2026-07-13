@@ -24,14 +24,14 @@ Project files, assembly names, root namespaces, XAML namespaces, and launch prof
 
 No shared Weather project was introduced. The Weather shapes are small but not materially identical across all examples, and local ownership preserves each focused demonstration. Infrastructure implementations remain independent. Committed Azure tenant/client identifiers and literal Redis/RabbitMQ/SQL/Mongo credentials or connection strings were replaced with `ENV:EXP_*` references. Compose defaults are explicitly development-only; `.env.example` contains no live credential.
 
-The local stack includes only services actually referenced: Redis, RabbitMQ, MongoDB, and SQL Server. Azure Key Vault remains external. The MAUI client stays on .NET 8 because projects are not being upgraded during migration.
+The local stack includes only services actually referenced: Redis, RabbitMQ, MongoDB, and SQL Server. Azure Key Vault remains external. The MAUI client was subsequently upgraded to .NET 10 and still requires platform-specific workloads.
 
 ## Validation
 
 Validation results are recorded after migration commands complete:
 
-- Restore: failed for the complete 44-project solution. RabbitMQ, Key Vault, and Blazor Serilog depend on unavailable `Zenvera.Shared.Queuing`, `Zenvera.Shared.Secrets`, and `Zenvera.Shared.ErrorHandling` packages. SDK 10.0.301 rejects the unchanged .NET 8 MAUI targets as out of support (`NETSDK1202`). Existing Clean Architecture projects also emit pre-existing duplicate-reference warnings.
-- Build: background service, Redis caching, and REST Serilog succeeded. RabbitMQ, Key Vault, and Blazor Serilog failed because those packages could not restore. MAUI failed with `NETSDK1202`. Background service initially exposed a namespace/type collision after normalization; its framework base type was explicitly qualified and then built with zero warnings/errors. Redis resolved unavailable `Zenvera.Shared.Caching` 0.0.25 to 1.0.17, and REST Serilog resolved unavailable `Zenvera.Shared.Logging` 1.0.8 to 1.0.17; both substitutions produced `NU1603` warnings.
+- The initial restore failed because private `Zenvera.Shared.*` packages were unauthenticated and MAUI had not yet been upgraded. These conditions were subsequently addressed by authenticated GitHub Packages configuration and .NET 10 retargeting; multi-platform MAUI CI remains host-dependent.
+- Initial build validation succeeded for the background service, Redis caching, and REST Serilog, while unauthenticated private packages and the former MAUI targets blocked the remaining examples. The background-service namespace/type collision was repaired. Subsequent GitHub Packages authentication and .NET 10 retargeting supersede those initial restore failures; current status is tracked in the CI runbook.
 - Tests: neither migrated source repository contained a test project. A complete solution test attempt did not finish and was stopped; the existing Simple Clean Architecture suite was then run as a test-runner check and passed 27/27 tests with analyzer warnings.
 - Docker Compose syntax: `docker compose -f deploy/local/compose.yml config --quiet` succeeded.
 - Secret scan: no migrated live Azure GUID, original Redis/RabbitMQ password, or literal SQL/Mongo connection string remained. Configuration uses documented `EXP_*` placeholders.

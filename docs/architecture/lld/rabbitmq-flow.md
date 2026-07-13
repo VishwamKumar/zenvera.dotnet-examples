@@ -2,7 +2,7 @@
 
 ## Scope
 
-Applies to `Exp.Weather.RestApi.RabbitMq`, a Level 1 example that publishes a serialized Weather response through the existing queuing abstraction. Its package dependency is currently unavailable from configured feeds; the design is documented because the implementation exists.
+Applies to `Exp.Weather.RestApi.RabbitMq`, a Level 1 example that publishes a serialized Weather response through the existing queuing abstraction. Its private package dependency restores from the configured GitHub Packages feed when an authorized credential is present.
 
 ```mermaid
 sequenceDiagram

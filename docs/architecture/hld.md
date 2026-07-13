@@ -31,7 +31,7 @@ Level 3 variants carry automated tests. Level 1 and 2 examples prioritize reprod
 ## Key risks
 
 - Framework diversity requires multiple targeting packs/workloads.
-- Some migrated `Zenvera.Shared.*` package versions are unavailable.
+- Infrastructure examples using `Zenvera.Shared.*` require authenticated read access to the configured GitHub Packages feed.
 - Development credentials and certificate setup can be mistaken for production guidance without reading security warnings.
 - Over-sharing or over-layering would weaken comparison clarity.
 

@@ -4,7 +4,7 @@ This directory preserves two focused gateway hosts and their boundary to externa
 
 | Gateway | Framework | Target | HTTP/HTTPS | Downstream boundary |
 |---|---|---:|---:|---|
-| `Exp.ApiGateway.Ocelot` | Ocelot | `net8.0` | 6501 / 8501 | API Audit and Hour Tracker endpoints configured in `gatewaySettings*.json` |
+| `Exp.ApiGateway.Ocelot` | Ocelot | `net10.0` | 6501 / 8501 | API Audit and Hour Tracker endpoints configured in `gatewaySettings*.json` |
 | `Exp.ApiGateway.Yarp` | YARP | `net10.0` | 6502 / 8502 | Hour Tracker at `https://localhost:7198` |
 
 The downstream services are not part of the source gateway repository and were not invented or copied into this monorepo. Start/configure them separately before expecting proxied calls to succeed.

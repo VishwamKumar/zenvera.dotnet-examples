@@ -70,7 +70,7 @@ dotnet restore zenvera.dotnet-examples.slnx --configfile NuGet.config -p:NuGetAu
 
 Result: **passed**, 9 of 9 projects restored.
 
-The initial audited restore also passed but reported `NU1903`: `AutoMapper 15.0.0` has a known high-severity advisory (`GHSA-rvv3-g6hj-g44x`). Versions were not upgraded during this migration.
+The initial audited restore reported the historical AutoMapper advisory. The subsequent .NET 10 package upgrade moved AutoMapper to 16.2.0; the old vulnerable version is no longer resolved.
 
 ## Build results
 
@@ -109,7 +109,7 @@ No migrated host requires an external service at runtime; all use local SQLite. 
 
 ## Unresolved issues
 
-1. `AutoMapper 15.0.0` has a known high-severity vulnerability. It must be reviewed/upgraded separately because this migration intentionally did not upgrade dependencies.
+1. Resolved: AutoMapper was upgraded to 16.2.0 during the repository-wide .NET 10 package pass.
 2. Existing analyzer warnings remain and should be triaged without obscuring the style comparisons.
 3. There are no automated tests or runtime smoke tests.
 4. The database path is process-working-directory-relative. This keeps each example independently runnable but can create more than one `todo.db` when invoked from different directories.

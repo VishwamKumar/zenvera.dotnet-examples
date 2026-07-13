@@ -12,11 +12,11 @@ All six examples are **Level 1 — Focused Pattern Example**. They are not four-
 
 | Capability | Example | Runtime dependency | Current build |
 |---|---|---|---|
-| Redis caching | `Caching/Redis/Exp.Weather.RestApi.RedisCaching` | Redis | Pass with package fallback warning |
-| RabbitMQ messaging | `Messaging/RabbitMq/Exp.Weather.RestApi.RabbitMq` | RabbitMQ | Blocked by unavailable package |
-| Azure Key Vault | `Secrets/AzureKeyVault/Exp.Weather.BlazorServer.KeyVault` | Azure Key Vault | Blocked by unavailable package |
-| REST logging | `Logging/Serilog/Exp.Weather.RestApi.Serilog` | SQL Server | Pass with package fallback warning |
-| Blazor logging | `Logging/Serilog/Exp.Weather.BlazorServer.Serilog` | MongoDB | Blocked by unavailable package |
+| Redis caching | `Caching/Redis/Exp.Weather.RestApi.RedisCaching` | Redis | Enabled; authenticated private-package restore required |
+| RabbitMQ messaging | `Messaging/RabbitMq/Exp.Weather.RestApi.RabbitMq` | RabbitMQ | Enabled; authenticated private-package restore required |
+| Azure Key Vault | `Secrets/AzureKeyVault/Exp.Weather.BlazorServer.KeyVault` | Azure Key Vault | Enabled; authenticated private-package restore required |
+| REST logging | `Logging/Serilog/Exp.Weather.RestApi.Serilog` | SQL Server | Enabled; authenticated private-package restore required |
+| Blazor logging | `Logging/Serilog/Exp.Weather.BlazorServer.Serilog` | MongoDB | Enabled; authenticated private-package restore required |
 | Hosted background work | `BackgroundProcessing/BackgroundService/Exp.Weather.Worker.BackgroundService` | None | Pass |
 
 ## How to run

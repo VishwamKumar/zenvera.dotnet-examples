@@ -6,9 +6,9 @@
     <AnalysisLevel>latest-recommended</AnalysisLevel>
 
     <!--
-      Nullable and ImplicitUsings are intentionally not set centrally yet.
-      Existing examples span .NET 8, 9, and 10 and must first be imported and
-      validated with their project-level behavior unchanged.
+      Nullable and ImplicitUsings remain project-local because focused examples
+      may intentionally demonstrate different compiler and framework behavior.
+      All maintained projects target .NET 10.
     -->
   </PropertyGroup>
 </Project>
