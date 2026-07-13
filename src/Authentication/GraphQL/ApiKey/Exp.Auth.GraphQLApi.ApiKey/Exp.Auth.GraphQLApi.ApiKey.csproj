@@ -16,7 +16,7 @@
     <None Remove="Controllers\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="HotChocolate.AspNetCore" Version="16.4.0" />
-    <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="16.4.0" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="16.5.0" />
+    <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="16.5.0" />
   </ItemGroup>
 </Project>
