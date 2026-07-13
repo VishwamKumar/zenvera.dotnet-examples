@@ -17,7 +17,7 @@ The HTTPS launch profiles open Swagger. Use `--launch-profile https` to select o
 
 All four `net10.0` projects reference `shared/Todo/Exp.Todo.Infrastructure.Sqlite`. The shared project uses EF Core SQLite and creates a local `todo.db` on first use. The examples use AutoMapper; three use Swashbuckle/OpenAPI, while FastEndpoints uses its own Swagger integration. No external service is required.
 
-These are focused layered examples, not Clean Architecture references. DTOs, mapping, and endpoint behavior remain in each host; persistence is shared only because the migrated implementation was materially identical.
+These are focused layered examples, not Clean Architecture references. DTOs, mapping, and endpoint behavior remain in each host; persistence is shared because the implementation is materially identical across the examples.
 
 ## Intentional simplifications and production considerations
 

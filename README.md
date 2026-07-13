@@ -166,7 +166,7 @@ Focused examples include reproducible manual scenarios in their READMEs. CI vali
 - Prefer one root solution plus category solutions over copied repository-level solutions.
 - Document intentional omissions and production hardening instead of presenting samples as production-ready.
 
-The repository itself is described in the [high-level design](docs/architecture/hld.md), [C4 documentation](docs/architecture/c4/level-1-context.md), and [reference-example monorepo ADR](docs/architecture/adr/ADR-001-reference-example-monorepo.md).
+The repository itself is described in the [high-level design](docs/architecture/hld/hld.md), [C4 documentation](docs/architecture/c4/level-1-context.md), and [reference-example monorepo ADR](docs/architecture/adr/ADR-001-reference-example-monorepo.md).
 
 ## Repository evolution
 
@@ -178,8 +178,6 @@ This repository is not a collection of newly created, one-time samples. It bring
 4. Naming, documentation, dependencies, build configuration, solutions, and CI validation were normalized while preserving the behavior and educational intent of each example.
 
 This history explains why the repository contains both compact focused examples and fully separated architecture references. Consolidation was not used as a reason to rewrite every implementation into one style or force Clean Architecture onto small demonstrations.
-
-For the detailed decisions and validation history, see the [consolidation analysis](example-consolidation-analysis.md), [migration reports](docs/migration/dotnet-10-package-upgrade-report.md), and [repository consistency report](docs/repository-consistency-report.md).
 
 ## Production-use disclaimer
 

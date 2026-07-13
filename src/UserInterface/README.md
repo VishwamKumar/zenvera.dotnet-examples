@@ -2,7 +2,7 @@
 
 ## Objective
 
-Catalog UI frameworks actually present in the migrated sources and document their rendering, hosting, state, backend, and platform constraints.
+Catalog the UI frameworks present in this repository and document their rendering, hosting, state, backend, and platform constraints.
 
 ## Maturity level
 

@@ -73,17 +73,3 @@ Runtime-only dependencies do not disable compilation. Firebase, certificates, da
 3. Keep `buildEnabled` true unless a reproducible blocker remains after a reasonable non-material repair.
 4. Document any exclusion precisely; never hide it in workflow YAML.
 5. Run all four manifest actions for the affected category plus repository hygiene.
-
-## Latest local validation
-
-Validated during the .NET 10 upgrade on Windows with SDK 10.0.301:
-
-- Manifest: 31 examples across six category solutions; one host-specific MAUI exclusion.
-- Repository hygiene: secret patterns, generated-file paths, 84 internal Markdown documents, and one Compose file; passed.
-- Category solutions: all six parsed and listed successfully with `dotnet sln`.
-- Restore/build: API styles, authentication, architecture, and integration passed on .NET 10. Infrastructure requires the private-feed credential. MAUI restored and compiled its .NET 10 Android assembly locally; the complete platform build hit a local MSBuild task-host failure and remains for CI/workload-host confirmation.
-- Tests: Simple 27/27, CQRS 5/5, and CQRS with MediatR 5/5 passed (37 total).
-- Formatting: run the manifest-driven format check after authenticating the private feed so every enabled project can restore consistently.
-- Docker Compose: `deploy/local/compose.yml` passed `docker compose config --quiet` without starting services.
-
-The former `SQLitePCLRaw.lib.e_sqlite3` 2.1.11 advisory is remediated by an explicit `SQLitePCLRaw.bundle_e_sqlite3` 3.0.3 dependency at each SQLite infrastructure boundary. The resolved graph uses `SourceGear.sqlite3` 3.50.4.5 and no longer contains the vulnerable legacy native package. GitHub-hosted runners remain the authoritative check for workflow-specific behavior.

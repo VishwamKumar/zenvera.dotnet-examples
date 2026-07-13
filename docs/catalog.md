@@ -52,4 +52,4 @@ Maturity levels are defined in the [root README](../README.md#example-maturity-l
 
 ## Status interpretation
 
-Build status reflects the .NET 10 migration validation with SDK 10.0.301. A passing build does not prove runtime dependencies or security configuration are present. Host- or credential-dependent validation remains explicit rather than hidden.
+Build status reflects validation with .NET SDK 10.0.301. A passing build does not prove runtime dependencies or security configuration are present. Host- or credential-dependent validation remains explicit rather than hidden.

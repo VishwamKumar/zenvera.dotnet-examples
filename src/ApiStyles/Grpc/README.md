@@ -1,6 +1,6 @@
 # gRPC API style examples
 
-These focused, layered Todo services compare native gRPC with gRPC JSON transcoding. Proto contracts and service behavior are preserved from the source repository.
+These focused, layered Todo services compare native gRPC with gRPC JSON transcoding. Their proto contracts and service behavior remain intentionally aligned for comparison.
 
 ## Examples and ports
 

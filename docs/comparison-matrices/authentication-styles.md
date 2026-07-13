@@ -1,6 +1,6 @@
 # Authentication styles comparison
 
-This matrix describes the migrated demonstrations, not blanket production approval. “Production-capable” always assumes the hardening listed below.
+This matrix describes the included demonstrations, not blanket production approval. “Production-capable” always assumes the hardening listed below.
 
 | Mechanism | REST | gRPC | GraphQL | Credential transport | Security strength | Rotation support | Revocation | Complexity | Recommended use | Production hardening required |
 |---|:---:|:---:|:---:|---|---|---|---|---|---|---|

@@ -5,21 +5,19 @@
 
 ## Context
 
-Zenvera's .NET demonstrations currently live in many small repositories whose names begin with `exp.`. They cover REST, gRPC, GraphQL, SOAP, authentication, API gateways, infrastructure, Clean Architecture, and user-interface frameworks. Separate repositories made each experiment easy to start, but they also duplicated solution files, repository configuration, package declarations, Todo persistence, Weather models, documentation patterns, and local settings. Discovering and comparing related examples requires moving among repositories, while build and maintenance conventions can drift.
+Zenvera's .NET demonstrations cover REST, gRPC, GraphQL, SOAP, authentication, API gateways, infrastructure, Clean Architecture, and user-interface frameworks. The collection needs to make related examples easy to discover and compare while keeping each lesson independently understandable and runnable.
 
 These repositories are educational references. They do not represent production bounded contexts and are not intended to be deployed together as one business system.
 
 ## Decision
 
-Consolidate the examples into `zenvera.dotnet-examples`, organized by learning category under `src`, with supporting `shared`, `tests`, `docs`, and `deploy/local` areas. Use one root `.slnx` as the canonical solution and add optional category navigation surfaces under `solutions` when the project count warrants them.
+Organize the examples in `zenvera.dotnet-examples` by learning category under `src`, with supporting `shared`, `tests`, `docs`, and `deploy/local` areas. Use one root `.slnx` as the canonical solution and independently openable category solutions under `solutions`.
 
 Production bounded-context rules will not be applied literally. A small example may remain a single focused project or use a simple layered structure when that best exposes the API style, authentication mechanism, framework, or infrastructure concern being taught. Full Domain, Application, Infrastructure, host, and test separation is retained for examples whose subject is Clean Architecture.
 
 Every example must remain independently runnable. It will keep its own host, configuration contract, prerequisites, and nearby run instructions. Shared projects are limited to proven neutral Todo or Weather contracts/persistence and test utilities; unrelated business behavior and example-specific authentication or infrastructure wiring will not be merged into shared libraries. Local orchestration may compose dependencies without turning the examples into one application.
 
 The root solution provides one authoritative discovery and build entry point and supports repository-wide tooling. Category-based folders and category solutions preserve focused navigation and permit building subsets, including separation of platform-specific workloads such as MAUI.
-
-Original `exp.*` repositories remain untouched during migration. Imports will use a history-preserving approach and will be validated before redundant source-era configuration is removed from the consolidated repository.
 
 ## Consequences
 
@@ -29,18 +27,17 @@ Original `exp.*` repositories remain untouched during migration. Imports will us
 - Repository, build, package, documentation, and CI conventions can be maintained once.
 - Exact duplicate code can be consolidated selectively.
 - One authoritative solution enables broad validation while category solutions keep common tasks focused.
+- Full architecture references coexist with intentionally small examples without imposing unnecessary ceremony.
 
 ## 2026 amendment — independently openable category solutions
 
-The original solution-filter approach was replaced with six category `.slnx` files. A `.slnf` is only a filtered view of another solution; independently openable category solutions better match the repository's exploration needs. The root solution remains authoritative, and CI validates category membership so duplication stays visible.
-- Full architecture references coexist with intentionally small examples without imposing unnecessary ceremony.
+Six category `.slnx` files provide independently openable views of the repository. The root solution remains authoritative, and CI validates category membership so duplication stays visible.
 
 ### Trade-offs
 
-- The root solution will eventually span multiple SDK generations and optional workloads.
+- The root solution includes optional platform workloads and private-package prerequisites.
 - Port, configuration, and dependency collisions require explicit local runbooks.
 - Shared code must be reviewed carefully so abstraction does not hide the teaching point.
-- History-preserving imports and path changes require staged migration and validation.
 
 ## Alternatives considered
 
