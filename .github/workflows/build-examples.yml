@@ -63,6 +63,10 @@ jobs:
 
       - name: Test
         shell: pwsh
+        env:
+          # Aspire 13.4.x DCP hangs starting its internal API server on hosted runners,
+          # which have no ASP.NET developer certificate. See microsoft/aspire#18041.
+          ASPIRE_DCP_USE_DEVELOPER_CERTIFICATE: "false"
         run: ./scripts/ci/Invoke-ExampleValidation.ps1 -Category '${{ matrix.category }}' -Action test
 
   infrastructure-integration-tests:
