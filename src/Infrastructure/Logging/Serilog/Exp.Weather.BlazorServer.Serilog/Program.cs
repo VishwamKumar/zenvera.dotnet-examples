@@ -1,5 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
-                           
+
 try
 {
     Log.ForContext("LogType", "Application").Information("Application started.");
