@@ -59,4 +59,11 @@
   <Folder Name="/UserInterface/">
     <Project Path="src/UserInterface/Maui/Exp.Todo.Maui.RestApiClient/Exp.Todo.Maui.RestApiClient.csproj" />
   </Folder>
+  <Folder Name="/Reference/">
+    <Project Path="src/Reference/Zenvera.DotNetExamples.Reference.AppHost/Zenvera.DotNetExamples.Reference.AppHost.csproj" />
+    <Project Path="src/Reference/Zenvera.DotNetExamples.Reference.BlazorServerHost/Zenvera.DotNetExamples.Reference.BlazorServerHost.csproj" />
+    <Project Path="src/Reference/Zenvera.DotNetExamples.Reference.RestApiHost/Zenvera.DotNetExamples.Reference.RestApiHost.csproj" />
+    <Project Path="src/Reference/Zenvera.DotNetExamples.Reference.ServiceDefaults/Zenvera.DotNetExamples.Reference.ServiceDefaults.csproj" />
+    <Project Path="tests/Reference/Zenvera.DotNetExamples.Reference.Tests/Zenvera.DotNetExamples.Reference.Tests.csproj" />
+  </Folder>
 </Solution>

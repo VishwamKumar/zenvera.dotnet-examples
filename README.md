@@ -25,6 +25,7 @@ Choose a path based on what you want to learn:
 | Learn Clean Architecture | [Simple service layer](src/Architecture/CleanArchitecture/GrpcTodo/Simple/src/Exp.Todo.GrpcApi/README.md) | [Custom CQRS](src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/src/Exp.Todo.GrpcApi/README.md), [CQRS with MediatR](src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/src/Exp.Todo.GrpcApi/README.md) |
 | Explore infrastructure patterns | [Infrastructure overview](src/Infrastructure/README.md) | Redis, RabbitMQ, Key Vault, Serilog, and background processing |
 | Explore gateways and UI | [API gateway comparison](src/Integration/ApiGateway/RestApis/README.md) | [Ocelot](src/Integration/ApiGateway/RestApis/Ocelot/Exp.ApiGateway.Ocelot/README.md), [YARP](src/Integration/ApiGateway/RestApis/Yarp/Exp.ApiGateway.Yarp/README.md), [.NET MAUI](src/UserInterface/Maui/Exp.Todo.Maui.RestApiClient/README.md) |
+| Learn Aspire local orchestration | [Aspire reference](src/Reference/README.md) | AppHost + ServiceDefaults + SQL + REST + Blazor |
 
 For a guided progression through the entire repository, follow the [recommended learning path](docs/learning-path.md).
 
@@ -61,6 +62,7 @@ See the [authentication comparison matrix](docs/comparison-matrices/authenticati
 | [API gateways](src/Integration/ApiGateway/RestApis/README.md) | 2 | Ocelot and YARP routing boundaries |
 | [Infrastructure](src/Infrastructure/README.md) | 6 | Redis, RabbitMQ, Azure Key Vault, Serilog, MongoDB/SQL sinks, and hosted background work |
 | [User interface](src/UserInterface/README.md) | 1 | .NET MAUI native client consuming the Todo REST API |
+| [Aspire reference](src/Reference/README.md) | 1 | Self-contained AppHost, ServiceDefaults, SQL, REST API, and Blazor portal |
 
 The [complete catalog](docs/catalog.md) lists every example, project path, framework, external dependency, build status, test status, and recommended learning sequence.
 
@@ -82,7 +84,7 @@ Small examples are deliberately not forced into four Clean Architecture projects
 
 - [.NET SDK 10](https://dotnet.microsoft.com/download/dotnet/10.0); `global.json` selects SDK 10.0.301 with feature-band roll-forward.
 - A trusted ASP.NET Core development certificate for HTTPS examples.
-- Docker Desktop or another Compose-compatible engine only for examples that use Redis, RabbitMQ, MongoDB, or SQL Server.
+- Docker Desktop or another Compose-compatible / Aspire-compatible container engine for Redis, RabbitMQ, MongoDB, SQL Server, and the Aspire reference sample.
 - Platform-specific .NET MAUI workloads only for the native UI example.
 
 ### Run the first example
@@ -105,6 +107,7 @@ dotnet build solutions/zenvera.api-styles.slnx
 dotnet build solutions/zenvera.authentication.slnx
 dotnet build solutions/zenvera.architecture.slnx
 dotnet build solutions/zenvera.integration.slnx
+dotnet build solutions/zenvera.reference.slnx
 ```
 
 ## Solutions and repository navigation
@@ -113,13 +116,14 @@ The repository provides one authoritative root solution and smaller category sol
 
 | Solution | Scope |
 |---|---|
-| `zenvera.dotnet-examples.slnx` | All 44 maintained projects |
+| `zenvera.dotnet-examples.slnx` | All 49 maintained projects |
 | `solutions/zenvera.api-styles.slnx` | REST, gRPC, GraphQL, SOAP, and shared Todo persistence |
 | `solutions/zenvera.authentication.slnx` | REST, gRPC, and GraphQL authentication examples |
 | `solutions/zenvera.architecture.slnx` | Clean Architecture variants and their tests |
 | `solutions/zenvera.integration.slnx` | Ocelot and YARP gateways |
 | `solutions/zenvera.infrastructure.slnx` | Infrastructure-focused Weather hosts |
 | `solutions/zenvera.user-interface.slnx` | .NET MAUI client |
+| `solutions/zenvera.reference.slnx` | Aspire AppHost reference (API, Blazor, ServiceDefaults, tests) |
 
 Open the root or a category `.slnx` in Visual Studio, Rider, or the .NET CLI. Every maintained project belongs to the root solution.
 

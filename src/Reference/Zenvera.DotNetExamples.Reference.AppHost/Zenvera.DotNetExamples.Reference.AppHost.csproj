@@ -1,0 +1,26 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.4.6">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Zenvera.DotNetExamples.Reference.AppHost</RootNamespace>
+    <AssemblyName>Zenvera.DotNetExamples.Reference.AppHost</AssemblyName>
+    <Authors>Vishwa Kumar</Authors>
+    <Company>Vishwam</Company>
+    <Product>Zenvera .NET Examples</Product>
+    <UserSecretsId>zenvera-dotnet-examples-reference-apphost</UserSecretsId>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="13.4.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zenvera.DotNetExamples.Reference.RestApiHost\Zenvera.DotNetExamples.Reference.RestApiHost.csproj" />
+    <ProjectReference Include="..\Zenvera.DotNetExamples.Reference.BlazorServerHost\Zenvera.DotNetExamples.Reference.BlazorServerHost.csproj" />
+  </ItemGroup>
+
+</Project>

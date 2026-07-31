@@ -4,7 +4,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$allowedCategories = @("api-styles", "authentication", "architecture", "integration", "infrastructure", "user-interface")
+$allowedCategories = @("api-styles", "authentication", "architecture", "integration", "infrastructure", "user-interface", "reference")
 $categorySolutions = @{
     "api-styles" = "solutions/zenvera.api-styles.slnx"
     "authentication" = "solutions/zenvera.authentication.slnx"
@@ -12,11 +12,12 @@ $categorySolutions = @{
     "integration" = "solutions/zenvera.integration.slnx"
     "infrastructure" = "solutions/zenvera.infrastructure.slnx"
     "user-interface" = "solutions/zenvera.user-interface.slnx"
+    "reference" = "solutions/zenvera.reference.slnx"
 }
 $manifest = Get-Content -Raw -LiteralPath $ManifestPath | ConvertFrom-Json
 
 if ($manifest.schemaVersion -ne 1) { throw "Unsupported manifest schemaVersion '$($manifest.schemaVersion)'." }
-if ($manifest.examples.Count -ne 31) { throw "Expected 31 catalog examples, found $($manifest.examples.Count)." }
+if ($manifest.examples.Count -ne 32) { throw "Expected 32 catalog examples, found $($manifest.examples.Count)." }
 
 $duplicateIds = $manifest.examples | Group-Object id | Where-Object Count -gt 1
 if ($duplicateIds) { throw "Duplicate example ids: $($duplicateIds.Name -join ', ')" }

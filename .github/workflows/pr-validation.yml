@@ -57,7 +57,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        category: [api-styles, authentication, architecture, integration, infrastructure, user-interface]
+        category: [api-styles, authentication, architecture, integration, infrastructure, user-interface, reference]
     steps:
       - name: Checkout
         uses: actions/checkout@v5

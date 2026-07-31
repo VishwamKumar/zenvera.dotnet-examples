@@ -1,0 +1,11 @@
+// ASP.NET Core
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Diagnostics.HealthChecks;
+global using Microsoft.Extensions.Logging;
+
+// OpenTelemetry
+global using OpenTelemetry;
+global using OpenTelemetry.Metrics;
+global using OpenTelemetry.Trace;

@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet("all", "api-styles", "authentication", "architecture", "integration", "infrastructure", "user-interface")]
+    [ValidateSet("all", "api-styles", "authentication", "architecture", "integration", "infrastructure", "user-interface", "reference")]
     [string]$Category = "all",
     [ValidateSet("restore", "build", "test", "format")]
     [string]$Action = "build"

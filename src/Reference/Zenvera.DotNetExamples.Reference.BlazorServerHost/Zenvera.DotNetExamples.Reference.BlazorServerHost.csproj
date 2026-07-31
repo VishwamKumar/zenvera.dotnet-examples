@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Zenvera.DotNetExamples.Reference.BlazorServerHost</RootNamespace>
+    <AssemblyName>Zenvera.DotNetExamples.Reference.BlazorServerHost</AssemblyName>
+    <Authors>Vishwa Kumar</Authors>
+    <Company>Vishwam</Company>
+    <Product>Zenvera .NET Examples</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zenvera.DotNetExamples.Reference.ServiceDefaults\Zenvera.DotNetExamples.Reference.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+</Project>

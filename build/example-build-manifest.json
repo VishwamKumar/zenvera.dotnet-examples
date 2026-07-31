@@ -343,6 +343,19 @@
         "platform-specific MAUI workloads"
       ],
       "exclusionReason": "Multi-target MAUI validation requires platform workloads and compatible macOS/Windows hosts; the Linux category runner cannot build every target."
+    },
+    {
+      "id": "reference-aspire-apphost",
+      "category": "reference",
+      "path": "src/Reference/Zenvera.DotNetExamples.Reference.AppHost/Zenvera.DotNetExamples.Reference.AppHost.csproj",
+      "testPath": "tests/Reference/Zenvera.DotNetExamples.Reference.Tests/Zenvera.DotNetExamples.Reference.Tests.csproj",
+      "framework": "net10.0",
+      "buildEnabled": true,
+      "testEnabled": true,
+      "externalDependencies": [
+        "container runtime for SQL Server (Aspire AppHost)"
+      ],
+      "exclusionReason": null
     }
   ]
 }

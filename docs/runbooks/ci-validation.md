@@ -7,8 +7,8 @@ GitHub Actions validates repository hygiene and every build-enabled catalog exam
 ## Workflows
 
 - `.github/workflows/pr-validation.yml` runs manifest, hygiene, secret-pattern, Markdown-link, Compose, restore, build, test, and non-rewriting format checks on pull requests.
-- `.github/workflows/build-examples.yml` runs the six-category build matrix on `main`, manual dispatch, and a weekly schedule.
-- Infrastructure-dependent integration tests are a separate, currently disabled job because no manifest entry declares such an automated test. Compile validation never starts Redis, RabbitMQ, SQL Server, or MongoDB.
+- `.github/workflows/build-examples.yml` runs the seven-category build matrix on manual dispatch.
+- Most catalog examples compile without starting Redis, RabbitMQ, SQL Server, or MongoDB. The `reference` category AppHost orchestration tests do start SQL Server through Aspire and require a container runtime on the runner.
 
 ## Category solutions
 
@@ -20,6 +20,7 @@ GitHub Actions validates repository hygiene and every build-enabled catalog exam
 | Integration | `solutions/zenvera.integration.slnx` |
 | Infrastructure | `solutions/zenvera.infrastructure.slnx` |
 | User interface | `solutions/zenvera.user-interface.slnx` |
+| Reference (Aspire) | `solutions/zenvera.reference.slnx` |
 
 The manifest validator checks that every catalog entry belongs to its category solution. The root `zenvera.dotnet-examples.slnx` remains authoritative.
 

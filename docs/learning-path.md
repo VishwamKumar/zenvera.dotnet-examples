@@ -12,6 +12,7 @@ Use the examples comparatively: run the earlier implementation, identify its bou
 8. **CQRS without MediatR** — compare explicit commands/queries and a custom dispatcher with the simple service layer.
 9. **CQRS with MediatR** — evaluate library-provided dispatch and pipeline behaviors against added dependency and abstraction cost.
 10. **UI framework comparisons** — consume the Todo REST API from the available .NET MAUI client; the catalog currently contains no invented web UI alternatives.
+11. **Aspire local orchestration** — run the self-contained `Reference` AppHost sample to see SQL, REST, Blazor, ServiceDefaults, service discovery, and orchestration tests without coupling other catalog examples.
 
 ## Suggested study loop
 

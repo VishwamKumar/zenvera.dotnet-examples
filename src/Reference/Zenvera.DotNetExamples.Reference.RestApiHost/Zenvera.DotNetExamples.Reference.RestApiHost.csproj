@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Zenvera.DotNetExamples.Reference.RestApiHost</RootNamespace>
+    <AssemblyName>Zenvera.DotNetExamples.Reference.RestApiHost</AssemblyName>
+    <Authors>Vishwa Kumar</Authors>
+    <Company>Vishwam</Company>
+    <Product>Zenvera .NET Examples</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="13.4.6" />
+    <!-- AspNetCore.OpenApi 10.x requires Microsoft.OpenApi 2.x (transitive). Do not force 3.x. -->
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zenvera.DotNetExamples.Reference.ServiceDefaults\Zenvera.DotNetExamples.Reference.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+</Project>
