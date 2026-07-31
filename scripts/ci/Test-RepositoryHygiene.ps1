@@ -3,7 +3,22 @@ param()
 
 $ErrorActionPreference = "Stop"
 $root = (Resolve-Path "$PSScriptRoot/../..").Path
-$files = @(rg --files $root)
+
+# Prefer git-tracked and non-ignored files so CI/local do not require ripgrep.
+$gitListing = @(git -C $root ls-files --cached --others --exclude-standard 2>$null)
+if ($LASTEXITCODE -ne 0) {
+    throw "git ls-files failed while enumerating repository files for hygiene checks."
+}
+
+$files = @(
+    $gitListing |
+        Where-Object { -not [string]::IsNullOrWhiteSpace($_) } |
+        ForEach-Object {
+            $normalized = $_.Replace('/', [System.IO.Path]::DirectorySeparatorChar)
+            [System.IO.Path]::GetFullPath((Join-Path $root $normalized))
+        } |
+        Where-Object { Test-Path -LiteralPath $_ -PathType Leaf }
+)
 $failures = [System.Collections.Generic.List[string]]::new()
 
 $badPathPattern = '(^|[\\/])(bin|obj|\.vs|\.idea)([\\/]|$)|\.(user|suo|db|db-shm|db-wal|sqlite|sqlite3)$'
@@ -29,7 +44,8 @@ foreach ($file in $files | Where-Object { [System.IO.Path]::GetExtension($_) -in
     }
 }
 
-$markdownFiles = Get-ChildItem $root -Recurse -Filter *.md -File
+$markdownFiles = Get-ChildItem $root -Recurse -Filter *.md -File |
+    Where-Object { $_.FullName -notmatch '[\\/](\.git|bin|obj)[\\/]' }
 foreach ($file in $markdownFiles) {
     $markdown = Get-Content -Raw -LiteralPath $file.FullName
     foreach ($match in [regex]::Matches($markdown, '(?<!\!)\[[^\]]+\]\((?!https?://|#|mailto:)([^)]+)\)')) {
@@ -42,7 +58,11 @@ foreach ($file in $markdownFiles) {
     }
 }
 
-$composeFiles = @(Get-ChildItem $root -Recurse -File | Where-Object { $_.Name -in @('compose.yml','compose.yaml','docker-compose.yml','docker-compose.yaml') })
+$composeFiles = @(Get-ChildItem $root -Recurse -File |
+    Where-Object {
+        $_.FullName -notmatch '[\\/](\.git|bin|obj)[\\/]' -and
+        $_.Name -in @('compose.yml','compose.yaml','docker-compose.yml','docker-compose.yaml')
+    })
 foreach ($compose in $composeFiles) {
     docker compose -f $compose.FullName config --quiet
     if ($LASTEXITCODE -ne 0) { $failures.Add("Invalid Docker Compose file: $($compose.FullName)") }
