@@ -95,6 +95,8 @@ dotnet test tests/Reference/Zenvera.DotNetExamples.Reference.Tests
 - Portal path: `reference-portal` root returns HTTP 200.
 - Failure case: stop the container runtime and confirm AppHost cannot start SQL / API healthily.
 
+`AppHostFixture` starts the topology once per test class and waits until `reference-api` and `reference-portal` report healthy, so the container cost is paid a single time. The first run on a machine also pulls `mcr.microsoft.com/mssql/server:2022-latest`, which is why the fixture allows a 15 minute startup budget; CI pulls that image in a dedicated step beforehand.
+
 ## Production considerations
 
 AppHost and ServiceDefaults are not production deployable units. Deploy the named product hosts separately if you promote this pattern. Add real migrations, authn/authz, secret management, and non-development health endpoint policy before production use.

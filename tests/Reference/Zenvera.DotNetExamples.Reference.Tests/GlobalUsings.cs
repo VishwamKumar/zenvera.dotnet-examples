@@ -7,5 +7,6 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 
 // Aspire / test
+global using Aspire.Hosting;
 global using Aspire.Hosting.Testing;
 global using Xunit;
