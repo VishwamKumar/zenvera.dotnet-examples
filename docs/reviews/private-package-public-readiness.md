@@ -193,7 +193,7 @@ The solution files do **not** need modification for the preferred target design 
 
 ## Static validation performed
 
-- `scripts/ci/Test-ExampleBuildManifest.ps1`: passed; 31 examples across 6 categories, with only MAUI explicitly excluded.
+- `scripts/ci/Test-ExampleBuildManifest.ps1`: passed; 32 examples across 7 categories, with only MAUI explicitly excluded.
 - `scripts/ci/Test-RepositoryHygiene.ps1`: passed; 742 files, 81 Markdown files, and 1 Compose file checked.
 - `dotnet sln <solution> list`: succeeded for the root and all six category solutions; confirmed the membership stated above.
 - Repository-wide text/reference scan excluding `.git`, IDE state, vendored web assets, and source maps: found the six project references, one private feed, workflow/runbook credential wiring, and documentation references described above; found no stored credential and no explicit private source-repository URL.

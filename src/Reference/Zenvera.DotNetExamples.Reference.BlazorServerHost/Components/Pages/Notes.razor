@@ -1,0 +1,51 @@
+@page "/notes"
+@attribute [StreamRendering(true)]
+@attribute [OutputCache(Duration = 5)]
+
+@inject NotesApiClient NotesApi
+
+<PageTitle>Notes</PageTitle>
+
+<h1>Notes</h1>
+
+<p>Loaded from the REST API using the logical resource name <code>reference-api</code>.</p>
+
+@if (_notes is null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (_notes.Count == 0)
+{
+    <p>No notes found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Created (UTC)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var note in _notes)
+            {
+                <tr>
+                    <td>@note.Id</td>
+                    <td>@note.Title</td>
+                    <td>@note.CreatedUtc.ToString("u")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IReadOnlyList<NoteDto>? _notes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _notes = await NotesApi.GetNotesAsync();
+    }
+}

@@ -31,7 +31,7 @@ The root solution provides one authoritative discovery and build entry point and
 
 ## 2026 amendment — independently openable category solutions
 
-Six category `.slnx` files provide independently openable views of the repository. The root solution remains authoritative, and CI validates category membership so duplication stays visible.
+Seven category `.slnx` files provide independently openable views of the repository, including `solutions/zenvera.reference.slnx` for the Aspire local-orchestration sample. The root solution remains authoritative, and CI validates category membership so duplication stays visible.
 
 ### Trade-offs
 

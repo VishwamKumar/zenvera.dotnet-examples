@@ -57,7 +57,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        category: [api-styles, authentication, architecture, integration, infrastructure, user-interface]
+        category: [api-styles, authentication, architecture, integration, infrastructure, user-interface, reference]
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -95,8 +95,17 @@ jobs:
         shell: pwsh
         run: ./scripts/ci/Invoke-ExampleValidation.ps1 -Category '${{ matrix.category }}' -Action build
 
+      - name: Pre-pull SQL Server image for orchestration tests
+        if: matrix.category == 'reference'
+        shell: bash
+        run: docker pull mcr.microsoft.com/mssql/server:2022-latest
+
       - name: Run enabled tests
         shell: pwsh
+        env:
+          # Aspire 13.4.x DCP hangs starting its internal API server on hosted runners,
+          # which have no ASP.NET developer certificate. See microsoft/aspire#18041.
+          ASPIRE_DCP_USE_DEVELOPER_CERTIFICATE: "false"
         run: ./scripts/ci/Invoke-ExampleValidation.ps1 -Category '${{ matrix.category }}' -Action test
 
       - name: Validate formatting without rewriting

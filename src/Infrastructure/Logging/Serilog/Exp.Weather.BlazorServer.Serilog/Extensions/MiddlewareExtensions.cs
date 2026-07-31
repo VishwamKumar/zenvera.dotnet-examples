@@ -1,4 +1,5 @@
 namespace Exp.Weather.BlazorServer.Serilog.Extensions;
+
 public static class MiddlewareExtensions
 {
     public static void ConfigureRequestPipeline(this WebApplication app)

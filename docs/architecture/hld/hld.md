@@ -12,6 +12,7 @@ The repository optimizes for comparison, independent execution, honest validatio
 - `src/Infrastructure` groups focused integrations by capability.
 - `src/Integration` preserves cross-service boundaries such as gateways.
 - `src/UserInterface` contains the UI frameworks represented by the examples.
+- `src/Reference` is a self-contained .NET Aspire local-orchestration sample (AppHost, ServiceDefaults, SQL, REST, Blazor). It does not compose other catalog examples.
 - `shared` contains only proven reusable example code.
 - `deploy/local` supplies optional local dependencies, not a deployment of every example.
 - `docs` contains the catalog, comparisons, decisions, learning paths, and runbooks.
@@ -22,11 +23,11 @@ One authoritative root `.slnx` inventories all maintained projects. Independentl
 
 ## Runtime model
 
-Each host owns a distinct development port. A learner starts one example and only its required dependencies. Shared SQLite examples use local files; Compose supports Redis, RabbitMQ, MongoDB, and SQL Server; cloud identity, secrets, and gateway downstreams remain external.
+Each host owns a distinct development port. A learner starts one example and only its required dependencies. Shared SQLite examples use local files; Compose supports Redis, RabbitMQ, MongoDB, and SQL Server for infrastructure-focused hosts; the Aspire `Reference` sample starts SQL through AppHost instead of Compose; cloud identity, secrets, and gateway downstreams remain external.
 
 ## Quality model
 
-Level 3 variants carry automated tests. Level 1 and 2 examples prioritize reproducible manual scenarios unless a test materially improves the lesson. Build prerequisites and production gaps are documented rather than hidden by rewriting examples.
+Level 3 variants carry automated tests. The Aspire `Reference` sample includes closed-box orchestration tests that start AppHost. Other Level 1 and 2 examples prioritize reproducible manual scenarios unless a test materially improves the lesson. Build prerequisites and production gaps are documented rather than hidden by rewriting examples.
 
 ## Key risks
 

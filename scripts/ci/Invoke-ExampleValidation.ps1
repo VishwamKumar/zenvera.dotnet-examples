@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet("all", "api-styles", "authentication", "architecture", "integration", "infrastructure", "user-interface")]
+    [ValidateSet("all", "api-styles", "authentication", "architecture", "integration", "infrastructure", "user-interface", "reference")]
     [string]$Category = "all",
     [ValidateSet("restore", "build", "test", "format")]
     [string]$Action = "build"
@@ -13,6 +13,10 @@ $examples = @($manifest.examples | Where-Object { $Category -eq "all" -or $_.cat
 
 foreach ($excluded in $examples | Where-Object { -not $_.buildEnabled }) {
     Write-Host "::notice title=Tracked build exclusion::$($excluded.id): $($excluded.exclusionReason)"
+}
+
+foreach ($excluded in $examples | Where-Object { $_.buildEnabled -and -not $_.testEnabled -and -not [string]::IsNullOrWhiteSpace($_.testExclusionReason) }) {
+    Write-Host "::notice title=Tracked test exclusion::$($excluded.id): $($excluded.testExclusionReason)"
 }
 
 foreach ($example in $examples | Where-Object buildEnabled) {
@@ -39,7 +43,7 @@ foreach ($example in $examples | Where-Object buildEnabled) {
         "format" {
             dotnet format whitespace $example.path --verify-no-changes --no-restore --verbosity minimal
             if ($LASTEXITCODE -ne 0) { throw "Formatting validation failed: $($example.id)" }
-            if ($example.testEnabled) {
+            if (-not [string]::IsNullOrWhiteSpace($example.testPath)) {
                 dotnet format whitespace $example.testPath --verify-no-changes --no-restore --verbosity minimal
                 if ($LASTEXITCODE -ne 0) { throw "Test formatting validation failed: $($example.id)" }
             }

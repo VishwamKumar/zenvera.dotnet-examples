@@ -4,7 +4,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$allowedCategories = @("api-styles", "authentication", "architecture", "integration", "infrastructure", "user-interface")
+$allowedCategories = @("api-styles", "authentication", "architecture", "integration", "infrastructure", "user-interface", "reference")
 $categorySolutions = @{
     "api-styles" = "solutions/zenvera.api-styles.slnx"
     "authentication" = "solutions/zenvera.authentication.slnx"
@@ -12,11 +12,12 @@ $categorySolutions = @{
     "integration" = "solutions/zenvera.integration.slnx"
     "infrastructure" = "solutions/zenvera.infrastructure.slnx"
     "user-interface" = "solutions/zenvera.user-interface.slnx"
+    "reference" = "solutions/zenvera.reference.slnx"
 }
 $manifest = Get-Content -Raw -LiteralPath $ManifestPath | ConvertFrom-Json
 
 if ($manifest.schemaVersion -ne 1) { throw "Unsupported manifest schemaVersion '$($manifest.schemaVersion)'." }
-if ($manifest.examples.Count -ne 31) { throw "Expected 31 catalog examples, found $($manifest.examples.Count)." }
+if ($manifest.examples.Count -ne 32) { throw "Expected 32 catalog examples, found $($manifest.examples.Count)." }
 
 $duplicateIds = $manifest.examples | Group-Object id | Where-Object Count -gt 1
 if ($duplicateIds) { throw "Duplicate example ids: $($duplicateIds.Name -join ', ')" }
@@ -40,6 +41,12 @@ foreach ($example in $manifest.examples) {
         if ([string]::IsNullOrWhiteSpace($example.testPath) -or -not (Test-Path -LiteralPath $example.testPath -PathType Leaf)) {
             throw "Test-enabled example '$($example.id)' needs an existing testPath."
         }
+        if (-not [string]::IsNullOrWhiteSpace($example.testExclusionReason)) {
+            throw "Test-enabled example '$($example.id)' must not have a testExclusionReason."
+        }
+    }
+    elseif (-not [string]::IsNullOrWhiteSpace($example.testPath) -and [string]::IsNullOrWhiteSpace($example.testExclusionReason)) {
+        throw "Example '$($example.id)' has a testPath with testEnabled=false and needs a testExclusionReason."
     }
 }
 
@@ -62,4 +69,7 @@ foreach ($category in $allowedCategories) {
 Write-Host "Validated $($manifest.examples.Count) examples across $($allowedCategories.Count) categories."
 foreach ($excluded in $manifest.examples | Where-Object { -not $_.buildEnabled }) {
     Write-Host "EXCLUDED $($excluded.id): $($excluded.exclusionReason)"
+}
+foreach ($excluded in $manifest.examples | Where-Object { $_.buildEnabled -and -not $_.testEnabled -and -not [string]::IsNullOrWhiteSpace($_.testExclusionReason) }) {
+    Write-Host "TEST-EXCLUDED $($excluded.id): $($excluded.testExclusionReason)"
 }

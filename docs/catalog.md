@@ -49,6 +49,7 @@ Maturity levels are defined in the [root README](../README.md#example-maturity-l
 | Clean Architecture | Custom CQRS | Level 3 | `src/Architecture/CleanArchitecture/GrpcTodo/Cqrs` | gRPC, custom dispatcher | Todo | SQLite file | Pass | 5 automated | Reference, still needs hardening | 29 |
 | Clean Architecture | CQRS with MediatR | Level 3 | `src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR` | gRPC, MediatR pipelines | Todo | SQLite file | Pass with `NU1510` | 5 automated | Reference, still needs hardening | 30 |
 | User interface | .NET MAUI REST client | Level 1 | `src/UserInterface/Maui/Exp.Todo.Maui.RestApiClient` | .NET MAUI 10 native UI, REST | Todo | Todo REST API; platform workloads and compatible hosts | Restored; Android assembly compiled locally; multi-target CI excluded | Manual | Learning only | 31 |
+| Reference | .NET Aspire local orchestration | Level 2 | `src/Reference` | Aspire AppHost, Blazor Server, REST, SQL Server | Notes | Container runtime for SQL Server | Pass | Automated orchestration tests | Learning only; AppHost is not a production host | 32 |
 
 ## Status interpretation
 

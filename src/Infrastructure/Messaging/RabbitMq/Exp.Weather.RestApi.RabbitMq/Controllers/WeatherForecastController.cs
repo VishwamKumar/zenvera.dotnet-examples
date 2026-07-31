@@ -5,17 +5,17 @@ namespace Exp.Weather.RestApi.RabbitMq.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController(IRabbitMqService rabbitMqService,
     ILogger<WeatherForecastController> logger) : ControllerBase
-{  
+{
     [HttpGet("{city}")]
     public async Task<GetWeatherForecastResponse> Get(string city)
     {
-        IEnumerable<WeatherForecast> weatherForecastData= GetWeatherForecastData();
+        IEnumerable<WeatherForecast> weatherForecastData = GetWeatherForecastData();
         GetWeatherForecastResponse weatherForecastRespData = new()
-                        {
-                            City = city,
-                            ForecastTime = DateTime.Now,
-                            WeatherForecasts = weatherForecastData
-                        };
+        {
+            City = city,
+            ForecastTime = DateTime.Now,
+            WeatherForecasts = weatherForecastData
+        };
 
         // Add  weather data in Q
         string jsonString = JsonSerializer.Serialize(weatherForecastRespData);
