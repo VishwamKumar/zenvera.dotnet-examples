@@ -21,7 +21,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+// Do not redirect HTTP→HTTPS: AppHost health probes and CreateHttpClient use HTTP endpoints.
 app.UseAntiforgery();
 app.UseOutputCache();
 app.MapStaticAssets();

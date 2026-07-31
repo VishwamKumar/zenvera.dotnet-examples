@@ -80,15 +80,13 @@ public static class Extensions
 
     public static WebApplication MapDefaultEndpoints(this WebApplication app)
     {
-        // Development-only health endpoints; review before enabling outside local orchestration.
-        if (app.Environment.IsDevelopment())
+        // AppHost probes these paths; they must be mapped whenever the sample is orchestrated,
+        // including DistributedApplicationTestingBuilder runs on CI agents.
+        app.MapHealthChecks(HealthEndpointPath);
+        app.MapHealthChecks(AlivenessEndpointPath, new HealthCheckOptions
         {
-            app.MapHealthChecks(HealthEndpointPath);
-            app.MapHealthChecks(AlivenessEndpointPath, new HealthCheckOptions
-            {
-                Predicate = r => r.Tags.Contains("live")
-            });
-        }
+            Predicate = r => r.Tags.Contains("live")
+        });
 
         return app;
     }

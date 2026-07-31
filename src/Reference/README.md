@@ -97,7 +97,15 @@ dotnet test tests/Reference/Zenvera.DotNetExamples.Reference.Tests
 
 `AppHostFixture` starts the topology once per test class and waits until `reference-api` and `reference-portal` report healthy, so the container cost is paid a single time. The first run on a machine also pulls `mcr.microsoft.com/mssql/server:2022-latest`; CI pulls that image in a dedicated step beforehand.
 
-Agents without an ASP.NET developer certificate must set `ASPIRE_DCP_USE_DEVELOPER_CERTIFICATE=false`. Aspire 13.4.x otherwise hangs while starting the DCP internal API server, and the test only reports a bare `TaskCanceledException` when the budget expires. See [microsoft/aspire#18041](https://github.com/microsoft/aspire/issues/18041).
+Category CI currently **builds and format-checks** this sample but does **not** run the orchestration tests (`testEnabled: false` in `build/example-build-manifest.json`). GitHub-hosted runners can leave `reference-api` Unhealthy under Aspire 13.4.x even after DCP starts; re-enable the tests once that is reliable. Until then, run them locally:
+
+```powershell
+dotnet test tests/Reference/Zenvera.DotNetExamples.Reference.Tests
+```
+
+Agents without an ASP.NET developer certificate must set `ASPIRE_DCP_USE_DEVELOPER_CERTIFICATE=false`. Aspire 13.4.x otherwise hangs while starting the DCP internal API server. See [microsoft/aspire#18041](https://github.com/microsoft/aspire/issues/18041).
+
+AppHost probes `/alive` (process liveness). Database readiness stays on `WaitFor(database)`; `/health` remains available for deeper checks.
 
 ## Production considerations
 

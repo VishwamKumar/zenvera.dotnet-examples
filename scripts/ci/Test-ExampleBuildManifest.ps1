@@ -41,6 +41,12 @@ foreach ($example in $manifest.examples) {
         if ([string]::IsNullOrWhiteSpace($example.testPath) -or -not (Test-Path -LiteralPath $example.testPath -PathType Leaf)) {
             throw "Test-enabled example '$($example.id)' needs an existing testPath."
         }
+        if (-not [string]::IsNullOrWhiteSpace($example.testExclusionReason)) {
+            throw "Test-enabled example '$($example.id)' must not have a testExclusionReason."
+        }
+    }
+    elseif (-not [string]::IsNullOrWhiteSpace($example.testPath) -and [string]::IsNullOrWhiteSpace($example.testExclusionReason)) {
+        throw "Example '$($example.id)' has a testPath with testEnabled=false and needs a testExclusionReason."
     }
 }
 
@@ -63,4 +69,7 @@ foreach ($category in $allowedCategories) {
 Write-Host "Validated $($manifest.examples.Count) examples across $($allowedCategories.Count) categories."
 foreach ($excluded in $manifest.examples | Where-Object { -not $_.buildEnabled }) {
     Write-Host "EXCLUDED $($excluded.id): $($excluded.exclusionReason)"
+}
+foreach ($excluded in $manifest.examples | Where-Object { $_.buildEnabled -and -not $_.testEnabled -and -not [string]::IsNullOrWhiteSpace($_.testExclusionReason) }) {
+    Write-Host "TEST-EXCLUDED $($excluded.id): $($excluded.testExclusionReason)"
 }

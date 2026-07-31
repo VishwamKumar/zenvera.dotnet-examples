@@ -351,11 +351,12 @@
       "testPath": "tests/Reference/Zenvera.DotNetExamples.Reference.Tests/Zenvera.DotNetExamples.Reference.Tests.csproj",
       "framework": "net10.0",
       "buildEnabled": true,
-      "testEnabled": true,
+      "testEnabled": false,
       "externalDependencies": [
         "container runtime for SQL Server (Aspire AppHost)"
       ],
-      "exclusionReason": null
+      "exclusionReason": null,
+      "testExclusionReason": "Aspire AppHost orchestration tests are run locally. GitHub-hosted runners currently leave reference-api Unhealthy long enough to fail the category job under Aspire 13.4.x; see src/Reference/README.md and microsoft/aspire#18041."
     }
   ]
 }
