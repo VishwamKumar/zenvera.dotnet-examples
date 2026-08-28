@@ -39,6 +39,8 @@ MAUI page → REST data service → Todo Minimal REST API. Validate both the suc
 
 `RestApiUrl` defaults to `http://localhost:5101`. Android emulators normally use `10.0.2.2` for the host; physical devices need a reachable address. Install the appropriate .NET 10 MAUI workload.
 
+On Windows, Android Java callable wrappers generate paths longer than MAX_PATH inside this nested project folder. The Android `IntermediateOutputPath` is therefore `obj/ma/<Configuration>/` at the repository root (already gitignored). Release Mac Catalyst on Windows builds `maccatalyst-x64` only.
+
 Use environment variables or .NET user secrets for sensitive development values. Never place live credentials in committed JSON, launch profiles, or NuGet configuration.
 
 ## How to run

@@ -10,14 +10,14 @@ All six examples are **Level 1 — Focused Pattern Example**. They are not four-
 
 ## Catalog
 
-| Capability | Example | Runtime dependency | Current build |
-|---|---|---|---|
-| Redis caching | `Caching/Redis/Exp.Weather.RestApi.RedisCaching` | Redis | Enabled |
-| RabbitMQ messaging | `Messaging/RabbitMq/Exp.Weather.RestApi.RabbitMq` | RabbitMQ | Enabled |
-| Azure Key Vault | `Secrets/AzureKeyVault/Exp.Weather.BlazorServer.KeyVault` | Azure Key Vault | Enabled |
-| REST logging | `Logging/Serilog/Exp.Weather.RestApi.Serilog` | SQL Server | Enabled |
-| Blazor logging | `Logging/Serilog/Exp.Weather.BlazorServer.Serilog` | MongoDB | Enabled |
-| Hosted background work | `BackgroundProcessing/BackgroundService/Exp.Weather.Worker.BackgroundService` | None | Pass |
+| Capability | Example | Adapter | Runtime dependency | Current build |
+|---|---|---|---|---|
+| Redis caching | `Caching/Redis/Exp.Weather.RestApi.RedisCaching` | `Exp.Shared.Caching` | Redis | Enabled |
+| RabbitMQ messaging | `Messaging/RabbitMq/Exp.Weather.RestApi.RabbitMq` | `Exp.Shared.Queuing` | RabbitMQ | Enabled |
+| Azure Key Vault | `Secrets/AzureKeyVault/Exp.Weather.BlazorServer.KeyVault` | `Exp.Shared.Secrets` | Azure Key Vault | Enabled |
+| REST logging | `Logging/Serilog/Exp.Weather.RestApi.Serilog` | `Exp.Shared.Logging` | SQL Server | Enabled |
+| Blazor logging | `Logging/Serilog/Exp.Weather.BlazorServer.Serilog` | `Exp.Shared.Logging` | MongoDB | Enabled |
+| Hosted background work | `BackgroundProcessing/BackgroundService/Exp.Weather.Worker.BackgroundService` | None | None | Pass |
 
 ## How to run
 

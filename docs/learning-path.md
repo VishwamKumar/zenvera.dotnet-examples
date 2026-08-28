@@ -6,7 +6,7 @@ Use the examples comparatively: run the earlier implementation, identify its bou
 2. **gRPC native and transcoding** — inspect the native Protobuf contract, call the RPC, then compare the annotated transcoding contract and HTTP/JSON surface.
 3. **GraphQL and SOAP comparisons** — contrast selectable GraphQL queries with SOAP’s explicit service/data contracts and metadata-oriented interoperability.
 4. **Authentication styles** — start with API keys and JWT, then examine Identity/OAuth2, Firebase, and mutual TLS. Separate authentication from authorization and credential lifecycle.
-5. **Infrastructure concerns** — add Redis caching, RabbitMQ messaging, secret retrieval, structured logging, and background work one concern at a time.
+5. **Infrastructure concerns** — add Redis caching, RabbitMQ messaging, secret retrieval, structured logging, and background work one concern at a time. Registration for the first four lives in `shared/Infrastructure` adapters (`Caching`, `Queuing`, `Secrets`, `Logging`); the Weather host shows how each abstraction is used.
 6. **API gateway** — compare Ocelot and YARP route configuration while keeping downstream ownership and missing resilience/security policy visible.
 7. **Simple Clean Architecture** — trace dependency direction through Domain, Application, Infrastructure, gRPC host, and tests without adding a mediator.
 8. **CQRS without MediatR** — compare explicit commands/queries and a custom dispatcher with the simple service layer.

@@ -67,6 +67,7 @@ Add threat modeling, secure secret storage and rotation, least-privilege authori
 ## Related examples
 
 - [Infrastructure patterns](../../../README.md)
+- [Shared queuing adapter](../../../../../shared/Infrastructure/README.md)
 - [Example catalog](../../../../../docs/catalog.md)
 - [Learning path](../../../../../docs/learning-path.md)
 

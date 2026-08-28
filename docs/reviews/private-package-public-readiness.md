@@ -8,6 +8,8 @@ Scope: original review was static and analysis-first. The 2026-08-27 update reco
 
 Option 2 was implemented with a reusable in-repo variant: thin adapters under `shared/Infrastructure` wrap public Redis, RabbitMQ, Azure Key Vault, and Serilog packages and preserve the original `AddXxxService` / `IXxxService` style. The five infrastructure hosts now use `ProjectReference` instead of private `Zenvera.Shared.*` packages. `NuGet.config` is nuget.org-only, and CI no longer injects GitHub Packages credentials.
 
+Current public-readiness state: root and category restores no longer depend on a private feed. MAUI remains a separate workload/platform constraint and is still excluded from Linux CI.
+
 The remainder of this document is the original 2026-07-12 assessment and is retained as historical context.
 
 ## Executive assessment

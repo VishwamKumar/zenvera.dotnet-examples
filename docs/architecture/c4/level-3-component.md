@@ -9,6 +9,12 @@ flowchart TB
     Concern[Mechanism integration]
     Host1 --> Concern
   end
+  subgraph InfraFocused[Level 1 infrastructure example]
+    InfraHost[Weather host]
+    Adapter[shared/Infrastructure adapter]
+    Provider[Redis / RabbitMQ / Key Vault / Serilog sink]
+    InfraHost --> Adapter --> Provider
+  end
   subgraph Layered[Level 2 layered example]
     Delivery[REST / gRPC / GraphQL / SOAP delivery]
     Mapping[DTO and mapping layer]
@@ -30,5 +36,7 @@ flowchart TB
     Tests --> Infrastructure
   end
 ```
+
+Infrastructure hosts keep Weather behavior in the example project and delegate Redis, RabbitMQ, Key Vault, and Serilog wiring to the matching `Exp.Shared.*` adapter. The background-service example has no adapter. See the [shared infrastructure README](../../../../shared/Infrastructure/README.md).
 
 Dependency direction—not the use or absence of dependency injection or MediatR—is the relevant architectural test in the Level 3 examples.

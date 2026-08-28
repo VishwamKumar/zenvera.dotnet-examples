@@ -1,6 +1,6 @@
 # Example catalog
 
-This catalog lists runnable examples, not every supporting project. `shared/Todo/Exp.Todo.Infrastructure.Sqlite` and `shared/Infrastructure` adapters are supporting projects used by hosts and are therefore not listed as independently runnable examples.
+This catalog lists runnable examples, not every supporting project. Shared libraries used by hosts are listed under [Supporting projects](#supporting-projects).
 
 Maturity levels are defined in the [root README](../README.md#example-maturity-levels). “Learning only” means the implementation requires a production review and hardening; maturity is not a readiness score.
 
@@ -50,6 +50,21 @@ Maturity levels are defined in the [root README](../README.md#example-maturity-l
 | Clean Architecture | CQRS with MediatR | Level 3 | `src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR` | gRPC, MediatR pipelines | Todo | SQLite file | Pass with `NU1510` | 5 automated | Reference, still needs hardening | 30 |
 | User interface | .NET MAUI REST client | Level 1 | `src/UserInterface/Maui/Exp.Todo.Maui.RestApiClient` | .NET MAUI 10 native UI, REST | Todo | Todo REST API; platform workloads and compatible hosts | Restored; Android assembly compiled locally; multi-target CI excluded | Manual | Learning only | 31 |
 | Reference | .NET Aspire local orchestration | Level 2 | `src/Reference` | Aspire AppHost, Blazor Server, REST, SQL Server | Notes | Container runtime for SQL Server | Pass | Automated orchestration tests | Learning only; AppHost is not a production host | 32 |
+
+## Supporting projects
+
+These libraries are not independently runnable. They exist so hosts can share proven persistence or public-package wiring without a private NuGet feed.
+
+| Project | Path | Role | Used by |
+|---|---|---|---|
+| Todo SQLite persistence | `shared/Todo/Exp.Todo.Infrastructure.Sqlite` | EF Core SQLite store for Todo API-style hosts | REST, gRPC, GraphQL, SOAP Todo examples |
+| Configuration helper | `shared/Infrastructure/Exp.Shared.Configuration` | `ENV:` placeholder resolution, feature flags, `BindResolved` | Caching, queuing, secrets, and logging adapters |
+| Caching adapter | `shared/Infrastructure/Exp.Shared.Caching` | Redis or in-memory `ICacheService` via `AddCachingService` | Redis caching Weather API |
+| Queuing adapter | `shared/Infrastructure/Exp.Shared.Queuing` | RabbitMQ publish/consume via `AddRabbitMqService` | RabbitMQ Weather API |
+| Secrets adapter | `shared/Infrastructure/Exp.Shared.Secrets` | Azure Key Vault `ISecretService` via `AddSecretsService` | Key Vault Blazor host |
+| Logging adapter | `shared/Infrastructure/Exp.Shared.Logging` | Serilog categories and sinks via `AddCustomLogging` | REST and Blazor Serilog hosts |
+
+See the [shared infrastructure README](../shared/Infrastructure/README.md) for registration names, feature flags, and the public-package mapping.
 
 ## Status interpretation
 

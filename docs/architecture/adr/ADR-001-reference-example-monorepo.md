@@ -35,7 +35,7 @@ Seven category `.slnx` files provide independently openable views of the reposit
 
 ## 2026 amendment — in-repo infrastructure adapters
 
-Infrastructure examples no longer restore private `Zenvera.Shared.*` packages. Redis, RabbitMQ, Azure Key Vault, and Serilog hosts reference thin adapters under `shared/Infrastructure` that wrap public NuGet packages and keep the original `AddXxxService` / `IXxxService` registration style. The adapters are example-sized teaching code, not a production platform.
+Infrastructure examples no longer restore private `Zenvera.Shared.*` packages. Redis, RabbitMQ, Azure Key Vault, and Serilog hosts reference thin adapters under `shared/Infrastructure` (`Exp.Shared.Configuration`, `Caching`, `Queuing`, `Secrets`, `Logging`) that wrap public NuGet packages and keep the original `AddXxxService` / `IXxxService` registration style. The adapters are example-sized teaching code, not a production platform. See the [shared infrastructure README](../../../../shared/Infrastructure/README.md).
 
 ### Trade-offs
 

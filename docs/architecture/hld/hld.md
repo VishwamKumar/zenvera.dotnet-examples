@@ -13,7 +13,7 @@ The repository optimizes for comparison, independent execution, honest validatio
 - `src/Integration` preserves cross-service boundaries such as gateways.
 - `src/UserInterface` contains the UI frameworks represented by the examples.
 - `src/Reference` is a self-contained .NET Aspire local-orchestration sample (AppHost, ServiceDefaults, SQL, REST, Blazor). It does not compose other catalog examples.
-- `shared` contains only proven reusable example code.
+- `shared` contains proven reusable example code: Todo SQLite persistence (`Exp.Todo.Infrastructure.Sqlite`) and thin infrastructure adapters (`Exp.Shared.Configuration`, `Caching`, `Queuing`, `Secrets`, `Logging`) over public packages.
 - `deploy/local` supplies optional local dependencies, not a deployment of every example.
 - `docs` contains the catalog, comparisons, decisions, learning paths, and runbooks.
 
@@ -31,7 +31,7 @@ Level 3 variants carry automated tests. The Aspire `Reference` sample includes c
 
 ## Key risks
 
-- The MAUI example requires platform-specific workloads and compatible build hosts.
+- The MAUI example requires platform-specific workloads and compatible build hosts. On Windows, Android Java stubs exceed MAX_PATH under the project folder, so Android intermediates are written to repository `obj/ma/`.
 - Infrastructure examples restore public packages and in-repo adapters under `shared/Infrastructure`; Redis, RabbitMQ, SQL Server, MongoDB, and Azure Key Vault remain runtime dependencies.
 - Development credentials and certificate setup can be mistaken for production guidance without reading the security warnings.
 - Over-sharing or over-layering would weaken comparison clarity.

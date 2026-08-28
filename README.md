@@ -60,7 +60,7 @@ See the [authentication comparison matrix](docs/comparison-matrices/authenticati
 |---|---:|---|
 | [Clean Architecture](src/Architecture/CleanArchitecture/GrpcTodo/README.md) | 3 | Simple service layer, CQRS with a custom dispatcher, and CQRS with MediatR |
 | [API gateways](src/Integration/ApiGateway/RestApis/README.md) | 2 | Ocelot and YARP routing boundaries |
-| [Infrastructure](src/Infrastructure/README.md) | 6 | Redis, RabbitMQ, Azure Key Vault, Serilog, MongoDB/SQL sinks, and hosted background work |
+| [Infrastructure](src/Infrastructure/README.md) | 6 | Redis, RabbitMQ, Azure Key Vault, Serilog, MongoDB/SQL sinks, and hosted background work; wiring lives in [shared adapters](shared/Infrastructure/README.md) |
 | [User interface](src/UserInterface/README.md) | 1 | .NET MAUI native client consuming the Todo REST API |
 | [Aspire reference](src/Reference/README.md) | 1 | Self-contained AppHost, ServiceDefaults, SQL, REST API, and Blazor portal |
 
@@ -121,7 +121,7 @@ The repository provides one authoritative root solution and smaller category sol
 | `solutions/zenvera.authentication.slnx` | REST, gRPC, and GraphQL authentication examples |
 | `solutions/zenvera.architecture.slnx` | Clean Architecture variants and their tests |
 | `solutions/zenvera.integration.slnx` | Ocelot and YARP gateways |
-| `solutions/zenvera.infrastructure.slnx` | Infrastructure-focused Weather hosts |
+| `solutions/zenvera.infrastructure.slnx` | Infrastructure-focused Weather hosts and `shared/Infrastructure` adapters |
 | `solutions/zenvera.user-interface.slnx` | .NET MAUI client |
 | `solutions/zenvera.reference.slnx` | Aspire AppHost reference (API, Blazor, ServiceDefaults, tests) |
 
