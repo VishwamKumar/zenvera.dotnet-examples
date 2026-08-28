@@ -37,7 +37,7 @@ Client → Weather controller → structured log pipeline → configured sinks. 
 
 ## Configuration
 
-HTTP 5114; HTTPS 6114. Configure SQL Server and sink settings outside source; authenticate to the private package feed for `Zenvera.Shared.Logging`.
+HTTP 5114; HTTPS 6114. Configure SQL Server and sink settings outside source. The host references `shared/Infrastructure/Exp.Shared.Logging`.
 
 Use environment variables or .NET user secrets for sensitive development values. Never place live credentials in committed JSON, launch profiles, or NuGet configuration.
 

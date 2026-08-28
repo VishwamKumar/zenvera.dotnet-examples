@@ -17,7 +17,7 @@ public sealed class AppHostFixture : IAsyncLifetime
     public DistributedApplication App =>
         _app ?? throw new InvalidOperationException("The AppHost topology has not been started.");
 
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         using var startup = new CancellationTokenSource(StartupTimeout);
         var cancellationToken = startup.Token;
@@ -63,7 +63,7 @@ public sealed class AppHostFixture : IAsyncLifetime
         }
     }
 
-    public async Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         if (_app is not null)
         {

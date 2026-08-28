@@ -11,6 +11,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
-    <PackageReference Include="Zenvera.Shared.Queuing" Version="1.0.19" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\shared\Infrastructure\Exp.Shared.Queuing\Exp.Shared.Queuing.csproj" />
   </ItemGroup>
 </Project>

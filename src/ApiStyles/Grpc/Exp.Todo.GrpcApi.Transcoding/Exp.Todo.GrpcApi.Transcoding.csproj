@@ -14,10 +14,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="16.2.0" />
-    <PackageReference Include="Grpc.AspNetCore" Version="2.80.0" />
-    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.80.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Grpc.JsonTranscoding" Version="10.0.9" />
-    <PackageReference Include="Microsoft.AspNetCore.Grpc.Swagger" Version="0.10.9" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.83.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.83.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Grpc.JsonTranscoding" Version="10.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Grpc.Swagger" Version="0.10.11" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\shared\Todo\Exp.Todo.Infrastructure.Sqlite\Exp.Todo.Infrastructure.Sqlite.csproj" />

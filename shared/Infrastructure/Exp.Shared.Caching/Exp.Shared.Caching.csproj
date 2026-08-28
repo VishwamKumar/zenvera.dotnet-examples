@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Authors>Vishwa Kumar</Authors>
+    <Company>Vishwam</Company>
+    <Product>Zenvera .NET Examples</Product>
+    <AssemblyName>Exp.Shared.Caching</AssemblyName>
+    <RootNamespace>Exp.Shared.Caching</RootNamespace>
+    <Description>Example-local Redis/in-memory cache adapter over IDistributedCache.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.11" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Exp.Shared.Configuration\Exp.Shared.Configuration.csproj" />
+  </ItemGroup>
+</Project>

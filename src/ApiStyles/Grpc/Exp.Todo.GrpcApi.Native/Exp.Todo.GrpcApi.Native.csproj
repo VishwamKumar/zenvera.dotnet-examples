@@ -16,10 +16,10 @@
     <PackageReference Include="AutoMapper" Version="16.2.0">
       <TreatAsUsed>true</TreatAsUsed>
     </PackageReference>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.80.0">
+    <PackageReference Include="Grpc.AspNetCore" Version="2.83.0">
       <TreatAsUsed>true</TreatAsUsed>
     </PackageReference>
-    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.80.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.83.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\shared\Todo\Exp.Todo.Infrastructure.Sqlite\Exp.Todo.Infrastructure.Sqlite.csproj" />

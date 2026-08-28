@@ -1,0 +1,13 @@
+global using System.Text.RegularExpressions;
+global using Exp.Shared.Configuration;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Logging;
+global using Serilog;
+global using Serilog.Context;
+global using Serilog.Core;
+global using Serilog.Debugging;
+global using Serilog.Events;
+global using Serilog.Sinks.MSSqlServer;

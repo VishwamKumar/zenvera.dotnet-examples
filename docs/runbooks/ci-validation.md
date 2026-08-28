@@ -28,17 +28,7 @@ The manifest validator checks that every catalog entry belongs to its category s
 
 Run from the repository root with PowerShell 7 and the SDK selected by `global.json`:
 
-For private `Zenvera.Shared.*` packages, set a user-scoped NuGet credential environment variable once. Use a classic GitHub token with `read:packages` and repository access; never place it in `NuGet.config`:
-
-```powershell
-$credential = "Username=<github-user>;Password=<read-packages-token>;ValidAuthenticationTypes=Basic"
-[Environment]::SetEnvironmentVariable(
-  "NuGetPackageSourceCredentials_github-packages",
-  $credential,
-  [EnvironmentVariableTarget]::User)
-```
-
-Open a new terminal afterward. GitHub Actions creates the same variable from `GH_PACKAGES_READ_TOKEN`, then `GH_PACKAGES_TOKEN`, falling back to the workflow `GITHUB_TOKEN`.
+Restore uses nuget.org only. No private package feed or GitHub Packages credential is required.
 
 ```powershell
 ./scripts/ci/Test-ExampleBuildManifest.ps1
@@ -63,7 +53,7 @@ Formatting uses `dotnet format whitespace --verify-no-changes`; it reports diffe
 
 ## Tracked exclusions
 
-An example may be disabled only when `exclusionReason` is non-empty. The MAUI client is the sole tracked exclusion because its Android, iOS, Mac Catalyst, and Windows targets require platform workloads and compatible macOS/Windows hosts that the Linux category runner cannot provide. Infrastructure examples remain enabled and restore from the authenticated GitHub Packages feed.
+An example may be disabled only when `exclusionReason` is non-empty. The MAUI client is the sole tracked exclusion because its Android, iOS, Mac Catalyst, and Windows targets require platform workloads and compatible macOS/Windows hosts that the Linux category runner cannot provide.
 
 Runtime-only dependencies do not disable compilation. Firebase, certificates, databases, gateways, Redis, and logging sinks are required only for their documented runtime or integration scenarios.
 

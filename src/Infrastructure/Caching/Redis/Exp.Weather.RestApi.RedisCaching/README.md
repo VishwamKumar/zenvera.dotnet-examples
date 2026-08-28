@@ -2,7 +2,7 @@
 
 ## Objective
 
-Demonstrate cache-aside-style Weather responses through the shared caching package.
+Demonstrate cache-aside-style Weather responses through Redis or in-memory distributed cache.
 
 ## Maturity level
 
@@ -37,7 +37,7 @@ Client → Weather controller → caching abstraction → Redis/in-memory provid
 
 ## Configuration
 
-HTTP 5111; HTTPS 6111. Redis defaults are under `RedisCacheSettings`; local Redis is available through `deploy/local/compose.yml`. Private package-feed authentication is required to restore.
+HTTP 5111; HTTPS 6111. Redis defaults are under `CacheSettings`; local Redis is available through `deploy/local/compose.yml`. The host references `shared/Infrastructure/Exp.Shared.Caching`, which uses public Redis packages.
 
 Use environment variables or .NET user secrets for sensitive development values. Never place live credentials in committed JSON, launch profiles, or NuGet configuration.
 

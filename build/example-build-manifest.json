@@ -264,8 +264,7 @@
       "buildEnabled": true,
       "testEnabled": false,
       "externalDependencies": [
-        "Redis at runtime",
-        "Zenvera.Shared.Caching 0.0.25 resolves to 1.0.17"
+        "Redis at runtime"
       ],
       "exclusionReason": null
     },
@@ -277,8 +276,7 @@
       "buildEnabled": true,
       "testEnabled": false,
       "externalDependencies": [
-        "RabbitMQ at runtime",
-        "Zenvera.Shared.Queuing 0.0.10"
+        "RabbitMQ at runtime"
       ],
       "exclusionReason": null
     },
@@ -290,8 +288,7 @@
       "buildEnabled": true,
       "testEnabled": false,
       "externalDependencies": [
-        "Azure Key Vault at runtime",
-        "Zenvera.Shared.Secrets 1.0.21"
+        "Azure Key Vault at runtime"
       ],
       "exclusionReason": null
     },
@@ -303,8 +300,7 @@
       "buildEnabled": true,
       "testEnabled": false,
       "externalDependencies": [
-        "SQL Server at runtime",
-        "Zenvera.Shared.Logging from private GitHub package feed"
+        "SQL Server at runtime"
       ],
       "exclusionReason": null
     },
@@ -316,8 +312,7 @@
       "buildEnabled": true,
       "testEnabled": false,
       "externalDependencies": [
-        "MongoDB at runtime",
-        "Zenvera.Shared.ErrorHandling 1.0.6"
+        "MongoDB at runtime"
       ],
       "exclusionReason": null
     },

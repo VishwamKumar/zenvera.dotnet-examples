@@ -24,7 +24,7 @@ Show a self-contained .NET Aspire local orchestration topology: AppHost composit
 - Production Aspire publishing or container image publishing for AppHost
 - Coupling to any other example under `src/ApiStyles`, `Authentication`, `Infrastructure`, etc.
 - Full EF migrations (uses `EnsureCreated` for the teaching sample)
-- Shared `Zenvera.Shared.Telemetry` integration (deferred to shared-package alignment)
+- Full OpenTelemetry customization beyond ServiceDefaults
 
 ## Architecture
 

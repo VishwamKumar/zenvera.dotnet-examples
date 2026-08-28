@@ -1,7 +1,14 @@
 # Private package public-readiness review
 
 Date: 2026-07-12  
-Scope: static, analysis-first review; no package or build behavior was changed.
+Updated: 2026-08-27  
+Scope: original review was static and analysis-first. The 2026-08-27 update records the implemented replacement.
+
+## Resolution (2026-08-27)
+
+Option 2 was implemented with a reusable in-repo variant: thin adapters under `shared/Infrastructure` wrap public Redis, RabbitMQ, Azure Key Vault, and Serilog packages and preserve the original `AddXxxService` / `IXxxService` style. The five infrastructure hosts now use `ProjectReference` instead of private `Zenvera.Shared.*` packages. `NuGet.config` is nuget.org-only, and CI no longer injects GitHub Packages credentials.
+
+The remainder of this document is the original 2026-07-12 assessment and is retained as historical context.
 
 ## Executive assessment
 

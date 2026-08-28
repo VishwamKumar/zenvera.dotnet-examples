@@ -10,12 +10,11 @@
     <Product>OcelotApp</Product>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Asp.Versioning.Mvc" Version="10.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.9" />
-    <PackageReference Include="MMLib.SwaggerForOcelot" Version="10.0.2" />
-    <PackageReference Include="Ocelot" Version="24.1.0" />
-    <PackageReference Include="Ocelot.Cache.CacheManager" Version="24.1.0" />
+    <PackageReference Include="Asp.Versioning.Mvc" Version="10.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.11" />
+    <PackageReference Include="MMLib.SwaggerForOcelot" Version="11.0.0" />
+    <PackageReference Include="Ocelot" Version="25.0.0" />
+    <PackageReference Include="Ocelot.Cache.CacheManager" Version="25.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
   </ItemGroup>
 </Project>

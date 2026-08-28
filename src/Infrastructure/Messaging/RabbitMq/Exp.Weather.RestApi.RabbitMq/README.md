@@ -11,7 +11,7 @@ Demonstrate publishing Weather messages through RabbitMQ.
 ## What it demonstrates
 
 - RabbitMQ connection configuration.
-- Message publication through `Zenvera.Shared.Queuing`.
+- Message publication through `Exp.Shared.Queuing` and the public RabbitMQ client.
 - REST-to-message boundary.
 
 ## What it intentionally omits
@@ -37,7 +37,7 @@ Client → Weather controller → RabbitMQ abstraction → exchange/queue broker
 
 ## Configuration
 
-HTTP 5112; HTTPS 6112. RabbitMQ uses port 5672 and management UI 15672. Configure credentials via environment variables and authenticate to the private package feed.
+HTTP 5112; HTTPS 6112. RabbitMQ uses port 5672 and management UI 15672. Configure credentials via environment variables. The host references `shared/Infrastructure/Exp.Shared.Queuing`.
 
 Use environment variables or .NET user secrets for sensitive development values. Never place live credentials in committed JSON, launch profiles, or NuGet configuration.
 

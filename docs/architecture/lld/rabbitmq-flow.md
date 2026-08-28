@@ -2,7 +2,7 @@
 
 ## Scope
 
-Applies to `Exp.Weather.RestApi.RabbitMq`, a Level 1 example that publishes a serialized Weather response through the existing queuing abstraction. Its private package dependency restores from the configured GitHub Packages feed when an authorized credential is present.
+Applies to `Exp.Weather.RestApi.RabbitMq`, a Level 1 example that publishes a serialized Weather response through the in-repo `Exp.Shared.Queuing` adapter over the public RabbitMQ client.
 
 ```mermaid
 sequenceDiagram
@@ -30,7 +30,6 @@ The example demonstrates publishing, not a complete reliable messaging workflow.
 
 ## Failure scenarios
 
-- Missing package/feed prevents build.
 - Unreachable broker or invalid credentials prevents publish.
 - Missing/mismatched bindings can accept a publish without an intended consumer receiving it.
 - Serialization/schema changes can break consumers independently of the API response.

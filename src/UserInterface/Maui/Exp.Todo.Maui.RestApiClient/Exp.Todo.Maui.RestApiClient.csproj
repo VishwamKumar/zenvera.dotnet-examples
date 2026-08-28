@@ -2,6 +2,8 @@
   <PropertyGroup>
     <TargetFrameworks>net10.0-android;net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
     <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
+    <!-- Release MacCatalyst defaults to x64+arm64; Windows restore only has x64. -->
+    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst' and $([MSBuild]::IsOSPlatform('windows'))">maccatalyst-x64</RuntimeIdentifiers>
     <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
     <!-- <TargetFrameworks>$(TargetFrameworks);net10.0-tizen</TargetFrameworks> -->
     <!-- Note for MacCatalyst:
@@ -31,6 +33,14 @@
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
     <AssemblyName>Exp.Todo.Maui.RestApiClient</AssemblyName>
   </PropertyGroup>
+  <!--
+    Android Java callable wrappers create paths such as
+    android/src/mono/androidx/core/view/accessibility/*.java.
+    Under this project's nested folder those exceed Windows MAX_PATH (260).
+  -->
+  <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+    <IntermediateOutputPath>$(MSBuildThisFileDirectory)..\..\..\..\obj\ma\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <!-- App Icon -->
     <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -51,11 +61,11 @@
     <EmbeddedResource Include="appsettings.json" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.9" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.9" />
-    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.80" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.80" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.11" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.100" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.100" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.11" />
   </ItemGroup>
   <ItemGroup>
     <MauiXaml Update="Pages\ManageToDoPage.xaml">

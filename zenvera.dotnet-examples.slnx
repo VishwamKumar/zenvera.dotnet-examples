@@ -49,6 +49,11 @@
     <Project Path="src/Integration/ApiGateway/RestApis/Yarp/Exp.ApiGateway.Yarp/Exp.ApiGateway.Yarp.csproj" />
   </Folder>
   <Folder Name="/Infrastructure/">
+    <Project Path="shared/Infrastructure/Exp.Shared.Caching/Exp.Shared.Caching.csproj" />
+    <Project Path="shared/Infrastructure/Exp.Shared.Configuration/Exp.Shared.Configuration.csproj" />
+    <Project Path="shared/Infrastructure/Exp.Shared.Logging/Exp.Shared.Logging.csproj" />
+    <Project Path="shared/Infrastructure/Exp.Shared.Queuing/Exp.Shared.Queuing.csproj" />
+    <Project Path="shared/Infrastructure/Exp.Shared.Secrets/Exp.Shared.Secrets.csproj" />
     <Project Path="src/Infrastructure/BackgroundProcessing/BackgroundService/Exp.Weather.Worker.BackgroundService/Exp.Weather.Worker.BackgroundService.csproj" />
     <Project Path="src/Infrastructure/Caching/Redis/Exp.Weather.RestApi.RedisCaching/Exp.Weather.RestApi.RedisCaching.csproj" />
     <Project Path="src/Infrastructure/Logging/Serilog/Exp.Weather.BlazorServer.Serilog/Exp.Weather.BlazorServer.Serilog.csproj" />

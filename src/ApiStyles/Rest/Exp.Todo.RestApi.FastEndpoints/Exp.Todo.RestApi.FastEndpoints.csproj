@@ -11,10 +11,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="16.2.0" />
-    <PackageReference Include="FastEndpoints" Version="8.2.0">
+    <PackageReference Include="FastEndpoints" Version="8.3.0">
       <TreatAsUsed>true</TreatAsUsed>
     </PackageReference>
-    <PackageReference Include="FastEndpoints.Swagger" Version="8.2.0" />
+    <PackageReference Include="FastEndpoints.Swagger" Version="8.3.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\shared\Todo\Exp.Todo.Infrastructure.Sqlite\Exp.Todo.Infrastructure.Sqlite.csproj" />

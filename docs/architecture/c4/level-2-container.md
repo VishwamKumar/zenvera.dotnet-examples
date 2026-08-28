@@ -13,7 +13,7 @@ flowchart LR
   Gateway[Gateway hosts]
   UI[MAUI client]
   Reference[Aspire Reference AppHost]
-  Shared[Shared Todo persistence]
+  Shared[Shared Todo + infrastructure adapters]
   Local[(Local Compose services)]
   External[External dev services/APIs]
 
@@ -27,6 +27,7 @@ flowchart LR
   Solution --> Reference
   Api --> Shared
   UI --> Api
+  Infra --> Shared
   Infra --> Local
   Infra --> External
   Gateway --> External
@@ -34,4 +35,4 @@ flowchart LR
   Reference --> External
 ```
 
-The root solution is the authoritative inventory/build surface. Category solutions are the preferred focused exploration surfaces. Shared code is deliberately narrow; authentication and infrastructure implementations remain local to their demonstrations. The Aspire `Reference` sample is self-contained and does not compose other catalog hosts; it may start SQL through AppHost rather than Compose.
+The root solution is the authoritative inventory/build surface. Category solutions are the preferred focused exploration surfaces. Shared code is deliberately narrow: Todo persistence plus thin infrastructure adapters over public packages. Authentication remains local to each demonstration. The Aspire `Reference` sample is self-contained and does not compose other catalog hosts; it may start SQL through AppHost rather than Compose.

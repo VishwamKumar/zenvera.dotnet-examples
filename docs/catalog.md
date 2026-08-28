@@ -1,6 +1,6 @@
 # Example catalog
 
-This catalog lists runnable examples, not every supporting project. `shared/Todo/Exp.Todo.Infrastructure.Sqlite` is a shared Level 2 data component used by API-style hosts and is therefore not listed as an independently runnable example.
+This catalog lists runnable examples, not every supporting project. `shared/Todo/Exp.Todo.Infrastructure.Sqlite` and `shared/Infrastructure` adapters are supporting projects used by hosts and are therefore not listed as independently runnable examples.
 
 Maturity levels are defined in the [root README](../README.md#example-maturity-levels). “Learning only” means the implementation requires a production review and hardening; maturity is not a readiness score.
 
@@ -37,11 +37,11 @@ Maturity levels are defined in the [root README](../README.md#example-maturity-l
 
 | Category | Example | Level | Project path | Protocol/framework | Domain | External dependencies | Build | Tests | Production readiness | Sequence |
 |---|---|---|---|---|---|---|---|---|---|---:|
-| Infrastructure | Redis caching | Level 1 | `src/Infrastructure/Caching/Redis/Exp.Weather.RestApi.RedisCaching` | REST, Redis | Weather | Redis; private GitHub package feed | Requires authenticated restore | Manual | Learning only | 20 |
-| Infrastructure | RabbitMQ publishing | Level 1 | `src/Infrastructure/Messaging/RabbitMq/Exp.Weather.RestApi.RabbitMq` | REST, AMQP | Weather | RabbitMQ; private GitHub package feed | Requires authenticated restore | Manual | Learning only | 21 |
-| Infrastructure | Azure Key Vault | Level 1 | `src/Infrastructure/Secrets/AzureKeyVault/Exp.Weather.BlazorServer.KeyVault` | Blazor Server, Key Vault | Weather/secrets | Azure vault; private GitHub package feed | Requires authenticated restore | Manual | Learning only | 22 |
-| Infrastructure | REST Serilog | Level 1 | `src/Infrastructure/Logging/Serilog/Exp.Weather.RestApi.Serilog` | REST, structured logging | Weather | SQL Server; private GitHub package feed | Requires authenticated restore | Manual | Learning only | 23 |
-| Infrastructure | Blazor Serilog | Level 1 | `src/Infrastructure/Logging/Serilog/Exp.Weather.BlazorServer.Serilog` | Blazor Server, MongoDB logging | Weather | MongoDB; private GitHub package feed | Requires authenticated restore | Manual | Learning only | 24 |
+| Infrastructure | Redis caching | Level 1 | `src/Infrastructure/Caching/Redis/Exp.Weather.RestApi.RedisCaching` | REST, Redis | Weather | Redis | Pass | Manual | Learning only | 20 |
+| Infrastructure | RabbitMQ publishing | Level 1 | `src/Infrastructure/Messaging/RabbitMq/Exp.Weather.RestApi.RabbitMq` | REST, AMQP | Weather | RabbitMQ | Pass | Manual | Learning only | 21 |
+| Infrastructure | Azure Key Vault | Level 1 | `src/Infrastructure/Secrets/AzureKeyVault/Exp.Weather.BlazorServer.KeyVault` | Blazor Server, Key Vault | Weather/secrets | Azure vault | Pass | Manual | Learning only | 22 |
+| Infrastructure | REST Serilog | Level 1 | `src/Infrastructure/Logging/Serilog/Exp.Weather.RestApi.Serilog` | REST, structured logging | Weather | SQL Server | Pass | Manual | Learning only | 23 |
+| Infrastructure | Blazor Serilog | Level 1 | `src/Infrastructure/Logging/Serilog/Exp.Weather.BlazorServer.Serilog` | Blazor Server, MongoDB logging | Weather | MongoDB | Pass | Manual | Learning only | 24 |
 | Infrastructure | Background service | Level 1 | `src/Infrastructure/BackgroundProcessing/BackgroundService/Exp.Weather.Worker.BackgroundService` | ASP.NET hosted service | Weather | None | Pass | Manual | Learning only | 25 |
 | Integration | Ocelot gateway | Level 1 | `src/Integration/ApiGateway/RestApis/Ocelot/Exp.ApiGateway.Ocelot` | REST reverse proxy, Ocelot | Gateway | External downstream APIs | Pass build; external runtime | Manual | Learning only | 26 |
 | Integration | YARP gateway | Level 1 | `src/Integration/ApiGateway/RestApis/Yarp/Exp.ApiGateway.Yarp` | REST reverse proxy, YARP | Gateway | Hour Tracker API | Pass build; external runtime | Manual | Learning only | 27 |

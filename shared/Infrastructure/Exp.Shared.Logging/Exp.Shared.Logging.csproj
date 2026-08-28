@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Authors>Vishwa Kumar</Authors>
+    <Company>Vishwam</Company>
+    <Product>Zenvera .NET Examples</Product>
+    <AssemblyName>Exp.Shared.Logging</AssemblyName>
+    <RootNamespace>Exp.Shared.Logging</RootNamespace>
+    <Description>Example-local Serilog adapter with category sinks and optional PII redaction.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.MongoDB" Version="7.3.0" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="10.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Exp.Shared.Configuration\Exp.Shared.Configuration.csproj" />
+  </ItemGroup>
+</Project>

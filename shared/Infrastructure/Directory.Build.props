@@ -1,0 +1,10 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..'))" />
+  <PropertyGroup>
+    <!--
+      Project and namespace names use Exp.Shared.* to match the repository
+      shared/ folder. ILogTypeLogger.Error keeps the original example API.
+    -->
+    <NoWarn>$(NoWarn);CA1716</NoWarn>
+  </PropertyGroup>
+</Project>

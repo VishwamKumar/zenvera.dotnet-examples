@@ -116,7 +116,7 @@ The repository provides one authoritative root solution and smaller category sol
 
 | Solution | Scope |
 |---|---|
-| `zenvera.dotnet-examples.slnx` | All 49 maintained projects |
+| `zenvera.dotnet-examples.slnx` | All 54 maintained projects |
 | `solutions/zenvera.api-styles.slnx` | REST, gRPC, GraphQL, SOAP, and shared Todo persistence |
 | `solutions/zenvera.authentication.slnx` | REST, gRPC, and GraphQL authentication examples |
 | `solutions/zenvera.architecture.slnx` | Clean Architecture variants and their tests |
@@ -127,7 +127,7 @@ The repository provides one authoritative root solution and smaller category sol
 
 Open the root or a category `.slnx` in Visual Studio, Rider, or the .NET CLI. Every maintained project belongs to the root solution.
 
-## External services and private packages
+## External services
 
 Most API-style, authentication, gateway, and architecture examples compile without starting external infrastructure. Runtime requirements are documented in each example README.
 
@@ -140,11 +140,7 @@ docker compose --env-file deploy/local/.env -f deploy/local/compose.yml up -d
 
 Read the [local infrastructure runbook](docs/runbooks/local-infrastructure.md) for ports, safe development defaults, health checks, and shutdown commands.
 
-### A note for public visitors
-
-Several infrastructure examples use the author's private `Zenvera.Shared.*` packages. Their source projects remain visible for architectural study, but restoring them requires authorized access to the configured GitHub Packages feed. No token or package credential is stored in this repository.
-
-If you do not have access, use the API styles, authentication, architecture, integration, or background-service examples; they remain independently explorable. Maintainers can configure private-feed access using the [CI validation runbook](docs/runbooks/ci-validation.md).
+Infrastructure examples restore from nuget.org through in-repo adapters under `shared/Infrastructure`. They still need Redis, RabbitMQ, SQL Server, MongoDB, or Azure Key Vault at **runtime**, as documented in each example README.
 
 Azure Key Vault, Firebase, mutual-TLS certificates, and gateway downstream services require their own development resources or credentials at runtime.
 
@@ -165,7 +161,7 @@ Focused examples include reproducible manual scenarios in their READMEs. CI vali
 - Keep each example focused on the technology or decision it teaches.
 - Use layering only when it makes delivery, application, domain, or persistence boundaries clearer.
 - Preserve full dependency direction in architecture-reference examples.
-- Share only materially identical Todo, Weather, contracts, or test utilities.
+- Share only materially identical Todo persistence, infrastructure adapters, contracts, or test utilities.
 - Keep protocol contracts and example-specific behavior local.
 - Prefer one root solution plus category solutions over copied repository-level solutions.
 - Document intentional omissions and production hardening instead of presenting samples as production-ready.

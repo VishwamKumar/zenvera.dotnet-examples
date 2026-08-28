@@ -15,7 +15,7 @@ Organize the examples in `zenvera.dotnet-examples` by learning category under `s
 
 Production bounded-context rules will not be applied literally. A small example may remain a single focused project or use a simple layered structure when that best exposes the API style, authentication mechanism, framework, or infrastructure concern being taught. Full Domain, Application, Infrastructure, host, and test separation is retained for examples whose subject is Clean Architecture.
 
-Every example must remain independently runnable. It will keep its own host, configuration contract, prerequisites, and nearby run instructions. Shared projects are limited to proven neutral Todo or Weather contracts/persistence and test utilities; unrelated business behavior and example-specific authentication or infrastructure wiring will not be merged into shared libraries. Local orchestration may compose dependencies without turning the examples into one application.
+Every example must remain independently runnable. It will keep its own host, configuration contract, prerequisites, and nearby run instructions. Shared projects are limited to proven Todo persistence, thin infrastructure adapters over public packages, contracts, and test utilities; unrelated business behavior and example-specific authentication will not be merged into shared libraries. Local orchestration may compose dependencies without turning the examples into one application.
 
 The root solution provides one authoritative discovery and build entry point and supports repository-wide tooling. Category-based folders and category solutions preserve focused navigation and permit building subsets, including separation of platform-specific workloads such as MAUI.
 
@@ -33,9 +33,13 @@ The root solution provides one authoritative discovery and build entry point and
 
 Seven category `.slnx` files provide independently openable views of the repository, including `solutions/zenvera.reference.slnx` for the Aspire local-orchestration sample. The root solution remains authoritative, and CI validates category membership so duplication stays visible.
 
+## 2026 amendment — in-repo infrastructure adapters
+
+Infrastructure examples no longer restore private `Zenvera.Shared.*` packages. Redis, RabbitMQ, Azure Key Vault, and Serilog hosts reference thin adapters under `shared/Infrastructure` that wrap public NuGet packages and keep the original `AddXxxService` / `IXxxService` registration style. The adapters are example-sized teaching code, not a production platform.
+
 ### Trade-offs
 
-- The root solution includes optional platform workloads and private-package prerequisites.
+- The root solution includes optional platform workloads.
 - Port, configuration, and dependency collisions require explicit local runbooks.
 - Shared code must be reviewed carefully so abstraction does not hide the teaching point.
 

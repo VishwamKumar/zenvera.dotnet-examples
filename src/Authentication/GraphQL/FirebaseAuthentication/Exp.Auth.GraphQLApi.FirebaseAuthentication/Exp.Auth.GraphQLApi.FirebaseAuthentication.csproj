@@ -11,10 +11,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FirebaseAdminAuthentication.DependencyInjection" Version="1.1.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.75.0" />
-    <PackageReference Include="Google.Cloud.Firestore" Version="4.3.0" />
-    <PackageReference Include="HotChocolate.AspNetCore" Version="16.5.0" />
-    <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="16.5.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.76.0" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="4.4.0" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="16.6.1" />
+    <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="16.6.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Schemas\Mutations\" />

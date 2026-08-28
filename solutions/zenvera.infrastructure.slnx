@@ -1,4 +1,11 @@
 <Solution>
+  <Folder Name="/Shared/">
+    <Project Path="../shared/Infrastructure/Exp.Shared.Caching/Exp.Shared.Caching.csproj" />
+    <Project Path="../shared/Infrastructure/Exp.Shared.Configuration/Exp.Shared.Configuration.csproj" />
+    <Project Path="../shared/Infrastructure/Exp.Shared.Logging/Exp.Shared.Logging.csproj" />
+    <Project Path="../shared/Infrastructure/Exp.Shared.Queuing/Exp.Shared.Queuing.csproj" />
+    <Project Path="../shared/Infrastructure/Exp.Shared.Secrets/Exp.Shared.Secrets.csproj" />
+  </Folder>
   <Folder Name="/Caching/">
     <Project Path="../src/Infrastructure/Caching/Redis/Exp.Weather.RestApi.RedisCaching/Exp.Weather.RestApi.RedisCaching.csproj" />
   </Folder>

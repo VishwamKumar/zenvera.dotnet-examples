@@ -32,7 +32,7 @@ Level 3 variants carry automated tests. The Aspire `Reference` sample includes c
 ## Key risks
 
 - The MAUI example requires platform-specific workloads and compatible build hosts.
-- Infrastructure examples using `Zenvera.Shared.*` require authenticated read access to the configured GitHub Packages feed.
+- Infrastructure examples restore public packages and in-repo adapters under `shared/Infrastructure`; Redis, RabbitMQ, SQL Server, MongoDB, and Azure Key Vault remain runtime dependencies.
 - Development credentials and certificate setup can be mistaken for production guidance without reading the security warnings.
 - Over-sharing or over-layering would weaken comparison clarity.
 

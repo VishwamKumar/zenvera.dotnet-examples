@@ -2,7 +2,7 @@
 
 ## Objective
 
-Demonstrate retrieving a secret through the shared Azure Key Vault integration.
+Demonstrate retrieving a secret through Azure Key Vault.
 
 ## Maturity level
 
@@ -37,7 +37,7 @@ Browser circuit → Blazor component → secrets abstraction → Azure Key Vault
 
 ## Configuration
 
-HTTP 5113; HTTPS 6113. Set `EXP_AZURE_KEY_VAULT_URL` and Azure credentials outside source. `UseKeyVault` can disable the external call for local exploration; private package-feed authentication is required.
+HTTP 5113; HTTPS 6113. Set `EXP_AZURE_KEY_VAULT_URL` and Azure credentials outside source. `UseKeyVault` can disable the external call for local exploration. The host references `shared/Infrastructure/Exp.Shared.Secrets`.
 
 Use environment variables or .NET user secrets for sensitive development values. Never place live credentials in committed JSON, launch profiles, or NuGet configuration.
 
