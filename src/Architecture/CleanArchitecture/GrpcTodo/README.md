@@ -40,9 +40,9 @@ All hosts and supporting projects target `net10.0`. Each variant owns its Domain
 ```powershell
 dotnet restore zenvera.dotnet-examples.slnx --configfile NuGet.config -p:NuGetAudit=false
 dotnet build zenvera.dotnet-examples.slnx --no-restore -p:NuGetAudit=false
-dotnet test src/Architecture/CleanArchitecture/GrpcTodo/Simple/tests/Exp.Todo.Tests --no-build
-dotnet test src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/tests/Exp.Todo.Tests --no-build
-dotnet test src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/tests/Exp.Todo.Tests --no-build
+dotnet test --project src/Architecture/CleanArchitecture/GrpcTodo/Simple/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj --no-build
+dotnet test --project src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj --no-build
+dotnet test --project src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj --no-build
 ```
 
 Each variant includes a Dockerfile retained beside its variant root. Build it with that variant directory as the Docker build context after reviewing the local database/log volume requirements.

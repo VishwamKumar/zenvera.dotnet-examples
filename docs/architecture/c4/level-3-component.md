@@ -37,6 +37,6 @@ flowchart TB
   end
 ```
 
-Infrastructure hosts keep Weather behavior in the example project and delegate Redis, RabbitMQ, Key Vault, and Serilog wiring to the matching `Exp.Shared.*` adapter. The background-service example has no adapter. See the [shared infrastructure README](../../../../shared/Infrastructure/README.md).
+Infrastructure hosts keep Weather behavior in the example project and delegate Redis, RabbitMQ, Key Vault, and Serilog wiring to the matching `Exp.Shared.*` adapter. The background-service example has no adapter. See the [shared infrastructure README](../../../shared/Infrastructure/README.md).
 
 Dependency direction—not the use or absence of dependency injection or MediatR—is the relevant architectural test in the Level 3 examples.

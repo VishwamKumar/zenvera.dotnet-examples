@@ -36,7 +36,7 @@ foreach ($example in $examples | Where-Object buildEnabled) {
         }
         "test" {
             if ($example.testEnabled) {
-                dotnet test $example.testPath --no-restore -p:NuGetAudit=false --configuration Release -v:minimal
+                dotnet test --project $example.testPath --no-restore -p:NuGetAudit=false --configuration Release -v:minimal
                 if ($LASTEXITCODE -ne 0) { throw "Tests failed: $($example.id)" }
             }
         }

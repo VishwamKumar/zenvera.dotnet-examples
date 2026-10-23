@@ -88,7 +88,7 @@ dotnet build solutions/zenvera.reference.slnx
 ## Test scenarios
 
 ```powershell
-dotnet test tests/Reference/Zenvera.DotNetExamples.Reference.Tests
+dotnet test --project tests/Reference/Zenvera.DotNetExamples.Reference.Tests/Zenvera.DotNetExamples.Reference.Tests.csproj
 ```
 
 - Happy path: AppHost starts; `GET /notes` returns seeded notes.
@@ -100,7 +100,7 @@ dotnet test tests/Reference/Zenvera.DotNetExamples.Reference.Tests
 Category CI currently **builds and format-checks** this sample but does **not** run the orchestration tests (`testEnabled: false` in `build/example-build-manifest.json`). GitHub-hosted runners can leave `reference-api` Unhealthy under Aspire 13.4.x even after DCP starts; re-enable the tests once that is reliable. Until then, run them locally:
 
 ```powershell
-dotnet test tests/Reference/Zenvera.DotNetExamples.Reference.Tests
+dotnet test --project tests/Reference/Zenvera.DotNetExamples.Reference.Tests/Zenvera.DotNetExamples.Reference.Tests.csproj
 ```
 
 Agents without an ASP.NET developer certificate must set `ASPIRE_DCP_USE_DEVELOPER_CERTIFICATE=false`. Aspire 13.4.x otherwise hangs while starting the DCP internal API server. See [microsoft/aspire#18041](https://github.com/microsoft/aspire/issues/18041).
