@@ -11,7 +11,7 @@ Run from the monorepo root:
 
 ```powershell
 dotnet run --project src/Architecture/CleanArchitecture/GrpcTodo/Simple/src/Exp.Todo.GrpcApi
-dotnet test src/Architecture/CleanArchitecture/GrpcTodo/Simple/tests/Exp.Todo.Tests
+dotnet test --project src/Architecture/CleanArchitecture/GrpcTodo/Simple/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj
 ```
 
 - HTTP: `http://localhost:6401`

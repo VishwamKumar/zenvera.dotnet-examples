@@ -149,9 +149,9 @@ Azure Key Vault, Firebase, mutual-TLS certificates, and gateway downstream servi
 The three Level 3 architecture references contain automated tests:
 
 ```powershell
-dotnet test src/Architecture/CleanArchitecture/GrpcTodo/Simple/tests/Exp.Todo.Tests
-dotnet test src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/tests/Exp.Todo.Tests
-dotnet test src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/tests/Exp.Todo.Tests
+dotnet test --project src/Architecture/CleanArchitecture/GrpcTodo/Simple/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj
+dotnet test --project src/Architecture/CleanArchitecture/GrpcTodo/Cqrs/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj
+dotnet test --project src/Architecture/CleanArchitecture/GrpcTodo/CqrsMediatR/tests/Exp.Todo.Tests/Exp.Todo.Tests.csproj
 ```
 
 Focused examples include reproducible manual scenarios in their READMEs. CI validates the tracked example manifest, repository hygiene, restore, build, tests, formatting, Markdown links, and Docker Compose configuration. See the [CI validation runbook](docs/runbooks/ci-validation.md).
